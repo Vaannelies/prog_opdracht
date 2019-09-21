@@ -61,6 +61,17 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+            table{
+                width:50vw;
+            }
+
+            th{
+              border:solid;
+            }
+
+
+          
         </style>
     </head>
     <body>
