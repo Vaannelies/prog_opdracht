@@ -65,7 +65,8 @@ class AnimalsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $animal = Animal::find($id);
+        return view('animals.edit', compact('animal', 'id'));
     }
 
     /**
@@ -77,7 +78,13 @@ class AnimalsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name'  =>  'required'
+        ]);
+        $animal = Animal::find($id);
+        $animal->name = $request->get('name');
+        $animal->save();
+        return redirect()->route('animals.index')->with('success', 'Data Updated');
     }
 
     /**

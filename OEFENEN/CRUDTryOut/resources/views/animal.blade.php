@@ -62,7 +62,6 @@
                 font-weight: 600;
                 letter-spacing: .1rem;
                 text-decoration: none;
-                text-transform: uppercase;
             }
 
             .m-b-md {
@@ -114,6 +113,30 @@
                 font-weight: bold;
                 color:#636b6f;               
             }
+
+            .tbl-button {
+                border-radius:5px;
+                border:none;
+                background-color:#636b6f;
+                padding:5px;
+                font-family: 'Nunito', sans-serif;
+                font-weight: bold;
+                color:white;
+                padding-top:1px;
+                padding-bottom:1px;
+            }
+
+            .tbl-button:active {
+                border-radius:5px;
+                border:none;
+                background-color:white;
+                padding:5px;
+                font-family: 'Nunito', sans-serif;
+                font-weight: bold;
+                color:#636b6f;       
+                padding-top:1px;
+                padding-bottom:1px;        
+            }
             
 
           
@@ -122,8 +145,8 @@
     <body>
         <div class="navbar">
             <div class="links">
-                <a href="{{route('animals.create')}}">Add</a>
-                <a href="{{route('animals.index')}}">View</a>
+                <a href="{{route('animals.create')}}">ADD</a>
+                <a href="{{route('animals.index')}}">VIEW</a>
             </div>
         </div>
      

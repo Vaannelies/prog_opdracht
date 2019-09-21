@@ -20,6 +20,7 @@
                 <td>{{$animal->name}}</td>
                 <td>{{$animal->updated_at}}</td>
                 <td>{{$animal->created_at}}</td>
+                <td><a href="{{action('AnimalsController@edit', $animal['id'])}}" class="tbl-button">Edit</a></td>
             </tr>
             @endforeach
         </tbody>
