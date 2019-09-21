@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\animals;
+use App\Animal;
 
 class AnimalsController extends Controller
 {
@@ -14,7 +14,8 @@ class AnimalsController extends Controller
      */
     public function index()
     {
-        //
+        $animals = Animal::all()->toArray();
+        return view('animals.index', compact('animals'));
     }
 
     /**
@@ -38,7 +39,7 @@ class AnimalsController extends Controller
         $this->validate($request, [
             'name'  =>  'required'
         ]);
-        $animal = new animals([
+        $animal = new Animal([
             'name'  =>  $request->get('name')
         ]);
         $animal->save();
