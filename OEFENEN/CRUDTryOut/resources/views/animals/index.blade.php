@@ -1,7 +1,7 @@
 @extends('animal')
 
 @section('content')
-
+<title>View</title>
 <div class="container">
     <table class="table">
         <thead>

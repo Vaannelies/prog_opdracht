@@ -1,6 +1,7 @@
 @extends('animal')
 
 @section('content')
+<title>Add</title>
 <div class="row">
     <div class="col-md-12">
         <br />
@@ -22,11 +23,9 @@
         <form method="post" action="{{url('animals')}}"> <!-- of animals/create? -->
             {{csrf_field()}}
             <div class="form-group">
-                <input type="text" name="name" class="
-                form-control" placeholder="Enter Name"/>
-            </div>
-            <div class="form-group">
-                <input type="submit" class="btn btn-primary"/>
+                <input type="text" name="name" class="textbox"
+                placeholder="Enter Name"/>
+                <input type="submit" class="button" value="Add"/>
             </div>
         </form>
     </div>

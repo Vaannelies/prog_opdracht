@@ -4,8 +4,6 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Animals</title>
-
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
@@ -48,7 +46,16 @@
                 font-size: 84px;
             }
 
-            .links > a {
+            div.navbar {
+                position:fixed;
+                background-color:lightgray;
+                width:100vw;
+                display:flex;
+                justify-content:center;
+                z-index:1;
+            }
+
+            a {
                 color: #636b6f;
                 padding: 0 25px;
                 font-size: 13px;
@@ -62,19 +69,65 @@
                 margin-bottom: 30px;
             }
 
-            table{
+            table {
                 width:50vw;
             }
 
-            th{
-              border:solid;
+            th {
+                border:solid;
+                border-width:1px;
+                border-color:#636b6f;
+                border-radius:5px;
             }
 
+            td {
+                border-left:solid;
+                border-right:solid;
+                border-width:1px;
+                border-color:#636b6f;
+            }
+            
+            .textbox {
+                border-radius:10px;
+                padding:10px;
+                border:solid;
+                border-color:#636b6f;
+                border-width:1px;
+            }
+
+            .button {
+                border-radius:10px;
+                border:none;
+                background-color:#636b6f;
+                padding:10px;
+                font-family: 'Nunito', sans-serif;
+                font-weight: bold;
+                color:white;
+            }
+
+            .button:active {
+                border-radius:10px;
+                border:none;
+                background-color:white;
+                padding:10px;
+                font-family: 'Nunito', sans-serif;
+                font-weight: bold;
+                color:#636b6f;               
+            }
+            
 
           
         </style>
     </head>
     <body>
+        <div class="navbar">
+            <div class="links">
+                <a href="{{route('animals.create')}}">Add</a>
+                <a href="{{route('animals.index')}}">View</a>
+            </div>
+        </div>
+     
+
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
@@ -95,12 +148,6 @@
                     Animals
                 </div>
 
-                <div>
-                    <p> 
-                        Miep
-                    </p>
-                </div>
-
                 <div class="container">
                     @yield('content')
                 </div>
@@ -108,4 +155,8 @@
             </div>
         </div>
     </body>
+    
+    <footer>
+ 
+    </footer>
 </html>
