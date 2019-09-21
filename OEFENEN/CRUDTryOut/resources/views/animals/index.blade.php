@@ -1,27 +1,28 @@
 @extends('animal')
 
 @section('content')
-<div class="row">
-    <div class="col-md-12">
-        <br />
-        <h3 align="center">Animal Data</h3>
-        <br />
-        <table class="table table-bordered">
+
+<div class="container">
+    <table class="table">
+        <thead>
             <tr>
-                <th>Name</th>
-                <th>Edit</th>
-                <th>Delete</th>
+                <th></th>
+                <th></th>
+                <th></th>
             </tr>
+        </thead>
+
+        <tbody>
             @foreach($animals as $animal)
             <tr>
-                <td>{{$animal['name']}}</td>
-                <td></td>
-                <td></td>
+                <td>1</td>
+                <td>{{$animal->name}}</td>
             </tr>
             @endforeach
-        </table>
-    </div>
+        </tbody>
+    </table>
 </div>
+
 
 @endsection
 

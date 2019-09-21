@@ -14,7 +14,7 @@ class AnimalsController extends Controller
      */
     public function index()
     {
-        $animals = Animal::all()->toArray();
+        $animals = Animal::all();
         return view('animals.index', compact('animals'));
     }
 
@@ -43,7 +43,7 @@ class AnimalsController extends Controller
             'name'  =>  $request->get('name')
         ]);
         $animal->save();
-        return redirect()->route('animals.create')->with('success', 'Data Added');
+        return redirect()->route('animals.index')->with('success', 'Data Added');
     }
 
     /**

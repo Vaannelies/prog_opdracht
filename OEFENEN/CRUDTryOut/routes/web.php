@@ -19,8 +19,4 @@ Route::get('/animal', function () {
     return view('animal');
 });
 
-Route::get('/animals/index', function () {
-    return view('animals.index');
-});
-
 Route::resource('animals', 'AnimalsController');
