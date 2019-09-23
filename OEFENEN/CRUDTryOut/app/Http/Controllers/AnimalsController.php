@@ -54,7 +54,8 @@ class AnimalsController extends Controller
      */
     public function show($id)
     {
-        //
+        $animal = Animal::find($id);
+        return view('animals.details', compact('animal', 'id'));
     }
 
     /**

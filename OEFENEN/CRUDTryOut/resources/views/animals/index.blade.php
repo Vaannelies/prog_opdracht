@@ -17,7 +17,7 @@
             @foreach($animals as $animal)
             <tr>
                 <td>{{$animal->id}}</td>
-                <td>{{$animal->name}}</td>
+                <td><a href="{{action('AnimalsController@show', $animal['id'])}}" >{{$animal->name}}</a></td>
                 <td>{{$animal->updated_at}}</td>
                 <td>{{$animal->created_at}}</td>
                 <td><a href="{{action('AnimalsController@edit', $animal['id'])}}" class="tbl-button">Edit</a></td>
