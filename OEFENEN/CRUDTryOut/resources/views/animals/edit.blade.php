@@ -24,6 +24,8 @@
             <input type="hidden" name="_method" value="PATCH" />
                 <input type="text" name="name" class="textbox"
                 value="{{$animal->name}}" placeholder="Enter name"/>
+                <input type="date" name="date_birth" class="textbox"
+                value="{{$animal->date_birth}}" placeholder="Enter date of birth"/>
                 <input type="submit" class="button" value="Submit"/>
         </form>
     </div>

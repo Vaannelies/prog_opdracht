@@ -17,6 +17,8 @@ class CreateAnimalsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name'); //varchar(50)
             $table->timestamps();
+
+            // voorbeeld voor een relatie tussen tabellen $table->foreign('category_id')->references('id')->on('categories'); 
         });
     }
 

@@ -146,6 +146,7 @@
     <body>
         <div class="navbar">
             <div class="links">
+              
                 <a href="{{route('animals.create')}}">ADD</a>
                 <a href="{{route('animals.index')}}">VIEW</a>
             </div>

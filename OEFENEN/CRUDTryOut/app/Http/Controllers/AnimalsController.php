@@ -37,10 +37,12 @@ class AnimalsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name'  =>  'required'
+            'name'  =>  'required',
+            'date_birth' => 'required'
         ]);
         $animal = new Animal([
-            'name'  =>  $request->get('name')
+            'name'  =>  $request->get('name'),
+            'date_birth' => $request->get('date_birth')
         ]);
         $animal->save();
         return redirect()->route('animals.index')->with('success', 'Data Added');
@@ -80,10 +82,12 @@ class AnimalsController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'name'  =>  'required'
+            'name'  =>  'required',
+            'date_birth' => 'required'
         ]);
         $animal = Animal::find($id);
         $animal->name = $request->get('name');
+        $animal->date_birth = $request->get('date_birth');
         $animal->save();
         return redirect()->route('animals.index')->with('success', 'Data Updated');
     }

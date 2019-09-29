@@ -24,7 +24,9 @@
             {{csrf_field()}}
             <div class="form-group">
                 <input type="text" name="name" class="textbox"
-                placeholder="Enter Name"/>
+                placeholder="Enter name"/>
+                <input type="date" name="date_birth" class="textbox"
+                placeholder="Enter date of birth"/>
                 <input type="submit" class="button" value="Add"/>
             </div>
         </form>

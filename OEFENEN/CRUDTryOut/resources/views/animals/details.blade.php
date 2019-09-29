@@ -10,10 +10,6 @@
         <br/>
        
         <table>
-            <!-- <tr>
-                    ID <br>
-                    <td>{{$animal->id}}</td>
-            </tr> -->
             <tr>
                     <td>ID:</td>
                     <td>{{$animal->id}}</td>
@@ -21,6 +17,10 @@
             <tr>    
                     <td>Name:</td>
                     <td>{{$animal->name}}</td>
+            </tr>
+            <tr>
+                    <td>Date of birth:</td>
+                    <td>{{$animal->date_birth}}</td>
             </tr>
             <tr>
                     <td>Last updated at:</td>
@@ -34,12 +34,12 @@
     </div>
 </div>
 
-<a href="/Laravel/GitHub/prog_opdracht/OEFENEN/CRUDTryOut/public/animals/{{$animal->id - 1}}" class="tbl-button">Previous</a>
-<a href="{{route('animals.index')}}" class="tbl-button"> Back </a>
-<a href="/Laravel/GitHub/prog_opdracht/OEFENEN/CRUDTryOut/public/animals/{{$animal->id + 1}}" class="tbl-button">Next</a>
-
-
+<br>
+<div>
+    <!-- <a href="/Laravel/GitHub/prog_opdracht/OEFENEN/CRUDTryOut/public/animals/{{$animal->id - 1}}" class="tbl-button">Previous</a> -->
+    <a href="{{route('animals.index')}}" class="tbl-button"> Back </a>
+    <!-- <a href="/Laravel/GitHub/prog_opdracht/OEFENEN/CRUDTryOut/public/animals/{{$animal->id + 1}}" class="tbl-button">Next</a> -->
+</div>
 
 @endsection
-
 
