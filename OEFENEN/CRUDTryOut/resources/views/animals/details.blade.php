@@ -23,6 +23,10 @@
                     <td>{{$animal->date_birth}}</td>
             </tr>
             <tr>
+                    <td>Gender:</td>
+                    <td>{{$animal->gender}}</td>
+            </tr>
+            <tr>
                     <td>Last updated at:</td>
                     <td>{{$animal->updated_at}}</td>
             </tr>
