@@ -29,8 +29,8 @@
                 placeholder="Enter date of birth"/>
                 <select name="gender" class="textbox">
                     <option value="" disabled selected>Select gender</option>
-                    <option value="female">Female</option>
-                    <option value="male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Male">Male</option>
                 </select> 
                 <input type="submit" class="button" value="Add"/>
             </div>

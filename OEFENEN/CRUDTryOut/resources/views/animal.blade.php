@@ -86,6 +86,10 @@
                 border-width:1px;
                 border-color:#636b6f;
             }
+
+            .form-group {
+               display:flex;
+            }
             
             .textbox {
                 border-radius:10px;
@@ -93,6 +97,7 @@
                 border:solid;
                 border-color:#636b6f;
                 border-width:1px;
+                
             }
 
             .button {

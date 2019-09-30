@@ -21,26 +21,28 @@
        
         <form method="post" action="{{action('AnimalsController@update', $id)}}">
             {{csrf_field()}}
-            <input type="hidden" name="_method" value="PATCH" />
-                <input type="text" name="name" class="textbox"
-                value="{{$animal->name}}" placeholder="Enter name"/>
-                <input type="date" name="date_birth" class="textbox"
-                value="{{$animal->date_birth}}" placeholder="Enter date of birth"/>
-                <select name="gender" class="textbox">
+            <div class="form-group">
+                <input type="hidden" name="_method" value="PATCH" />
+                    <input type="text" name="name" class="textbox"
+                    value="{{$animal->name}}" placeholder="Enter name"/>
+                    <input type="date" name="date_birth" class="textbox"
+                    value="{{$animal->date_birth}}" placeholder="Enter date of birth"/>
+                    <select name="gender" class="textbox">
 
-                @if($animal['gender']=='female') <!--value says female-->
-                    <option value="">Select gender</option>
-                    <option value="female" selected>Female</option>
-                    <option value="male">Male</option>
-                @endif
+                    @if($animal['gender']=='Female') <!--value says female-->
+                        <option value="">Select gender</option>
+                        <option value="Female" selected>Female</option>
+                        <option value="Male">Male</option>
+                    @endif
 
-                @if($animal['gender']=='male') <!--value says male-->
-                    <option value="">Select gender</option>
-                    <option value="female">Female</option>
-                    <option value="male" selected>Male</option>
-                @endif
-                </select> 
-                <input type="submit" class="button" value="Submit"/>
+                    @if($animal['gender']=='Male') <!--value says male-->
+                        <option value="">Select gender</option>
+                        <option value="Female">Female</option>
+                        <option value="Male" selected>Male</option>
+                    @endif
+                    </select> 
+                    <input type="submit" class="button" value="Submit"/>
+            </div>
         </form>
     </div>
 </div>
