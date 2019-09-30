@@ -26,6 +26,7 @@
                 value="{{$animal->name}}" placeholder="Enter name"/>
                 <input type="date" name="date_birth" class="textbox"
                 value="{{$animal->date_birth}}" placeholder="Enter date of birth"/>
+                echo Form::select('size', array('L' => 'Large', 'S' => 'Small'));
                 <input type="submit" class="button" value="Submit"/>
         </form>
     </div>

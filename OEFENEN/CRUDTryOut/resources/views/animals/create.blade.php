@@ -27,11 +27,16 @@
                 placeholder="Enter name"/>
                 <input type="date" name="date_birth" class="textbox"
                 placeholder="Enter date of birth"/>
+                <select name="gender" class="textbox">
+                    <option value="">Select gender</option>
+                    <option value="female">Female</option>
+                    <option value="male">Male</option>
+                </select> 
                 <input type="submit" class="button" value="Add"/>
             </div>
         </form>
     </div>
 </div>
-@endsection
 
+@endsection
 

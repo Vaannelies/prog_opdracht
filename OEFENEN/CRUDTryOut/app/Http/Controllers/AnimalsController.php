@@ -38,11 +38,13 @@ class AnimalsController extends Controller
     {
         $this->validate($request, [
             'name'  =>  'required',
-            'date_birth' => 'required'
+            'date_birth' => 'required',
+            'gender' => 'required'
         ]);
         $animal = new Animal([
             'name'  =>  $request->get('name'),
-            'date_birth' => $request->get('date_birth')
+            'date_birth' => $request->get('date_birth'),
+            'gender' => $request->get('gender')
         ]);
         $animal->save();
         return redirect()->route('animals.index')->with('success', 'Data Added');
@@ -83,11 +85,13 @@ class AnimalsController extends Controller
     {
         $this->validate($request, [
             'name'  =>  'required',
-            'date_birth' => 'required'
+            'date_birth' => 'required',
+            'gender' => 'required'
         ]);
         $animal = Animal::find($id);
         $animal->name = $request->get('name');
         $animal->date_birth = $request->get('date_birth');
+        $animal->gender = $request->get('gender');
         $animal->save();
         return redirect()->route('animals.index')->with('success', 'Data Updated');
     }
