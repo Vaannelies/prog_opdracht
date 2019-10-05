@@ -143,6 +143,22 @@
                 padding-top:1px;
                 padding-bottom:1px;        
             }
+
+            .card {
+                border-radius:5px;
+                border:solid;
+                border-size:10px;
+            }
+
+            .card-header {
+                background-color: grey;
+                color:white;
+                font-size:20px;
+            }
+
+            .card-body {
+                padding:20px;
+            }
             
 
           
