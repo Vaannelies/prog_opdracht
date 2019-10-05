@@ -20,3 +20,11 @@ Route::get('/animal', function () {
 });
 
 Route::resource('animals', 'AnimalsController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
+    Route::resource('/users', 'UsersController', ['except' => ['show', 'create', 'store']]);
+});
