@@ -15,11 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/animal', function () {
-    return view('animal');
-});
+// Route::get('/animal', function () {
+//     return view('animal');
+// });
 
-Route::resource('animals', 'AnimalsController');
+// Route::resource('animals', 'AnimalsController');
 
 Auth::routes();
 

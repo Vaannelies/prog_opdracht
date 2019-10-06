@@ -1,4 +1,4 @@
-@extends('animal')
+@extends('layouts.animal')
 
 @section('content')
 <title>Add</title>
@@ -20,18 +20,29 @@
             <p>{{ \Session::get('success') }}</p>
         </div>
         @endif
-        <form method="post" action="{{url('animals')}}"> <!-- of animals/create? -->
+        <form method="post" action="{{route('admin.animals.index')}}"> <!-- of animals/create? -->
             {{csrf_field()}}
             <div class="form-group">
                 <input type="text" name="name" class="textbox"
                 placeholder="Enter name"/>
+
                 <input type="date" name="date_birth" class="textbox"
                 placeholder="Enter date of birth"/>
+
                 <select name="gender" class="textbox">
                     <option value="" disabled selected>Select gender</option>
                     <option value="Female">Female</option>
                     <option value="Male">Male</option>
                 </select> 
+
+                <select name="species" class="textbox">
+                     <option value="" disabled selected>Select species</option>
+                    @foreach($species_id as $species)
+                  
+                    <option value="$species_id">{{$species}}</option>
+              
+                </select> 
+
                 <input type="submit" class="button" value="Add"/>
             </div>
         </form>
@@ -39,4 +50,4 @@
 </div>
 
 @endsection
-
+{{route('admin.animals.index')}}

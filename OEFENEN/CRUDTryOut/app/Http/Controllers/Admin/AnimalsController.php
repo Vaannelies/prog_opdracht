@@ -26,7 +26,7 @@ class AnimalsController extends Controller
      */
     public function create()
     {
-        return view('animals.create');
+        return view('admin.animals.create');
     }
 
     /**
@@ -40,15 +40,18 @@ class AnimalsController extends Controller
         $this->validate($request, [
             'name'  =>  'required',
             'date_birth' => 'required',
-            'gender' => 'required'
+            'gender' => 'required',
+            'species' => 'required'
         ]);
         $animal = new Animal([
             'name'  =>  $request->get('name'),
             'date_birth' => $request->get('date_birth'),
-            'gender' => $request->get('gender')
+            'gender' => $request->get('gender'),
+            'species' => $request->get('species')
+
         ]);
         $animal->save();
-        return redirect()->route('animals.index')->with('success', 'Data Added');
+        return redirect()->route('admin.animals.index')->with('success', 'Data Added');
     }
 
     /**
@@ -60,7 +63,7 @@ class AnimalsController extends Controller
     public function show($id)
     {
         $animal = Animal::find($id);
-        return view('animals.details', compact('animal', 'id'));
+        return view('admin.animals.details', compact('animal', 'id'));
     }
 
     /**
@@ -72,7 +75,7 @@ class AnimalsController extends Controller
     public function edit($id)
     {
         $animal = Animal::find($id);
-        return view('animals.edit', compact('animal', 'id'));
+        return view('admin.animals.edit', compact('animal', 'id'));
     }
 
     /**
@@ -94,7 +97,7 @@ class AnimalsController extends Controller
         $animal->date_birth = $request->get('date_birth');
         $animal->gender = $request->get('gender');
         $animal->save();
-        return redirect()->route('animals.index')->with('success', 'Data Updated');
+        return redirect()->route('admin.animals.index')->with('success', 'Data Updated');
     }
 
     /**
@@ -107,6 +110,6 @@ class AnimalsController extends Controller
     {
         $animal = Animal::find($id);
         $animal->delete();
-        return redirect()->route('animals.index')->with('success', 'Data Deleted');
+        return redirect()->route('admin.animals.index')->with('success', 'Data Deleted');
     }
 }

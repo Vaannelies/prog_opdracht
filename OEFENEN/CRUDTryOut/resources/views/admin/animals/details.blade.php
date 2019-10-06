@@ -1,4 +1,4 @@
-@extends('animal')
+@extends('layouts.animal')
 
 @section('content')
 

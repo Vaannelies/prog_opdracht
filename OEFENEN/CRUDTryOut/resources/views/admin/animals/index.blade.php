@@ -1,4 +1,4 @@
-@extends('admin.animal')
+@extends('layouts.animal')
 
 @section('content')
 <title>View</title>

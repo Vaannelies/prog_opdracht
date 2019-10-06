@@ -168,8 +168,8 @@
         <div class="navbar">
             <div class="links">
               
-                <a href="{{route('animals.create')}}">ADD</a>
-                <a href="{{route('animals.index')}}">VIEW</a>
+                <a href="{{route('admin.animals.create')}}">ADD</a>
+                <a href="{{route('admin.animals.index')}}">VIEW</a>
             </div>
         </div>
      
