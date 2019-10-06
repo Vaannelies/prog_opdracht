@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Employee;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class EmployeesController extends Controller
+class UsersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,10 +21,10 @@ class EmployeesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Employee  $employee
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(Employee $employee)
+    public function edit(User $user)
     {
         //
     }
@@ -33,10 +33,10 @@ class EmployeesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Employee  $employee
+     * @param  \App\User $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Employee $employee)
+    public function update(Request $request, User $user)
     {
         //
     }
@@ -44,10 +44,10 @@ class EmployeesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Employee  $employee
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Employee $employee)
+    public function destroy(User $user)
     {
         //
     }
