@@ -15,7 +15,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        return view('admin.select');
+        return view('admin.employees.index');
     }
 
     /**

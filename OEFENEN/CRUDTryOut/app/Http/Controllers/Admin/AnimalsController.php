@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Animal;
+use App\Http\Controllers\Controller;
 
 class AnimalsController extends Controller
 {
@@ -15,7 +16,7 @@ class AnimalsController extends Controller
     public function index()
     {
         $animals = Animal::all();
-        return view('animals.index', compact('animals'));
+        return view('admin.animals.index', compact('animals'));
     }
 
     /**
