@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Animal;
+use App\Species;
 use App\Http\Controllers\Controller;
 
 class AnimalsController extends Controller
@@ -26,7 +27,8 @@ class AnimalsController extends Controller
      */
     public function create()
     {
-        return view('admin.animals.create');
+        $species = Species::all();
+        return view('admin.animals.create', compact('species'));
     }
 
     /**
@@ -41,13 +43,15 @@ class AnimalsController extends Controller
             'name'  =>  'required',
             'date_birth' => 'required',
             'gender' => 'required',
-            'species' => 'required'
+            'species_id' => 'required',
+            'food' => 'required'
         ]);
         $animal = new Animal([
             'name'  =>  $request->get('name'),
             'date_birth' => $request->get('date_birth'),
             'gender' => $request->get('gender'),
-            'species' => $request->get('species')
+            'species_id' => $request->get('species_id'),
+            'food' => $request->get('food')
 
         ]);
         $animal->save();

@@ -35,16 +35,19 @@
                     <option value="Male">Male</option>
                 </select> 
 
-                <select name="species" class="textbox">
+                <select name="species_id" class="textbox">
                      <option value="" disabled selected>Select species</option>
                  
                     
                     @foreach($species as $specie)
                   
-                  <option value="$id">{{$specie->id}}</option>
+                  <option value="{{$specie->id}}">{{$specie->name}}</option>
                   @endforeach
      
                 </select> 
+
+                <input type="text" name="food" class="textbox"
+                placeholder="Enter food"/>
 
                 <input type="submit" class="button" value="Add"/>
             </div>
