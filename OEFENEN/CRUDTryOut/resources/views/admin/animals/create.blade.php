@@ -37,10 +37,13 @@
 
                 <select name="species" class="textbox">
                      <option value="" disabled selected>Select species</option>
-                    @foreach($species_id as $species)
+                 
+                    
+                    @foreach($species as $specie)
                   
-                    <option value="$species_id">{{$species}}</option>
-              
+                  <option value="$id">{{$specie->id}}</option>
+                  @endforeach
+     
                 </select> 
 
                 <input type="submit" class="button" value="Add"/>
@@ -50,4 +53,4 @@
 </div>
 
 @endsection
-{{route('admin.animals.index')}}
+

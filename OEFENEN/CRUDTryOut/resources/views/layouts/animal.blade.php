@@ -167,28 +167,35 @@
     <body>
         <div class="navbar">
             <div class="links">
-              
+            @if (Route::has('login'))
+            @auth
+                <a href="{{ url('/home') }}">ADMIN PAGE</a>
                 <a href="{{route('admin.animals.create')}}">ADD</a>
                 <a href="{{route('admin.animals.index')}}">VIEW</a>
+             
+                <a class="dropdown-item" href="{{ route('logout') }}"
+                    onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                    {{ __('LOGOUT') }}
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+            
+                @else
+                <a href="{{ route('login') }}">Login</a>
+               
+                @endauth
+                @endif
             </div>
         </div>
      
+  
 
+
+                        @if (Route::has('login'))
+            @auth
         <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
             <div class="content">
                 <div class="title m-b-md">
                     Animals
@@ -197,9 +204,25 @@
                 <div class="container">
                     @yield('content')
                 </div>
-
             </div>
         </div>
+        @else
+        <div class="flex-center position-ref full-height">
+            <div class="content">
+                <div class="title m-b-md">
+                    Acces denied!
+                </div>
+
+                <div class="container">
+                    Go to the <a style="margin:5px;" class="tbl-button" href="{{route('login')}}">login</a> page instead.
+                    
+                </div>
+            </div>
+        </div>
+
+        @endauth
+       
+                @endif
     </body>
     
     <footer>
