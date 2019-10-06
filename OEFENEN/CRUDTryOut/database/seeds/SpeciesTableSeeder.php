@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Species;
+use App\Animal;
 
 class SpeciesTableSeeder extends Seeder
 {
@@ -12,31 +14,10 @@ class SpeciesTableSeeder extends Seeder
     public function run()
     {
         Species::truncate();
-        
-        $chimpanzeeEnclosure = Enclosure::where('name', 'Chimpanzee Enclosure')->first();
-        $gorillaEnclosure = Enclosure::where('name', 'Gorilla Enclosure')->first();
-        $jaguarEnclosure = Enclosure::where('name', 'Jaguar Enclosure')->first();
-        $redPandaEnclosure = Enclosure::where('name', 'Red Panda Enclosure')->first();
-   
-        $chipmanzee = Species::create([
-            'name' => 'Chimpanzee'
-        ]);
 
-        $gorilla = Species::create([
-            'name' => 'Gorilla'
-        ]);
-
-        $jaguar = Species::create([
-            'name' => 'Jaguar'
-        ]);
-
-        $redPanda = Species::create([
-            'name' => 'Red Panda'
-        ]);
-
-        $chimpanzee->attach($chimpanzeeEnclosure);
-        $gorilla->attach($gorillaEnclosure);
-        $jaguar->attach($jaguarEnclosure);
-        $redPanda->attach($redPandaEnclosure);
+        Species::create(['name' => 'Chimpanzee', 'enclosure_name' => 'Chimpanzee Enclosure', 'area' => 'Africa']);
+        Species::create(['name' => 'Gorilla', 'enclosure_name' => 'Gorilla Enclosure', 'area' => 'Africa']);
+        Species::create(['name' => 'Jaguar', 'enclosure_name' => 'Jaguar Enclosure', 'area' => 'South-America']);
+        Species::create(['name' => 'Red Panda', 'enclosure_name' => 'Red Panda Enclosure', 'area' => 'Asia']);
     }
 }
