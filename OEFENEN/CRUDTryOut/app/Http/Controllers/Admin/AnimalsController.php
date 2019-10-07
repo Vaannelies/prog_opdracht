@@ -68,6 +68,7 @@ class AnimalsController extends Controller
     {
         $animal = Animal::find($id);
         return view('admin.animals.details', compact('animal', 'id'));
+       
     }
 
     /**
