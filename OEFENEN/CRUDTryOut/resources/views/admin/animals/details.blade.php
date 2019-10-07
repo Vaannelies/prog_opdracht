@@ -41,7 +41,7 @@
 <br>
 <div>
     <!-- <a href="/Laravel/GitHub/prog_opdracht/OEFENEN/CRUDTryOut/public/animals/{{$animal->id - 1}}" class="tbl-button">Previous</a> -->
-    <a href="{{route('animals.index')}}" class="tbl-button"> Back </a>
+    <a href="{{route('admin.animals.index')}}" class="tbl-button"> Back </a>
     <!-- <a href="/Laravel/GitHub/prog_opdracht/OEFENEN/CRUDTryOut/public/animals/{{$animal->id + 1}}" class="tbl-button">Next</a> -->
 </div>
 
