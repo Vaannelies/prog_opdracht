@@ -1,5 +1,5 @@
 
-@extends('layouts.adminstyle');
+@extends('layouts.adminstyle')
 
 @section('content')
 <title>Admin Page</title>

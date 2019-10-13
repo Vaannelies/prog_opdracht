@@ -69,8 +69,6 @@ class AnimalsController extends Controller
         $animal = Animal::find($id);
         return view('admin.animals.details', compact('animal', 'id'));
 
-  
-
     }
 
     /**
@@ -118,5 +116,9 @@ class AnimalsController extends Controller
         $animal = Animal::find($id);
         $animal->delete();
         return redirect()->route('admin.animals.index')->with('success', 'Data Deleted');
+    }
+
+    public function hoi() {
+
     }
 }

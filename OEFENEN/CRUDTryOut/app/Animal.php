@@ -12,4 +12,5 @@ class Animal extends Model
     {
         return $this->belongsTo('App\Species');
     }
+
 }

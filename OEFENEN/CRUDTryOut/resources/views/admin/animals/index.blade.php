@@ -4,12 +4,15 @@
 <title>View</title>
 <div class="container">
 
-    <form style="display:flex; justify-content: flex-end" action="" method="">
-        <input class="textbox" type="text" placeholder="Search">
+    <form style="display:flex; justify-content: flex-end" action="{{route('admin.animals.index')}}" method="post">
+         {{csrf_field()}}
+        <input class="textbox" style=height:20px;" type="text" name="request" placeholder="Search">
 
-        <button type="submit" class="button">
-        <img style="width: 15%" src="https://www.uvm.edu/www/images/map/search-white.png">
+        <button style="height:42px; width:50px;" type="submit" class="button">
+        <img style="height: 100%" src="https://www.uvm.edu/www/images/map/search-white.png">
         </button>
+
+
     </form>
     <br>
     <br>
@@ -39,6 +42,7 @@
                         <input type="hidden" name="_method" value="DELETE" />
                         <button type="submit" class="tbl-button" style="background-color:#DD5555;">Delete</button>
                     </form>
+                    
                 </td>
           
             </tr>
