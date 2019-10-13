@@ -27,12 +27,24 @@
                     <td>{{$animal->gender}}</td>
             </tr>
             <tr>
+                    <td>Food:</td>
+                    <td>{{$animal->food}}</td>
+            </tr>
+            <tr>
                     <td>Last updated at:</td>
                     <td>{{$animal->updated_at}}</td>
             </tr>
             <tr>
                     <td>Created at:</td>
                     <td>{{$animal->created_at}}</td>
+            </tr>
+            <tr>
+                    <td>Species id:</td>
+                    <td>{{$animal->species_id}}</td>
+            </tr>
+            <tr>
+                    <td>Species:</td>
+                    <td>{{$animal->species->name}}</td>
             </tr>
         </table>
     </div>

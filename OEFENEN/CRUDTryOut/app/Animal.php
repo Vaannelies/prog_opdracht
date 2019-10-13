@@ -10,6 +10,6 @@ class Animal extends Model
 
     public function species()
     {
-        return $this->belongsToOne('App\Species');
+        return $this->belongsTo('App\Species');
     }
 }

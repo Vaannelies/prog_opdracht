@@ -19,7 +19,7 @@
 
         @endif
        
-        <form method="post" action="{{action('AnimalsController@update', $id)}}">
+        <form method="post" action="{{action('Admin\AnimalsController@update', $id)}}">
             {{csrf_field()}}
             <div class="form-group">
                 <input type="hidden" name="_method" value="PATCH" />
