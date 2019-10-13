@@ -144,6 +144,14 @@
                 padding-bottom:1px;        
             }
 
+            .text-button {
+
+            }
+
+            .text-button:hover {
+                color:black;
+            }
+
             .card {
                 border-radius:5px;
                 border:solid;

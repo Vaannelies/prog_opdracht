@@ -3,6 +3,16 @@
 @section('content')
 <title>View</title>
 <div class="container">
+
+    <form style="display:flex; justify-content: flex-end" action="" method="">
+        <input class="textbox" type="text" placeholder="Search">
+
+        <button type="submit" class="button">
+        <img style="width: 15%" src="https://www.uvm.edu/www/images/map/search-white.png">
+        </button>
+    </form>
+    <br>
+    <br>
     <table class="table">
         <thead>
             <tr>
@@ -18,7 +28,7 @@
             @foreach($animals as $animal)
             <tr>
                 <td>{{$animal->id}}</td>
-                <td><a href="{{action('Admin\AnimalsController@show', $animal['id'])}}" >{{$animal->name}}</a></td>
+                <td><a class="text-button" href="{{action('Admin\AnimalsController@show', $animal['id'])}}" >{{$animal->name}}</a></td>
                 <td>{{$animal->species->name}}</td>
                 <td>{{$animal->updated_at}}</td>
                 <td>{{$animal->created_at}}</td>
