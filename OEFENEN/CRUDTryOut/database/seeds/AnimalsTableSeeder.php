@@ -25,7 +25,7 @@ class AnimalsTableSeeder extends Seeder
             'name' => 'Hiya',
             'date_birth' => '2019-02-03',
             'gender' => 'female',
-            'species_id' => $redPandaSpecies['id'],
+            'species_id' => $chimpanzeeSpecies['id'],
             'food' => 'fruit'
         ]);
 
@@ -33,7 +33,7 @@ class AnimalsTableSeeder extends Seeder
             'name' => 'Monini',
             'date_birth' => '2019-02-03',
             'gender' => 'male',
-            'species_id' => $redPandaSpecies['id'],
+            'species_id' => $gorillaSpecies['id'],
             'food' => 'fruit'
         ]);
 
@@ -41,7 +41,7 @@ class AnimalsTableSeeder extends Seeder
             'name' => 'Veno',
             'date_birth' => '2019-02-03',
             'gender' => 'male',
-            'species_id' => $redPandaSpecies['id'],
+            'species_id' => $jaguarSpecies['id'],
             'food' => 'fruit'
         ]);
 
