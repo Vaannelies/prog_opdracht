@@ -38,19 +38,19 @@
                 <td>{{$animal->updated_at}}</td>
                 <td>{{$animal->created_at}}</td>
 
+
+
                 <td>
-                    <form method="post" action="{{action('Admin\AnimalsController@updateStatus', $animal['id'])}}">
+                    <form method="post" action="{{action('Admin\AnimalsController@updateStatus')}}">
                         {{csrf_field()}}
-                        <input type="hidden" name="_method" value="PATCH" />
                         <input type="hidden" name="name" value="gert"/>
+                        <input type="hidden" name="id" value="{{$animal->id}}"/>
                         <button type="submit" class="tbl-button"> Activate </button>
                     </form>
                 </td>
 
-                <td>
-                <input type="checkbox" data-id="{{ $animal->id }}" 
-                name="status" class="js-switch" {{ $animal->name == "Hoi" ? 'checked' : '' }}>
-                </td>
+
+
 
 
                 <td><a href="{{action('Admin\AnimalsController@edit', $animal['id'])}}" class="tbl-button">Edit</a></td>
@@ -84,12 +84,6 @@ $(document).ready(function(){
 });
 
 </script>
-
-<script>let elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
-
-elems.forEach(function(html) {
-    let switchery = new Switchery(html,  { size: 'small' });
-});</script>
 
 
 @endsection

@@ -146,19 +146,25 @@ class AnimalsController extends Controller
 
     }
 
-    public function updateStatus(Request $request, $id) 
+
+
+
+
+
+
+
+
+
+
+
+
+    public function updateStatus(Request $request) 
     { 
-        $this->validate($request, [
-            'name'  =>  'required',
-           
-        ]);
-
-
+        $id = $request->get('id');
         $animal = Animal::find($id);
         $animal->name = $request->get('name');
-        
         $animal->save();
-
+        
         return redirect()->route('admin.animals.index')->with('success', 'Data Updated');
     }
 }
