@@ -13,46 +13,46 @@ class AnimalsTableSeeder extends Seeder
      */
     public function run()
     {
-        Animal::truncate();
-        DB::table('species_animal')->truncate();
+      
+     
         
         $chimpanzeeSpecies = Species::where('name', 'Chimpanzee')->first();
         $gorillaSpecies = Species::where('name', 'Gorilla')->first();
         $jaguarSpecies = Species::where('name', 'Jaguar')->first();
         $redPandaSpecies = Species::where('name', 'Red Panda')->first();
    
-        $bella = Species::create([
-            'name' => 'Bella',
+        $hiya = Animal::create([
+            'name' => 'Hiya',
             'date_birth' => '2019-02-03',
             'gender' => 'female',
-            'species_id' => $redPandaSpecies['id']
+            'species_id' => $redPandaSpecies['id'],
+            'food' => 'fruit'
         ]);
 
-        $oscar = Species::create([
-            'name' => 'Oscar',
+        $monini = Animal::create([
+            'name' => 'Monini',
             'date_birth' => '2019-02-03',
             'gender' => 'male',
-            'species_id' => $redPandaSpecies['id']
+            'species_id' => $redPandaSpecies['id'],
+            'food' => 'fruit'
         ]);
 
-        $harold = Species::create([
-            'name' => 'Harold',
+        $veno = Animal::create([
+            'name' => 'Veno',
             'date_birth' => '2019-02-03',
             'gender' => 'male',
-            'species_id' => $redPandaSpecies['id']
+            'species_id' => $redPandaSpecies['id'],
+            'food' => 'fruit'
         ]);
 
-        $fiona = Species::create([
-            'name' => 'Fiona',
+        $kara = Animal::create([
+            'name' => 'Kara',
             'date_birth' => '2019-02-03',
             'gender' => 'female',
-            'species_id' => $redPandaSpecies['id']
+            'species_id' => $redPandaSpecies['id'],
+            'food' => 'fruit'
         ]);
 
-        $bella->species()->attach($chimpanzeeSpecies['id']);
-        $oscar->species()->attach($gorillaSpecies['id']);
-        $harold->species()->attach($jaguarSpecies);
-        $fiona->species()->attach($redPandaSpecies);
 
     }
 }

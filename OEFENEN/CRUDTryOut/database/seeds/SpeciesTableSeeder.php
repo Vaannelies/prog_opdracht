@@ -13,7 +13,7 @@ class SpeciesTableSeeder extends Seeder
      */
     public function run()
     {
-        Species::truncate();
+
 
         Species::create(['name' => 'Chimpanzee', 'enclosure_name' => 'Chimpanzee Enclosure', 'area' => 'Africa']);
         Species::create(['name' => 'Gorilla', 'enclosure_name' => 'Gorilla Enclosure', 'area' => 'Africa']);
