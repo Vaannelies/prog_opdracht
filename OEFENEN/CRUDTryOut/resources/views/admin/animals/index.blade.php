@@ -6,6 +6,7 @@
 
     <form style="display:flex; justify-content: flex-end" action="{{route('admin.animals.index')}}" method="post">
          {{csrf_field()}}
+         <input type="hidden" name="_method" value="PATCH" />
         <input class="textbox" style=height:20px;" type="text" name="request" placeholder="Search">
 
         <button style="height:42px; width:50px;" type="submit" class="button">
@@ -24,6 +25,7 @@
                 <th>Species</th>
                 <th>Last updated at</th>
                 <th>Created at</th>
+                <th>Is Active</th>
             </tr>
         </thead>
 
@@ -35,6 +37,22 @@
                 <td>{{$animal->species->name}}</td>
                 <td>{{$animal->updated_at}}</td>
                 <td>{{$animal->created_at}}</td>
+
+                <td>
+                    <form method="post" action="{{action('Admin\AnimalsController@updateStatus', $animal['id'])}}">
+                        {{csrf_field()}}
+                        <input type="hidden" name="_method" value="PATCH" />
+                        <input type="hidden" name="name" value="gert"/>
+                        <button type="submit" class="tbl-button"> Activate </button>
+                    </form>
+                </td>
+
+                <td>
+                <input type="checkbox" data-id="{{ $animal->id }}" 
+                name="status" class="js-switch" {{ $animal->name == "Hoi" ? 'checked' : '' }}>
+                </td>
+
+
                 <td><a href="{{action('Admin\AnimalsController@edit', $animal['id'])}}" class="tbl-button">Edit</a></td>
                 <td>
                     <form method="post" class="delete_form" action="{{action('Admin\AnimalsController@destroy', $animal['id'])}}">
@@ -66,6 +84,12 @@ $(document).ready(function(){
 });
 
 </script>
+
+<script>let elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
+
+elems.forEach(function(html) {
+    let switchery = new Switchery(html,  { size: 'small' });
+});</script>
 
 
 @endsection

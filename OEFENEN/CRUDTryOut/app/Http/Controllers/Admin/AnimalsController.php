@@ -98,9 +98,9 @@ class AnimalsController extends Controller
             'gender' => 'required'
         ]);
         $animal = Animal::find($id);
-        $animal->name = $request->get('name');
-        $animal->date_birth = $request->get('date_birth');
-        $animal->gender = $request->get('gender');
+        $animal->name           =       $request->get('name');
+        $animal->date_birth     =       $request->get('date_birth');
+        $animal->gender         =       $request->get('gender');
         $animal->save();
         return redirect()->route('admin.animals.index')->with('success', 'Data Updated');
     }
@@ -118,7 +118,47 @@ class AnimalsController extends Controller
         return redirect()->route('admin.animals.index')->with('success', 'Data Deleted');
     }
 
+
+    public function search($request)
+    {
+        $animal = Animal::find($request);
+        return view('admin.animals.index', compact('animal', 'id'));
+
+    }
+
+
+
+    public function getSearch(Request $request){
+
+    $this->validate($request, [
+        'request'  =>  'required'
+    ]);
+
+    $result = Animal::all();
+    $result->search($this);
+    
+    return redirect()->route('admin.animals.index')->with('result');
+
+    }
+
+
     public function hoi() {
 
+    }
+
+    public function updateStatus(Request $request, $id) 
+    { 
+        $this->validate($request, [
+            'name'  =>  'required',
+           
+        ]);
+
+
+        $animal = Animal::find($id);
+        $animal->name = $request->get('name');
+        
+        $animal->save();
+
+        return redirect()->route('admin.animals.index')->with('success', 'Data Updated');
     }
 }
