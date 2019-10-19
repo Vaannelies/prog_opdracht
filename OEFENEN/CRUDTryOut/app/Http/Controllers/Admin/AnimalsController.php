@@ -117,31 +117,7 @@ class AnimalsController extends Controller
         $animal->delete();
         return redirect()->route('admin.animals.index')->with('success', 'Data Deleted');
     }
-
-
-    public function search($request)
-    {
-        $animal = Animal::find($request);
-        return view('admin.animals.index', compact('animal', 'id'));
-
-    }
-
-
-
-    public function getSearchOld(Request $request){
-
-    $this->validate($request, [
-        'request'  =>  'required'
-    ]);
-
-    $result = Animal::all();
-    $result->search($this);
-    
-    return redirect()->route('admin.animals.index', compact('result'));
-
-    }
-
-
+  
     
     public function getSearch(Request $request){
        
@@ -150,23 +126,15 @@ class AnimalsController extends Controller
             $animals = Animal::where('name', 'LIKE', '%' . $search . '%')->paginate(5);
        
             if(count($animals) > 0)
-                return view('admin.animals.index', ['animals' => $animals]);
+                return view('admin.animals.index', ['animals' => $animals], compact('search'));
         }
-        return view('admin.animals.index');
+
+        else{
+            return redirect()->route('admin.animals.index');
+        }
+        return view('admin.animals.index', compact('search'));
     }
        
-
-        
-
-
-
-    public function hoi() {
-
-    }
-
-
-
-
 
     public function updateStatus(Request $request) 
     { 

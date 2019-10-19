@@ -21,6 +21,9 @@
     <br>
 
     @if(isset($animals))
+    @if(isset($search))
+        <h1>Search results for {{$search}}</h1>
+    @endif
             <table class="table">
                 <thead>
                     <tr>
@@ -74,7 +77,7 @@
             </table>
     @else
 
-        <p>There are no results.</p>
+        <h1>There are no results for "<b>{{$search}}</b>"</h1>
         
     @endif
      
