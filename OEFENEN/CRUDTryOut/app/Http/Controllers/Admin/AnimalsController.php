@@ -128,7 +128,7 @@ class AnimalsController extends Controller
 
 
 
-    public function getSearch(Request $request){
+    public function getSearchOld(Request $request){
 
     $this->validate($request, [
         'request'  =>  'required'
@@ -137,22 +137,32 @@ class AnimalsController extends Controller
     $result = Animal::all();
     $result->search($this);
     
-    return redirect()->route('admin.animals.index')->with('result');
+    return redirect()->route('admin.animals.index', compact('result'));
 
     }
+
+
+    
+    public function getSearch(Request $request){
+
+        $result = $request->get('request');
+        if($result != ""){
+            $animal = Animal::where('name', 'LIKE', '%' . $result . '%')
+                                ->get();
+            if(count($animal) > 0)
+                return view('admin.animals.index')->withDetails ($animal)->withQuery($result);
+        }
+        return view('admin.animals.index')->withMessage("No animals found!");
+    }
+       
+
+        
+
 
 
     public function hoi() {
 
     }
-
-
-
-
-
-
-
-
 
 
 
