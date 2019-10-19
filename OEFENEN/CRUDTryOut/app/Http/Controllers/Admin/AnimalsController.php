@@ -144,15 +144,15 @@ class AnimalsController extends Controller
 
     
     public function getSearch(Request $request){
-
-        $result = $request->get('request');
-        if($result != ""){
-            $animal = Animal::where('name', 'LIKE', '%' . $result . '%')
-                                ->get();
-            if(count($animal) > 0)
-                return view('admin.animals.index')->withDetails ($animal)->withQuery($result);
+       
+        $search = $request->get('search');
+        if($search != ""){
+            $animals = Animal::where('name', 'LIKE', '%' . $search . '%')->paginate(5);
+       
+            if(count($animals) > 0)
+                return view('admin.animals.index', ['animals' => $animals]);
         }
-        return view('admin.animals.index')->withMessage("No animals found!");
+        return view('admin.animals.index');
     }
        
 

@@ -7,7 +7,7 @@
     <form style="display:flex; justify-content: flex-end" action="{{action('Admin\AnimalsController@getSearch')}}" method="post">
          {{csrf_field()}}
         
-        <input class="textbox" style=height:20px;" type="text" name="request" placeholder="Search">
+        <input class="textbox" style=height:20px;" type="text" name="search" placeholder="Search">
 
         <button style="height:42px; width:50px;" type="submit" class="button">
         <img style="height: 100%" src="https://www.uvm.edu/www/images/map/search-white.png">
@@ -16,66 +16,68 @@
 
     </form>
 
-    @if(isset($result))
-        <p> The search results for <b> {{ $result }} </b> are: </p>
-        <h1> Sample animal: </h1>
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Species</th>
-                    <th>Last updated at</th>
-                    <th>Created at</th>
-                    <th>Is Active</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($result as $animal)
+ 
+    <br>
+    <br>
+
+    @if(isset($animals))
+            <table class="table">
+                <thead>
                     <tr>
-                        <td>{{$animal->id}}</td>
-                        <td><a class="text-button" href="{{action('Admin\AnimalsController@show', $animal['id'])}}" >{{$animal->name}}</a></td>
-                        <td>{{$animal->species->name}}</td>
-                        <td>{{$animal->updated_at}}</td>
-                        <td>{{$animal->created_at}}</td>
-
-
-
-                        <td>
-                            <form method="post" action="{{action('Admin\AnimalsController@updateStatus')}}">
-                                {{csrf_field()}}
-                                <input type="hidden" name="name" value="gert"/>
-                                <input type="hidden" name="id" value="{{$animal->id}}"/>
-                                <button type="submit" class="tbl-button"> Activate </button>
-                            </form>
-                        </td>
-
-
-
-
-
-                        <td><a href="{{action('Admin\AnimalsController@edit', $animal['id'])}}" class="tbl-button">Edit</a></td>
-                        <td>
-                            <form method="post" class="delete_form" action="{{action('Admin\AnimalsController@destroy', $animal['id'])}}">
-                                {{csrf_field()}}
-                                <input type="hidden" name="_method" value="DELETE" />
-                                <button type="submit" class="tbl-button" style="background-color:#DD5555;">Delete</button>
-                            </form>
-                            
-                        </td>
-            
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Species</th>
+                        <th>Last updated at</th>
+                        <th>Created at</th>
+                        <th>Is Active</th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
+                </thead>
+
+                <tbody>
+            
+                    @foreach($animals as $animal)
+                        <tr>
+                            <td>{{$animal->id}}</td>
+                            <td><a class="text-button" href="{{action('Admin\AnimalsController@show', $animal['id'])}}" >{{$animal->name}}</a></td>
+                            <td>{{$animal->species->name}}</td>
+                            <td>{{$animal->updated_at}}</td>
+                            <td>{{$animal->created_at}}</td>
+
+
+
+                            <td>
+                                <form method="post" action="{{action('Admin\AnimalsController@updateStatus')}}">
+                                    {{csrf_field()}}
+                                    <input type="hidden" name="name" value="gert"/>
+                                    <input type="hidden" name="id" value="{{$animal->id}}"/>
+                                    <button type="submit" class="tbl-button"> Activate </button>
+                                </form>
+                            </td>
+
+
+
+
+
+                            <td><a href="{{action('Admin\AnimalsController@edit', $animal['id'])}}" class="tbl-button">Edit</a></td>
+                            <td>
+                                <form method="post" class="delete_form" action="{{action('Admin\AnimalsController@destroy', $animal['id'])}}">
+                                    {{csrf_field()}}
+                                    <input type="hidden" name="_method" value="DELETE" />
+                                    <button type="submit" class="tbl-button" style="background-color:#DD5555;">Delete</button>
+                                </form>
+                                
+                            </td>
+                    
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
     @else
-     <p> Er is niks? </p>
+
+        <p>There are no results.</p>
+        
     @endif
-
-
-    <br>
-    <br>
-  
+     
 </div>
 <script>
 
