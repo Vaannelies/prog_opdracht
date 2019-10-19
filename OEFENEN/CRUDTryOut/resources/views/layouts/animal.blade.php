@@ -87,6 +87,11 @@
                 border-color:#636b6f;
             }
 
+            .container-head {
+                display:flex;
+                justify-content:space-between;
+            }
+
             .form-group {
                display:flex;
             }

@@ -3,27 +3,49 @@
 @section('content')
 <title>View</title>
 <div class="container">
+    <div class="container-head">
+        @if(!isset($animals))
+            <a href="{{route('admin.animals.index')}}" class="button">
+                Back
+            </a>
+        @endif
 
-    <form style="display:flex; justify-content: flex-end" action="{{action('Admin\AnimalsController@getSearch')}}" method="post">
-         {{csrf_field()}}
-        
-        <input class="textbox" style=height:20px;" type="text" name="search" placeholder="Search">
+        @if(isset($animals))
+            <form style="display:flex; justify-content: flex-end" action="" method="">
+                {{csrf_field()}}
 
-        <button style="height:42px; width:50px;" type="submit" class="button">
-        <img style="height: 100%" src="https://www.uvm.edu/www/images/map/search-white.png">
-        </button>
+                <select name="sort" class="textbox">
 
+                    <option value="" disabled selected>Select sorting method</option>
+                    <option value="Female">Youngest to oldest</option>
+                    <option value="Male" selected>Oldest to youngest</option>
+          
+                </select> 
 
-    </form>
+                <button type="submit" class="button">Sort</button>
+            </form>
+        @endif
 
+        <form style="display:flex; justify-content: flex-end" action="{{action('Admin\AnimalsController@getSearch')}}" method="post">
+            {{csrf_field()}}
+            
+            <input class="textbox" style=height:20px;" type="text" name="search" placeholder="Search">
+
+            <button style="height:42px; width:50px;" type="submit" class="button">
+            <img style="height: 100%" src="https://www.uvm.edu/www/images/map/search-white.png">
+            </button>
+        </form>
+    </div>
  
     <br>
     <br>
 
     @if(isset($animals))
-    @if(isset($search))
-        <h1>Search results for {{$search}}</h1>
-    @endif
+        
+            @if(isset($search))
+                <h1>Search results for: <strong>{{$search}}</strong></h1>
+            @endif
+          
             <table class="table">
                 <thead>
                     <tr>
@@ -77,7 +99,8 @@
             </table>
     @else
 
-        <h1>There are no results for "<b>{{$search}}</b>"</h1>
+        <h1>There are no results for "{{$search}}"</h1>
+      
         
     @endif
      
