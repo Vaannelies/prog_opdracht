@@ -24,7 +24,7 @@ class AnimalsTableSeeder extends Seeder
         $hiya = Animal::create([
             'name' => 'Hiya',
             'date_birth' => '2019-02-03',
-            'gender' => 'female',
+            'gender' => 'Female',
             'species_id' => $chimpanzeeSpecies['id'],
             'food' => 'fruit'
         ]);
@@ -32,7 +32,7 @@ class AnimalsTableSeeder extends Seeder
         $monini = Animal::create([
             'name' => 'Monini',
             'date_birth' => '2019-02-03',
-            'gender' => 'male',
+            'gender' => 'Male',
             'species_id' => $gorillaSpecies['id'],
             'food' => 'fruit'
         ]);
@@ -40,7 +40,7 @@ class AnimalsTableSeeder extends Seeder
         $veno = Animal::create([
             'name' => 'Veno',
             'date_birth' => '2019-02-03',
-            'gender' => 'male',
+            'gender' => 'Male',
             'species_id' => $jaguarSpecies['id'],
             'food' => 'fruit'
         ]);
@@ -48,7 +48,7 @@ class AnimalsTableSeeder extends Seeder
         $kara = Animal::create([
             'name' => 'Kara',
             'date_birth' => '2019-02-03',
-            'gender' => 'female',
+            'gender' => 'Female',
             'species_id' => $redPandaSpecies['id'],
             'food' => 'fruit'
         ]);
