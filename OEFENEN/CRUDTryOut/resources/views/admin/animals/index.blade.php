@@ -98,8 +98,9 @@
                 </tbody>
             </table>
     @else
-
+        @if(isset($searchStatus))
         <h1>There are no results for "{{$search}}"</h1>
+        @endif
       
         
     @endif
@@ -116,7 +117,7 @@
         <form method="post" action="{{action('Admin\AnimalsController@getFilter')}}">
         {{csrf_field()}}
             @foreach($species as $specie)
-           <ul> {{$specie->name}} <input type="checkbox" name="{{$specie->name}}"> </ul>
+           <ul> {{$specie->name}} <input type="checkbox" name="{{$specie->id}}"> </ul>
             @endforeach
 
             <button type="submit" class="button">Filter</button>
