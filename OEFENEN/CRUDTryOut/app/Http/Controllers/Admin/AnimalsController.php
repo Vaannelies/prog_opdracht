@@ -151,8 +151,9 @@ class AnimalsController extends Controller
         $chimpanzee = $request->get('Chimpanzee');
         $gorilla    = $request->get('Gorilla');
         $jaguar     = $request->get('Jaguar');
-        $redPanda    = $request->get('Red Panda');
+        $redPanda   = $request->get('Red Panda');
         if($chimpanzee != ""){
+
             $animals = Animal::where('species_id', 'LIKE', $chimpanzee)->paginate(5);
        
             if(count($animals) > 0)
