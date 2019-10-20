@@ -105,6 +105,27 @@
     @endif
      
 </div>
+
+<div class="dropdown">
+  <button class="button">Filter</button>
+  <div class="dropdown-content">
+    <!-- <a href="#">Link 1</a>
+    <a href="#">Link 2</a>
+    <a href="#">Link 3</a>
+    <input type="checkbox" name="gorilla"> -->
+        <form method="post" action="{{action('Admin\AnimalsController@getFilter')}}">
+        {{csrf_field()}}
+            @foreach($species as $specie)
+           <ul> {{$specie->name}} <input type="checkbox" name="{{$specie->name}}"> </ul>
+            @endforeach
+
+            <button type="submit" class="button">Filter</button>
+        </form>
+  </div>
+</div> 
+
+
+
 <script>
 
 $(document).ready(function(){

@@ -17,7 +17,8 @@ class AnimalsController extends Controller
     public function index()
     {
         $animals = Animal::all();
-        return view('admin.animals.index', compact('animals'));
+        $species = Species::all();
+        return view('admin.animals.index', compact('animals', 'species'));
     }
 
     /**
@@ -126,19 +127,39 @@ class AnimalsController extends Controller
     
     public function getSearch(Request $request){
 
+        $species = Species::all();
         $search = $request->get('search');
         if($search != ""){
             $animals = Animal::where('name', 'LIKE', '%' . $search . '%')
                                 ->orWhere('id', 'LIKE', '%' . $search . '%')->paginate(5);
        
             if(count($animals) > 0)
-                return view('admin.animals.index', ['animals' => $animals], compact('search'));
+                return view('admin.animals.index', ['animals' => $animals], compact('search', 'species'));
         }
 
         else{
             return redirect()->route('admin.animals.index');
         }
-        return view('admin.animals.index', compact('search'));
+        return view('admin.animals.index', compact('search', 'species'));
+    }
+
+    public function getFilter(Request $request){
+
+        $chimpanzee = $request->get('Chimpanzee');
+        $gorilla    = $request->get('Gorilla');
+        $jaguar     = $request->get('Jaguar');
+        $redPanda    = $request->get('Red Panda');
+        if($chimpanzee != ""){
+            $animals = Animal::where('species_id', 'LIKE', 'SELECT id FROM Species WHERE name LIKE $chimpanzee')->paginate(5);
+       
+            if(count($animals) > 0)
+                return view('admin.animals.index', ['animals' => $animals], compact('chimpanzee'));
+        }
+
+        else{
+            return redirect()->route('admin.animals.index');
+        }
+        return view('admin.animals.index', compact('chimpanzee'));
     }
        
 
