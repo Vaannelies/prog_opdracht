@@ -148,22 +148,32 @@ class AnimalsController extends Controller
 
         $species = Species::all();
 
+   
         $chimpanzee = $request->get('Chimpanzee');
         $gorilla    = $request->get('Gorilla');
         $jaguar     = $request->get('Jaguar');
         $redPanda   = $request->get('Red Panda');
-        if($chimpanzee != ""){
 
-            $animals = Animal::where('species_id', 'LIKE', $chimpanzee)->paginate(5);
-       
-            if(count($animals) > 0)
-                return view('admin.animals.index', ['animals' => $animals], compact('chimpanzee', 'species'));
+        $animalSpecies[] = [$chimpanzee, $gorilla, $jaguar, $redPanda];
+
+        for($i = 0; $i < count($animalSpecies); $i++)
+        {
+            if($animalSpecies[$i] != "")
+            {
+
+                $animals = Animal::where('species_id', 'LIKE', $animalSpecies[$i])->paginate(5);
+        
+                if(count($animals) > 0)
+                    return view('admin.animals.index', ['animals' => $animals], compact('animalSpecies[i]', 'species'));
+            }
+
+            else
+            {
+              //  return redirect()->route('admin.animals.index');
+            }
         }
 
-        else{
-            return redirect()->route('admin.animals.index');
-        }
-        return view('admin.animals.index', compact('chimpanzee','species'));
+        return view('admin.animals.index', compact('species'));
     }
        
 
