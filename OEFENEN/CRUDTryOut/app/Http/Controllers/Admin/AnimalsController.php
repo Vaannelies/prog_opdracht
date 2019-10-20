@@ -149,12 +149,7 @@ class AnimalsController extends Controller
         $species = Species::all();
 
    
-        $chimpanzee = $request->get('Chimpanzee');
-        $gorilla    = $request->get('Gorilla');
-        $jaguar     = $request->get('Jaguar');
-        $redPanda   = $request->get('Red Panda');
-
-        $animalSpecies[] = [$chimpanzee, $gorilla, $jaguar, $redPanda];
+        $animalSpecies[] = $request->get('speciesId');
 
         for($i = 0; $i < count($animalSpecies); $i++)
         {
