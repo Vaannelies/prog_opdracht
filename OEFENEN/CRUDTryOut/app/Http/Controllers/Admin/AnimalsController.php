@@ -80,7 +80,8 @@ class AnimalsController extends Controller
     public function edit($id)
     {
         $animal = Animal::find($id);
-        return view('admin.animals.edit', compact('animal', 'id'));
+        $species = Species::all();
+        return view('admin.animals.edit', compact('species', 'animal', 'id'));
     }
 
     /**
@@ -95,12 +96,16 @@ class AnimalsController extends Controller
         $this->validate($request, [
             'name'  =>  'required',
             'date_birth' => 'required',
-            'gender' => 'required'
+            'gender' => 'required',
+            'species_id' => 'required',
+            'food' => 'required'
         ]);
         $animal = Animal::find($id);
         $animal->name           =       $request->get('name');
         $animal->date_birth     =       $request->get('date_birth');
         $animal->gender         =       $request->get('gender');
+        $animal->species_id     =       $request->get('species_id');
+        $animal->food           =       $request->get('food');
         $animal->save();
         return redirect()->route('admin.animals.index')->with('success', 'Data Updated');
     }
