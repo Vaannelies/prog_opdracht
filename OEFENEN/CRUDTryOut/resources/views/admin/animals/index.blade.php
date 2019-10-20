@@ -98,11 +98,9 @@
                 </tbody>
             </table>
     @else
-        @if(isset($searchStatus))
+        @if(isset($search))
         <h1>There are no results for "{{$search}}"</h1>
         @endif
-      
-        
     @endif
      
 </div>
