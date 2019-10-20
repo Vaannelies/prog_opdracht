@@ -120,10 +120,11 @@ class AnimalsController extends Controller
   
     
     public function getSearch(Request $request){
-       
+
         $search = $request->get('search');
         if($search != ""){
-            $animals = Animal::where('name', 'LIKE', '%' . $search . '%')->paginate(5);
+            $animals = Animal::where('name', 'LIKE', '%' . $search . '%')
+                                ->orWhere('id', 'LIKE', '%' . $search . '%')->paginate(5);
        
             if(count($animals) > 0)
                 return view('admin.animals.index', ['animals' => $animals], compact('search'));
