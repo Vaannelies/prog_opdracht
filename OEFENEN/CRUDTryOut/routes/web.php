@@ -23,14 +23,22 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 
+
+
+Route::get('/home', 'HomeController@index')->name('admin.home');
 
 Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
+
+    Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('login');
+    Route::post('/login', 'Auth\AdminLoginController@login')->name('login.submit');
+
     Route::resource('/users', 'UsersController', ['except' => ['show', 'create', 'store']]);
     Route::resource('/animals', 'AnimalsController');
+    
     Route::post('/animals/update', 'AnimalsController@updateStatus');
     Route::post('/animals/search', 'AnimalsController@getSearch');
     Route::post('/animals/filter', 'AnimalsController@getFilter');
+   
  
 });
