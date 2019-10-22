@@ -115,7 +115,7 @@
         <form method="post" action="{{action('Admin\AnimalsController@getFilter')}}">
         {{csrf_field()}}
             @foreach($species as $specie)
-           <ul> {{$specie->name}} <input type="checkbox" name="speciesId" value="{{$specie->id}}"> </ul>
+           <ul> {{$specie->name}} <input type="checkbox" name="speciesId[]" value="{{$specie->id}}"> </ul>
             @endforeach
 
             <button type="submit" class="button">Filter</button>
