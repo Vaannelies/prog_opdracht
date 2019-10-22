@@ -22,7 +22,7 @@ class AdminsController extends Controller
     public function index()
     {
        // $users = User::all();
-        return view('home');
+        return view('admin.dashboard');
     }
 
     // /**
