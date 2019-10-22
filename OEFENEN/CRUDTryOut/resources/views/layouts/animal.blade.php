@@ -92,6 +92,11 @@
                 justify-content:space-between;
             }
 
+            .container-body {
+                display:flex;
+                justify-content:flex-start;
+            }
+
             .form-group {
                display:flex;
             }
@@ -173,6 +178,17 @@
                 padding:20px;
             }
 
+            .filter {
+                background-color:white;
+                padding: 10px;
+                margin:1px;
+            }
+
+            .filter:hover {
+                background-color: #EBEBEB;
+                padding: 10px;
+                margin:1px;
+            }
           
             /*------------------------------------------------*/
                     /* Dropdown container I found on w3schools*/

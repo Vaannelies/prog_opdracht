@@ -36,6 +36,22 @@
             </button>
         </form>
     </div>
+
+    <div class="container-body">
+
+    <!-- Show selected filters -->
+    @if(isset($specieName))
+            @foreach($specieName as $specieNameItem)
+                <div class="filter">
+                    {{$specieNameItem->name}} 
+                    <a href="yeet" style="padding-left:10px; padding-right:0px;">X</a>
+                </div>
+            @endforeach
+    @endif
+
+    <!--            -->
+
+    </div>
  
     <br>
     <br>
@@ -100,6 +116,8 @@
     @else
         @if(isset($search))
         <h1>There are no results for "{{$search}}"</h1>
+        @elseif(isset($animalSpecies))
+        <h1>There are no animals.</h1>
         @endif
     @endif
      

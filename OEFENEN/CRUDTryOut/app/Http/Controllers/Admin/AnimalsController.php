@@ -142,13 +142,14 @@ class AnimalsController extends Controller
         }
         return view('admin.animals.index', compact('search', 'species'));
     }
+    
 
     public function getFilter(Request $request){
 
         $species = Species::all();
 
         $animalSpecies = $request->get('speciesId');
-        print_r($animalSpecies);
+  
 
         
             if($animalSpecies != "")
@@ -166,13 +167,36 @@ class AnimalsController extends Controller
                             $query->orWhere('species_id', 'LIKE', $animalSpecies[$i]);
                         }
                     }
+                
                 })
                 ->get();
 
+        // The next piece of code makes sure the chosen filter is linked to the species name.
+        // This way, I can show the chosen filters (with the right species names) on the webpage.
+                $specieName = Species::where(function($query) use ($animalSpecies)
+                { 
+                    for($i = 0; $i < count($animalSpecies); $i++)
+                    {
+                        if($i==0)
+                        {
+                            $query->where('id', 'LIKE', $animalSpecies[$i]);
+                        } 
+                        else 
+                        {
+                            $query->orWhere('id', 'LIKE', $animalSpecies[$i]);
+                        }
+                    }
+                
+                })
+                ->get();
+        //      
+
+
                 if(count($animals) > 0)
                 {
-                    return view('admin.animals.index', ['animals' => $animals], compact('animalSpecies[i]', 'species'));
+                    return view('admin.animals.index', ['animals' => $animals], compact('animalSpecies', 'specieName', 'species'));
                 }
+
             }
 
             else
@@ -181,7 +205,7 @@ class AnimalsController extends Controller
             }
        
 
-        return view('admin.animals.index', compact('species'));
+        return view('admin.animals.index', compact('species', 'animalSpecies', 'specieName'));
     }
        
 
