@@ -68,7 +68,15 @@ class AnimalsController extends Controller
     public function show($id)
     {
         $animal = Animal::find($id);
-        return view('admin.animals.details', compact('animal', 'id'));
+
+        if($animal != "")
+        {
+            return view('admin.animals.details', compact('animal', 'id'));
+        } 
+        else
+        {
+            return redirect()->route('admin.animals.index');
+        }
 
     }
 

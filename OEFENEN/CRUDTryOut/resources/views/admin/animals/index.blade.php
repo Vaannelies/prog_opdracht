@@ -44,7 +44,7 @@
             @foreach($specieName as $specieNameItem)
                 <div class="filter">
                     {{$specieNameItem->name}} 
-                    <a href="yeet" style="padding-left:10px; padding-right:0px;">X</a>
+                    <a href="" style="padding-left:10px; padding-right:0px;">X</a>
                 </div>
             @endforeach
     @endif
