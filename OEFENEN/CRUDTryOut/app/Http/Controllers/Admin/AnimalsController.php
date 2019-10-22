@@ -90,7 +90,14 @@ class AnimalsController extends Controller
     {
         $animal = Animal::find($id);
         $species = Species::all();
-        return view('admin.animals.edit', compact('species', 'animal', 'id'));
+        if($animal != "")
+        {
+            return view('admin.animals.edit', compact('species', 'animal', 'id'));
+        }
+        else
+        {
+            return redirect()->route('admin.animals.index');
+        }
     }
 
     /**
