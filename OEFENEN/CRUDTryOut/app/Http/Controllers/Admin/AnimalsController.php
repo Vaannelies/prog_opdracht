@@ -127,7 +127,6 @@ class AnimalsController extends Controller
     
     public function getSearch(Request $request){
 
-        $searchStatus = true; //
         $species = Species::all();
         $search = $request->get('search');
         if($search != ""){
@@ -148,25 +147,39 @@ class AnimalsController extends Controller
 
         $species = Species::all();
 
-   
-        $animalSpecies[] = $request->get('speciesId');
+        $animalSpecies = $request->get('speciesId');
+        print_r($animalSpecies);
 
-        for($i = 0; $i < count($animalSpecies); $i++)
-        {
-            if($animalSpecies[$i] != "")
-            {
-
-                $animals = Animal::where('species_id', 'LIKE', $animalSpecies[$i])->paginate(5);
         
+            if($animalSpecies != "")
+            {
+                $animals = Animal::where(function($query) use ($animalSpecies)
+                { 
+                    for($i = 0; $i < count($animalSpecies); $i++)
+                    {
+                        if($i==0)
+                        {
+                            $query->where('species_id', 'LIKE', $animalSpecies[$i]);
+                        } 
+                        else 
+                        {
+                            $query->orWhere('species_id', 'LIKE', $animalSpecies[$i]);
+                        }
+                    }
+                })
+                ->get();
+
                 if(count($animals) > 0)
+                {
                     return view('admin.animals.index', ['animals' => $animals], compact('animalSpecies[i]', 'species'));
+                }
             }
 
             else
             {
-              //  return redirect()->route('admin.animals.index');
+                return redirect()->route('admin.animals.index');
             }
-        }
+       
 
         return view('admin.animals.index', compact('species'));
     }
