@@ -147,7 +147,7 @@
             .card {
                 border-radius:5px;
                 border:solid;
-                border-size:10px;
+                border-width:1px;
             }
 
             .card-header {

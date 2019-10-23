@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class AdminsController extends Controller
+class EmployeesController extends Controller
 {
 
     public function __construct()
     {
-        $this->middleware('auth:admin');
+        $this->middleware('auth:employee');
     }
 
     /**
@@ -22,7 +22,7 @@ class AdminsController extends Controller
     public function index()
     {
        // $users = User::all();
-        return view('admin.dashboard');
+        return view('employee.dashboard');
     }
 
     // /**
