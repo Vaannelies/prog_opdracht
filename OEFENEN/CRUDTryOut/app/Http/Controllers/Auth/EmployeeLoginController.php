@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Auth;
+
 
 class EmployeeLoginController extends Controller
 {
@@ -30,15 +31,13 @@ class EmployeeLoginController extends Controller
         if (Auth::guard('employee')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember))
         {
             // if successful, then redirect to their intended location
-            return view('employee.heyd');
+            return redirect()->intended(route('employee.dashboard'));
         }
 
         // if unsuccessful, then redirect back to the login with the form data
         return redirect()->back()->withInput($request->only('email', 'remember'));
-
-     
-     
-
-        
+ 
     }
+
+    
 }
