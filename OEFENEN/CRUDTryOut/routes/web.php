@@ -32,7 +32,7 @@ Route::get('employee/dasbhoard', 'EmployeesController@index')->name('employee.da
 
 // ADMINS LOGIN
 Route::post('/login', 'Auth\LoginController@login')->name('login.submit');
-Route::resource('/admin/employees', 'EmployeesController');
+
 
 Route::get('/home', 'HomeController@index')->name('admin.home');
 

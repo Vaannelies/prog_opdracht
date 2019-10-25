@@ -1,5 +1,5 @@
 
-@extends('layouts.adminstyle')
+@extends('layouts.app')
 
 @section('content')
 <title>Employee Page</title>

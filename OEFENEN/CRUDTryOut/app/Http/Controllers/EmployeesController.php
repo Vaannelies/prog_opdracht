@@ -23,7 +23,7 @@ class EmployeesController extends Controller
      */
     public function index()
     {
-        $employees = Employee::all();
-        return view('admin.employees.index', compact('employees'));
+       return view('employee.dashboard');
+    
     }
 }
