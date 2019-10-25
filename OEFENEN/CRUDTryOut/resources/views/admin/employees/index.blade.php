@@ -1,20 +1,61 @@
-@extends('layouts.app')
+
+@extends('layouts.animal')
 
 @section('content')
+<title>View</title>
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Employees</div>
-
-                <div class="card-body">
-                    @foreach($users as $user)
-                        {{ $user->name }} - {{ $user->email }}
-                        @endforeach
-                
-                </div>
-            </div>
-        </div>
+    <div class="container-head">
+    
     </div>
+
+    <div class="container-body">
+
+
+    </div>
+ 
+    <br>
+    <br>
+
+
+          
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>E-mail</th>
+                        <th>Last updated at</th>
+                        <th>Created at</th>
+                        <th>Is Active</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+            
+                    @foreach($employees as $employee)
+                        <tr>
+                            <td>{{$employee->id}}</td>
+                            <td>{{$employee->name}}</td>
+                            <td>{{$employee->updated_at}}</td>
+                            <td>{{$employee->created_at}}</td>
+
+
+
+                    
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+ 
 </div>
+
+
+
+<script>
+
+
+</script>
+
+
 @endsection
+

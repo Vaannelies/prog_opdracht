@@ -24,14 +24,15 @@ Route::get('/', function () {
 Auth::routes();
 
 // EMPLOYEES LOGIN
+
 Route::get('/employee/login', 'Auth\EmployeeLoginController@showLoginForm')->name('employee.login');
 Route::post('/employee/login', 'Auth\EmployeeLoginController@login')->name('employee.login.submit');
 
 Route::get('employee/dasbhoard', 'EmployeesController@index')->name('employee.dashboard');
 
 // ADMINS LOGIN
-Route::post('/login', 'Auth\LoginController@login')->name('admin.login.submit');
-
+Route::post('/login', 'Auth\LoginController@login')->name('login.submit');
+Route::resource('/admin/employees', 'EmployeesController');
 
 Route::get('/home', 'HomeController@index')->name('admin.home');
 
