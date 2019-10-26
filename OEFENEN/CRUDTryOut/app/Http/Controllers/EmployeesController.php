@@ -13,7 +13,8 @@ class EmployeesController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:employee');
+        $this->middleware('auth:employee'); //als je dit verandert naar
+        // 'auth:web' dan werkt het ook voor de adminpagina (admin.employees.index werkt dan dus wel)
     }
 
     /**
@@ -26,5 +27,10 @@ class EmployeesController extends Controller
         $employee = Employee::all();
         return view('employee.dashboard', compact('employee'));
     
+    }
+
+    public function indexAdmin(){
+        $users = Employee::all();
+        return view('admin.employees.index', compact('users'));
     }
 }

@@ -19,7 +19,7 @@
                     @endif
 
                         <div class="links">
-                            <a href="{{route('admin.users.index')}}"><button class="button">Employees</button></a>
+                            <a href="{{route('admin.employees.index')}}"><button class="button">Employees</button></a>
                             <a href="{{route('admin.animals.index')}}"><button class="button">Animals</button></a>
                         </div>
                 </div>

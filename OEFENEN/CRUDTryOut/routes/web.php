@@ -35,16 +35,19 @@ Route::post('/login', 'Auth\LoginController@login')->name('login.submit');
 
 
 Route::get('/home', 'HomeController@index')->name('admin.home');
+Route::get('/users', 'EmployeesController@indexAdmin')->name('admin.employees.index');
+
 
 Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
 
-    Route::resource('/users', 'UsersController', ['except' => ['show', 'create', 'store']]);
+   
     Route::resource('/animals', 'AnimalsController');
 
     Route::post('/animals/update', 'AnimalsController@updateStatus');
     Route::post('/animals/search', 'AnimalsController@getSearch');
     Route::post('/animals/filter', 'AnimalsController@getFilter');
     
+  
    
 });
 
