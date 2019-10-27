@@ -28,14 +28,14 @@ Auth::routes();
 Route::get('/employee/login', 'Auth\EmployeeLoginController@showLoginForm')->name('employee.login');
 Route::post('/employee/login', 'Auth\EmployeeLoginController@login')->name('employee.login.submit');
 
-Route::get('employee/dasbhoard', 'EmployeesController@index')->name('employee.dashboard');
+Route::get('employee/dasbhoard', 'EmployeesController@showMe')->name('employee.dashboard');
 
 // ADMINS LOGIN
 Route::post('/login', 'Auth\LoginController@login')->name('login.submit');
 
 
 Route::get('/home', 'HomeController@index')->name('admin.home');
-Route::get('/users', 'EmployeesController@indexAdmin')->name('admin.employees.index');
+Route::get('/users', 'EmployeesController@index')->name('admin.employees.index');
 
 
 Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
