@@ -76,16 +76,26 @@ class EmployeesController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name'  =>  'required',
-            'email' => 'required',
-            'password' => 'required',
-            'job_title' => 'required'
+            'firstname'         =>  'required',
+            'lastname'          =>  'required',
+            'email'             =>  'required',
+            'password'          =>  'required',
+            'job_title'         =>  'required',
+            'date_birth'        =>  'required',
+            'gender'            =>  'required',
+            'employee_since'    =>  'required'
         ]);
         $employee = new Employee([
-            'name'  =>  $request->get('name'),
-            'email' => $request->get('email'),
-            'password' => Hash::make($request->get('password')),
-            'job_title' => $request->get('job_title')
+            'firstname'         =>  $request->get('firstname'),
+            'lastname'          =>  $request->get('lastname'),
+            'email'             =>  $request->get('email'),
+            'password'          =>  Hash::make($request->get('password')),
+            'job_title'         =>  $request->get('job_title'),
+            'date_birth'        =>  $request->get('date_birth'),
+            'gender'            =>  $request->get('gender'),
+            'employee_since'    =>  $request->get('employee_since'),
+            'active'            =>  $request->get('active')
+
 
         ]);
         $employee->save();

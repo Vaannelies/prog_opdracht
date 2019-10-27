@@ -25,7 +25,7 @@ Auth::routes();
 
 
 //  FOR BOTH ADMIN AND EMPLOYEES
-Route::resource('/employees', 'EmployeesController');
+
 
 
 //  EMPLOYEES
@@ -37,7 +37,7 @@ Route::resource('/employees', 'EmployeesController');
     //  EMLPOYEES OTHER
     Route::get('employee/dasbhoard', 'EmployeesController@showMe')->name('employee.dashboard');
 
-
+    Route::resource('/employee', 'EmployeesController');
 
 
 
