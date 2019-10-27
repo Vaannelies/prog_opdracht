@@ -16,7 +16,7 @@ class EmployeesController extends Controller
     public function __construct()
     {
         $this->middleware('auth:employee')->only('showMe');
-        $this->middleware('auth')->only('index');
+        $this->middleware('auth');
 
 
  
@@ -45,7 +45,7 @@ class EmployeesController extends Controller
      */
 
     public function index(){
-        $users = Employee::all();
-        return view('admin.employees.index', compact('users'));
+        $employees = Employee::all();
+        return view('admin.employees.index', compact('employees'));
     }
 }
