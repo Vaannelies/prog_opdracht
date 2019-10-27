@@ -34,20 +34,19 @@ Route::get('employee/dasbhoard', 'EmployeesController@showMe')->name('employee.d
 Route::post('/login', 'Auth\LoginController@login')->name('login.submit');
 
 
-Route::get('/home', 'HomeController@index')->name('admin.home');
-Route::get('/users', 'EmployeesController@index')->name('admin.employees.index');
+Route::get('/admin/home', 'HomeController@index')->name('admin.home');
+Route::get('/admin/employees', 'EmployeesController@index')->name('admin.employees.index');
 
+//  FOR BOTH ADMIN AND EMPLOYEES
+
+Route::resource('/employees', 'EmployeesController');
 
 Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
 
-   
     Route::resource('/animals', 'AnimalsController');
 
     Route::post('/animals/update', 'AnimalsController@updateStatus');
     Route::post('/animals/search', 'AnimalsController@getSearch');
     Route::post('/animals/filter', 'AnimalsController@getFilter');
-    
-  
-   
 });
 

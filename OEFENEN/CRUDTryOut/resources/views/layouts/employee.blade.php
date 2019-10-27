@@ -229,8 +229,8 @@
             <div class="links">
             @if (Route::has('login'))
             @auth
-                <a href="{{ url('/home') }}">ADMIN PAGE</a>
-                <a href="{{route('admin.employees.create')}}">ADD</a>
+                <a href="{{ route('admin.home') }}">ADMIN PAGE</a>
+                <a href="{{route('employees.create')}}">ADD</a>
                 <a href="{{route('admin.animals.index')}}">VIEW</a>
              
                 <a class="dropdown-item" href="{{ route('logout') }}"
