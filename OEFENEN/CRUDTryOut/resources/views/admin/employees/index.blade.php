@@ -39,6 +39,7 @@
                                     <td>{{$employee->updated_at}}</td>
                                     <td>{{$employee->created_at}}</td>
 
+                                    <td><a href="{{action('\App\Http\Controllers\EmployeesController@edit', $employee['id'])}}" class="tbl-button">Edit</a></td>
 
 
                             

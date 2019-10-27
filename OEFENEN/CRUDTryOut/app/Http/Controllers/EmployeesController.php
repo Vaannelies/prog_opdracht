@@ -92,4 +92,51 @@ class EmployeesController extends Controller
         return redirect()->route('admin.employees.index')->with('success', 'Data Added');
     }
 
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $employee = Employee::find($id);
+        if($employee != "")
+        {
+            return view('admin.employees.edit', compact('employee', 'id'));
+        }
+        else
+        {
+            return redirect()->route('admin.employees.index');
+        }
+    }
+
+
+
+     /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $this->validate($request, [
+            'name'  =>  'required',
+            'email' => 'required',
+
+            'job_title' => 'required'
+        ]);
+        $employee = Employee::find($id);
+        $employee->name         =       $request->get('name');
+        $employee->email        =       $request->get('email');
+       
+        $employee->job_title         =       $request->get('job_title');
+        $employee->save();
+        return redirect()->route('admin.employees.index')->with('success', 'Data Updated');
+    }
+
+
 }
