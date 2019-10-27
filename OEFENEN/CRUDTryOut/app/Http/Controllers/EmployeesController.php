@@ -126,17 +126,31 @@ class EmployeesController extends Controller
         $this->validate($request, [
             'name'  =>  'required',
             'email' => 'required',
-
             'job_title' => 'required'
         ]);
         $employee = Employee::find($id);
         $employee->name         =       $request->get('name');
         $employee->email        =       $request->get('email');
-       
-        $employee->job_title         =       $request->get('job_title');
+        $employee->job_title    =       $request->get('job_title');
         $employee->save();
         return redirect()->route('admin.employees.index')->with('success', 'Data Updated');
     }
 
+
+    
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $employee = Employee::find($id);
+        $employee->delete();
+        return redirect()->route('admin.employees.index')->with('success', 'Data Deleted');
+    }
+  
+    
 
 }
