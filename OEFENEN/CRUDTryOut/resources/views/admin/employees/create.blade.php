@@ -20,34 +20,20 @@
             <p>{{ \Session::get('success') }}</p>
         </div>
         @endif
-        <form method="post" action="{{route('admin.animals.index')}}"> <!-- of animals/create? -->
+        <form method="post" action="{{route('admin.employees.index')}}"> <!-- of animals/create? -->
             {{csrf_field()}}
             <div class="form-group">
                 <input type="text" name="name" class="textbox"
                 placeholder="Enter name"/>
 
-                <input type="date" name="date_birth" class="textbox"
-                placeholder="Enter date of birth"/>
+                <input type="email" name="email" class="textbox"
+                placeholder="Enter email"/>
 
-                <select name="gender" class="textbox">
-                    <option value="" disabled selected>Select gender</option>
-                    <option value="Female">Female</option>
-                    <option value="Male">Male</option>
-                </select> 
+                <input type="password" name="password" class="textbox"
+                placeholder="Enter password"/>
 
-                <select name="species_id" class="textbox">
-                     <option value="" disabled selected>Select species</option>
-                 
-                    
-                    @foreach($species as $specie)
-                  
-                  <option value="{{$specie->id}}">{{$specie->name}}</option>
-                  @endforeach
-     
-                </select> 
-
-                <input type="text" name="food" class="textbox"
-                placeholder="Enter food"/>
+                <input type="text" name="job_title" class="textbox"
+                placeholder="Enter job title"/>
 
                 <input type="submit" class="button" value="Add"/>
             </div>

@@ -23,30 +23,47 @@ Route::get('/', function () {
 
 Auth::routes();
 
-// EMPLOYEES LOGIN
-
-Route::get('/employee/login', 'Auth\EmployeeLoginController@showLoginForm')->name('employee.login');
-Route::post('/employee/login', 'Auth\EmployeeLoginController@login')->name('employee.login.submit');
-
-Route::get('employee/dasbhoard', 'EmployeesController@showMe')->name('employee.dashboard');
-
-// ADMINS LOGIN
-Route::post('/login', 'Auth\LoginController@login')->name('login.submit');
-
-
-Route::get('/admin/home', 'HomeController@index')->name('admin.home');
-Route::get('/admin/employees', 'EmployeesController@index')->name('admin.employees.index');
 
 //  FOR BOTH ADMIN AND EMPLOYEES
-
 Route::resource('/employees', 'EmployeesController');
 
-Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
 
-    Route::resource('/animals', 'AnimalsController');
+//  EMPLOYEES
 
-    Route::post('/animals/update', 'AnimalsController@updateStatus');
-    Route::post('/animals/search', 'AnimalsController@getSearch');
-    Route::post('/animals/filter', 'AnimalsController@getFilter');
-});
+    //  EMPLOYEES LOGIN
+    Route::get('/employee/login', 'Auth\EmployeeLoginController@showLoginForm')->name('employee.login');
+    Route::post('/employee/login', 'Auth\EmployeeLoginController@login')->name('employee.login.submit');
+
+    //  EMLPOYEES OTHER
+    Route::get('employee/dasbhoard', 'EmployeesController@showMe')->name('employee.dashboard');
+
+
+
+
+
+//  ADMIN
+
+    //  ADMIN NAMESPACE
+    Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
+
+        //  ADMIN ANIMALS
+        Route::resource('/animals', 'AnimalsController');
+
+        Route::post('/animals/update', 'AnimalsController@updateStatus');
+        Route::post('/animals/search', 'AnimalsController@getSearch');
+        Route::post('/animals/filter', 'AnimalsController@getFilter');
+
+        //  ADMIN EMPLOYEES
+        Route::resource('/employees', '\App\Http\Controllers\EmployeesController');
+    });
+
+    // ADMINS LOGIN
+    Route::post('/login', 'Auth\LoginController@login')->name('login.submit');
+
+    //  ADMIN EMPLOYEES
+    
+
+
+    //  ADMIN OTHER
+    Route::get('/admin/home', 'HomeController@index')->name('admin.home');
 
