@@ -9,6 +9,7 @@
         <div class="col-md-8">
 
         <p>Hello [[dit werkt nog niet]]!</p>
+        {{$employee}}
             <div class="card">
                 <div class="card-header">Select</div>
 

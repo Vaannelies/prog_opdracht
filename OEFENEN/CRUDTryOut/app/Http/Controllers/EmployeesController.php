@@ -15,15 +15,11 @@ class EmployeesController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth:employee')->only('showMe');
+        $this->middleware('auth')->only('index');
 
-        $this->middleware('auth:employee', ['only' => [
-            'showMe'
-        ]]);
 
-        $this->middleware('auth', ['except' => [
-            'showMe'
-        ]]);
+ 
     }
 
 
@@ -32,12 +28,21 @@ class EmployeesController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+
+
+    /**
+     * Shows an employee their own personal information.
+     */
     public function showMe()
     {
-        $employee = Employee::all();
+        $employee = "HOI";
         return view('employee.dashboard', compact('employee'));
     
     }
+
+    /**
+     * Shows an admin everything about all employees.
+     */
 
     public function index(){
         $users = Employee::all();

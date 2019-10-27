@@ -11,8 +11,9 @@ class EmployeeLoginController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('guest:employee');
+        $this->middleware('guest:employee')->except('logout');
     }
+    protected $redirectTo = '/home';
 
     public function showLoginForm()
     {
