@@ -16,8 +16,8 @@ class AnimalsController extends Controller
      */
     public function index()
     {
-        $animals = Animal::all();
-        $species = Species::all();
+        $animals = Animal::with('species')->get(); // Eager loading 
+        $species = Species::all(); // To show possible filters
         return view('admin.animals.index', compact('animals', 'species'));
     }
 
@@ -65,7 +65,7 @@ class AnimalsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id) //
     {
         $animal = Animal::find($id);
 
