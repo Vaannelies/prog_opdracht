@@ -94,10 +94,10 @@ class EmployeesController extends Controller
             'date_birth'        =>  $request->get('date_birth'),
             'gender'            =>  $request->get('gender'),
             'employee_since'    =>  $request->get('employee_since'),
-            'active'            =>  $request->get('active')
+            'active'            =>  ($request->get('active') == null) ? 0 : 1
+                    ]);
 
-
-        ]);
+        
         $employee->save();
         return redirect()->route('admin.employees.index')->with('success', 'Data Added');
     }

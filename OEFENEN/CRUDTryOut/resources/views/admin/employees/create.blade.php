@@ -54,11 +54,10 @@
 
                 <h3>Active?</h3>
                 <label id="switch" class="switch">
-                <input id="check" type="checkbox" name="active" class="textbox" value="0"
+                <input id="check" type="checkbox" name="active" class="textbox" value="1"
                 placeholder="Active?"/>
                 <span class="slider"></span>
                 </label>
-
 
                 <input type="submit" class="button" value="Add"/>
             </div>
@@ -66,20 +65,6 @@
     </div>
 </div>
 
-<script>
-document.getElementById("switch").addEventListener("click", function(){
-    if (document.getElementById('check').checked == true)
-
-    {
-        document.getElementById('check').value = "1";
-    }
-    
-    else
-    {
-        document.getElementById('check').value = "0";
-    }
-});
-</script>
 
 @endsection
 
