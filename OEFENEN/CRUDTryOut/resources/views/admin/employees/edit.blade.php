@@ -25,17 +25,49 @@
                 <input type="hidden" name="_method" value="PATCH" />
 
                 
-                    <input type="text" name="name" class="textbox"
-                    value="{{$employee->name}}" placeholder="Enter name"/>
-
-
+                    <input type="text" name="firstname" class="textbox"
+                    value="{{$employee->firstname}}" placeholder="Enter name"/>
+                    
+                    <input type="text" name="lastname" class="textbox"
+                    value="{{$employee->lastname}}" placeholder="Enter name"/>
 
                     <input type="email" name="email" class="textbox"
                     value="{{$employee->email}}" placeholder="Enter email"/>
 
-
                     <input type="text" name="job_title" class="textbox"
                     placeholder="Enter job title" value="{{$employee->job_title}}"/>
+
+                    <input type="date" name="date_birth" class="textbox"
+                    placeholder="Enter date of birth" value="{{$employee->date_birth}}"/>
+
+                    <select name="gender" class="textbox">
+
+                    @if($employee['gender']=='Female') <!--selected value says female-->
+                        <option value="" disabled selected>Select gender</option>
+                        <option value="Female" selected>Female</option>
+                        <option value="Male">Male</option>
+                        <option value="Other">Other</option>
+                    @elseif($employee['gender']=='Male') <!--selected value says male-->
+                        <option value="" disabled selected>Select gender</option>
+                        <option value="Female">Female</option>
+                        <option value="Male" selected>Male</option>
+                        <option value="Other">Other</option>
+                    @elseif($employee['gender']=='Other') <!--selected value says male-->
+                        <option value="" disabled selected>Select gender</option>
+                        <option value="Female">Female</option>
+                        <option value="Male">Male</option>
+                        <option value="Other" selected>Other</option>
+                    @endif
+                    
+
+                    <input type="date" name="employee_since" class="textbox" 
+                    value="{{$employee->employee_since}}" placeholder="Employee since..."/>
+
+                    <h3>Active?</h3>
+                    <label id="switch" class="switch">
+                    <input id="check" type="checkbox" name="active" class="textbox" value="1"/>
+                    <span class="slider"></span>
+                    </label>
 
                     <input type="submit" class="button" value="Submit"/>
             </div>

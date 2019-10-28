@@ -134,14 +134,23 @@ class EmployeesController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'name'  =>  'required',
-            'email' => 'required',
-            'job_title' => 'required'
+            'firstname'         =>  'required',
+            'lastname'          =>  'required',
+            'email'             =>  'required',
+            'job_title'         =>  'required',
+            'date_birth'        =>  'required',
+            'gender'            =>  'required',
+            'employee_since'    =>  'required'
         ]);
         $employee = Employee::find($id);
-        $employee->name         =       $request->get('name');
-        $employee->email        =       $request->get('email');
-        $employee->job_title    =       $request->get('job_title');
+        $employee->firstname        =       $request->get('firstname');
+        $employee->lastname         =       $request->get('lastname');      
+        $employee->email            =       $request->get('email');
+        $employee->job_title        =       $request->get('job_title');
+        $employee->date_birth       =       $request->get('date_birth');
+        $employee->gender           =       $request->get('gender');
+        $employee->employee_since   =       $request->get('employee_since');
+        $employee->active           =       ($request->get('active') == null) ? 0 : 1;
         $employee->save();
         return redirect()->route('admin.employees.index')->with('success', 'Data Updated');
     }
