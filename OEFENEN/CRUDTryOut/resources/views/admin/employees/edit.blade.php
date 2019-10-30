@@ -78,11 +78,13 @@
 
 <script>
     window.addEventListener("load", function(){
-        if($epmloyee['active']==null)
+
+        var employee_status = <?php echo $employee['active']?>;
+        if(employee_status == 0)
         {
-            document.getElementById("check").checked = true;
-        } else { 
             document.getElementById("check").checked = false;
+        } else { 
+            document.getElementById("check").checked = true;
         }
     })
 </script>
