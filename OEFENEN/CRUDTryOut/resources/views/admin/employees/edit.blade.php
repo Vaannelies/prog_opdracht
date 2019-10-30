@@ -26,10 +26,10 @@
 
                 
                     <input type="text" name="firstname" class="textbox"
-                    value="{{$employee->firstname}}" placeholder="Enter name"/>
+                    value="{{$employee->firstname}}" placeholder="Enter first name"/>
                     
                     <input type="text" name="lastname" class="textbox"
-                    value="{{$employee->lastname}}" placeholder="Enter name"/>
+                    value="{{$employee->lastname}}" placeholder="Enter last name"/>
 
                     <input type="email" name="email" class="textbox"
                     value="{{$employee->email}}" placeholder="Enter email"/>
@@ -75,6 +75,17 @@
         
     </div>
 </div>
+
+<script>
+    window.addEventListener("load", function(){
+        if($epmloyee['active']==null)
+        {
+            document.getElementById("check").checked = true;
+        } else { 
+            document.getElementById("check").checked = false;
+        }
+    })
+</script>
 
 @endsection
 

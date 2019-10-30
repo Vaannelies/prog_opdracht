@@ -24,10 +24,10 @@
             {{csrf_field()}}
             <div class="form-group">
                 <input type="text" name="firstname" class="textbox"
-                placeholder="Enter firstname"/>
+                placeholder="Enter first name"/>
 
                 <input type="text" name="lastname" class="textbox"
-                placeholder="Enter lastname"/>
+                placeholder="Enter last name"/>
 
                 <input type="email" name="email" class="textbox"
                 placeholder="Enter email"/>

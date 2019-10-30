@@ -9,7 +9,7 @@
         <div class="col-md-8">
 
         <p>Hello [[dit werkt nog niet]]!</p>
-        {{$employee}}
+        
             <div class="card">
                 <div class="card-header">Select</div>
 
@@ -22,7 +22,7 @@
                     @endif
 
                         <div class="links">
-                            <a href="{{route('employee.dashboard')}}"><button class="button">You</button></a>
+                            <a href="{{route('employee.personal')}}"><button class="button">You</button></a>
                             <a href="{{route('employee.dashboard')}}"><button class="button">Animals</button></a>
                         </div>
                 </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Employee;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Auth;
 
 class EmployeesController extends Controller
 {
@@ -17,10 +18,7 @@ class EmployeesController extends Controller
     public function __construct()
     {
         $this->middleware('auth:employee')->only('showMe');
-        $this->middleware('auth');
-
-
- 
+        $this->middleware('auth'); 
     }
 
 
@@ -35,10 +33,11 @@ class EmployeesController extends Controller
     /**
      * Shows an employee their own personal information.
      */
-    public function showMe()
+    public function showMe(Request $request)
     {
-        $employee = "HOI";
-        return view('employee.dashboard', compact('employee'));
+      
+        $employee = Auth::employee();
+        return view('employee.personal', compact('employee'));
     
     }
 
@@ -170,6 +169,26 @@ class EmployeesController extends Controller
         return redirect()->route('admin.employees.index')->with('success', 'Data Deleted');
     }
   
-    
+        /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id) //
+    {
+        $employee = Employee::find($id);
+
+        if($employee != "")
+        {
+            return view('admin.employees.details', compact('employee', 'id'));
+        } 
+        else
+        {
+            return redirect()->route('admin.employees.index');
+        }
+
+    }
+
 
 }

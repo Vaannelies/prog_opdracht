@@ -21,8 +21,8 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Name</th>
-                                <th>Species</th>
+                                <th>First name</th>
+                                <th>Last name</th>
                                 <th>Last updated at</th>
                                 <th>Created at</th>
                                 <th>Is Active</th>
@@ -35,11 +35,13 @@
                                 <tr>
                                     <td>{{$employee->id}}</td>
                                    
-                                    <td>{{$employee->firstname}}</td>
-                                    <td>{{$employee->updated_at}}</td>
-                                    <td>{{$employee->created_at}}</td>
+                                    
+                                        <td><a class="text-button" href="{{action('\App\Http\Controllers\EmployeesController@show', $employee['id'])}}">{{$employee->firstname}}</a></td>
+                                        <td>{{$employee->lastname}}</td>
+                                        <td>{{$employee->updated_at}}</td>
 
-                                    <td><a href="{{action('\App\Http\Controllers\EmployeesController@edit', $employee['id'])}}" class="tbl-button">Edit</a></td>
+
+                                    <td>{{$employee->created_at}}</td>
                                     <td>
                                             @if($employee->active == 0) <!-- No double brackets needed, since you don't actually SHOW the value of $employee->active. It's not that dangerous. (OWASP) -->
                                                 No
@@ -47,6 +49,9 @@
                                                 Yes
                                             @endif
                                     </td>
+
+                                    <td><a href="{{action('\App\Http\Controllers\EmployeesController@edit', $employee['id'])}}" class="tbl-button">Edit</a></td>
+                               
                                     <td>
                                         <form method="post" class="delete_form" action="{{action('\App\Http\Controllers\EmployeesController@destroy', $employee['id'])}}">
                                             {{csrf_field()}}
