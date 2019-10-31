@@ -18,8 +18,8 @@ class UsersTableSeeder extends Seeder
         User::truncate();
         DB::table('role_user')->truncate();
 
-        $adminRole = Role::where('name', 'admin')->first();
-        $employeeRole = Role::where('name', 'employee')->first();
+        $adminRole = Role::where('name', 'Admin')->first();
+        $employeeRole = Role::where('name', 'Employee')->first();
 
         $admin = User::create([
             'firstname' => 'poep', 

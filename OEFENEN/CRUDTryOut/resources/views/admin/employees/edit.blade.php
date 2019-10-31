@@ -60,12 +60,24 @@
                     <input type="date" name="employee_since" class="textbox" 
                     value="{{$user->employee_since}}" placeholder="Employee since..."/>
 
+                    <div>
                     <h3>Active?</h3>
                     <label id="switch" class="switch">
                     <input id="check" type="checkbox" name="active" class="textbox" value="1"/>
                     <span class="slider"></span>
                     </label>
+                    </div>
+                  
 
+                    <div style="display:flex; justify-content: center;">
+                    <h3>Roles</h3>
+                    <div style="display:flex; flex-direction: column">
+                    @foreach($roles as $role)
+                    <input type="checkbox" name="roles[]" value="{{ $role->id }}" @if($user->roles->contains($role->id)) checked=checked @endif/>
+                        <label>{{$role->name}}</label>
+                    @endforeach
+                    </div>
+                    </div>
                     <input type="submit" class="button" value="Submit"/>
             </div>
         </form>

@@ -103,6 +103,7 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
+   
         $this->validate($request, [
             'firstname'         =>  'required',
             'lastname'          =>  'required',
@@ -112,6 +113,7 @@ class UsersController extends Controller
             'employee_since'    =>  'required'
         ]);
         $user = User::find($id);
+        $user->roles()->sync($request->roles);
         $user->firstname        =       $request->get('firstname');
         $user->lastname         =       $request->get('lastname');      
         $user->email            =       $request->get('email');
