@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
+use Gate;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -25,7 +25,18 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = 'admin/home';
+    protected function redirectTo(){
+    if(Gate::denies('login-admins'))
+    {
+        return redirect(route('admin.home'));
+        // protected $redirectTo = 'admin/home';
+    }
+    else
+    {
+        return redirect(route('employee.dashboard'));
+    }
+}
+  
 
     /**
      * Create a new controller instance.
