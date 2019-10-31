@@ -61,4 +61,11 @@ class User extends Authenticatable
 
         return false;
     }
+
+    // public function noNoob($employee_since)
+    // {   
+    //     if($this->{
+
+    //     }
+    // }
 }
