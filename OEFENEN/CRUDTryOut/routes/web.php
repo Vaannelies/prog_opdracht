@@ -54,7 +54,7 @@ Auth::routes();
         Route::post('/animals/filter', 'AnimalsController@getFilter');
 
         //  ADMIN EMPLOYEES
-        Route::resource('/employees', '\App\Http\Controllers\EmployeesController');
+        Route::resource('/employees', '\App\Http\Controllers\Admin\UsersController');
     });
 
     // ADMINS LOGIN

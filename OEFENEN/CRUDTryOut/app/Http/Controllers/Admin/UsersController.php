@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
+use App\Role;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -31,10 +31,20 @@ class UsersController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+ 
+
+    public function edit($id)
     {
         $roles = Role::all();
-        return view('admin.employees.edit')
+        $user = User::find($id);
+        if($user != "")
+        {
+            return view('admin.employees.edit', compact('user', 'roles','id'));
+        }
+        else
+        {
+            return redirect()->route('admin.employees.index');
+        }
     }
 
     /**
@@ -44,10 +54,25 @@ class UsersController extends Controller
      * @param  \App\User $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'firstname'         =>  'required',
+            'lastname'          =>  'required',
+            'email'             =>  'required',
+            'job_title'         =>  'required',
+            'date_birth'        =>  'required',
+            'gender'            =>  'required',
+            'employee_since'    =>  'required'
+        ]);
+        $employee = User::find($id);
+       
+        $employee->email            =       $request->get('email');
+ $employee->active           =       ($request->get('active') == null) ? 0 : 1;
+        $employee->save();
+        return redirect()->route('admin.employees.index')->with('success', 'Data Updated');
     }
+
 
     /**
      * Remove the specified resource from storage.
