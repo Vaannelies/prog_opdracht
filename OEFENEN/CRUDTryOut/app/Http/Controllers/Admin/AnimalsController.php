@@ -143,7 +143,7 @@ class AnimalsController extends Controller
 
 
 
-    
+
     public function getSearch(Request $request){
 
         $species = Species::all();
@@ -241,5 +241,19 @@ class AnimalsController extends Controller
         $animal->save();
         
         return redirect()->route('admin.animals.index')->with('success', 'Data Updated');
+    }
+
+
+    public function myAnimals()
+    {
+        //Wat wil ik?
+        //myspecies zijn de species id's van de diersoorten die in de species_user tabel bij jouw user_id staan.
+   
+
+        $user = auth()->user();
+   
+        $myspecies = $user->Species()->get();
+            return view('employee.animals.index', compact('myspecies'));
+        
     }
 }

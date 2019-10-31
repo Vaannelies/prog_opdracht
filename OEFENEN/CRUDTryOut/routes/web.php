@@ -37,7 +37,7 @@ Route::get('/home', '\App\Http\Controllers\HomeController@index')->name('home');
     //  EMLPOYEES OTHER
     Route::get('employee/dasbhoard', 'EmployeesController@showMe')->name('employee.dashboard');
     Route::get('employee/personal', 'Admin\UsersController@showMe')->name('employee.personal');
-
+    Route::get('employee/animals/index', 'Admin\AnimalsController@myAnimals')->name('employee.animals.index');
     Route::resource('/employee', 'EmployeesController');
 
 

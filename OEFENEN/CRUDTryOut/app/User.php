@@ -66,6 +66,7 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\Species');
     }
+    
 
     // public function noNoob($employee_since)
     // {   
