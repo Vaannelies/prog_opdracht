@@ -92,7 +92,7 @@
             dat de 'Home' knop dan ook verschijnt ipv 'login'
             en dat die dan naar een employees home verwijst. -->
                     @else
-                        <a href="{{ route('employee.login') }}">Login</a>
+                        <a href="{{ route('login') }}">Login</a>
 
                         @if (Route::has('register'))
                             <a href="{{ route('register') }}">Register</a>

@@ -35,6 +35,8 @@
             <img style="height: 100%" src="https://www.uvm.edu/www/images/map/search-white.png">
             </button>
         </form>
+
+        
     </div>
 
     <div class="container-body">

@@ -169,7 +169,7 @@
             <div class="links">
                 @if (Route::has('login'))
                     @auth
-                        <a href="{{ route('employee.dashboard') }}">Home</a>
+                        <a href="{{ route('home') }}">Home</a>
                       
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
@@ -198,7 +198,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Employee
+                   
                 </div>
 
                 <div class="container">

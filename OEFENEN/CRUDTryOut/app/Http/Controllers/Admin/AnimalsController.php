@@ -140,6 +140,10 @@ class AnimalsController extends Controller
     }
   
     
+
+
+
+    
     public function getSearch(Request $request){
 
         $species = Species::all();
@@ -157,6 +161,11 @@ class AnimalsController extends Controller
         }
         return view('admin.animals.index', compact('search', 'species'));
     }
+
+
+
+
+
     
 
     public function getFilter(Request $request){

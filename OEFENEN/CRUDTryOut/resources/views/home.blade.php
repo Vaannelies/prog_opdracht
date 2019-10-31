@@ -1,9 +1,17 @@
+@extends('layouts.homestyle')
+
+
+
+<!--    ADMIN   -->
+
 @can('login-admins')
 
-    @extends('layouts.adminstyle')
 
     @section('content')
     <title>Admin Page</title>
+    <div class="title m-b-md">
+                    Admin
+    </div>
 
     <div class="container">
         <div class="row justify-content-center">
@@ -31,11 +39,17 @@
     @endsection
 @endcan
 
-@can('login-employees')
-    @extends('layouts.employeestyle')
 
-    @section('content')
+<!--    EMPLOYEE    -->
+
+@can('login-employees')
+
+
+       @section('content')
     <title>Employee Page</title>
+    <div class="title m-b-md">
+                    Employee
+    </div>
 
     <div class="container">
         <div class="row justify-content-center">
@@ -64,6 +78,8 @@
         </div>
     </div>
     @endsection
+
+ 
 @endcan
 
 
