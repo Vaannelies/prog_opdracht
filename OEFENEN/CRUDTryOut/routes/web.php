@@ -48,13 +48,15 @@ Auth::routes();
 
         //  ADMIN ANIMALS
         Route::resource('/animals', 'AnimalsController');
+ 
+        Route::get('/home', '\App\Http\Controllers\HomeController@index')->name('home');
 
         Route::post('/animals/update', 'AnimalsController@updateStatus');
         Route::post('/animals/search', 'AnimalsController@getSearch');
         Route::post('/animals/filter', 'AnimalsController@getFilter');
 
         //  ADMIN EMPLOYEES
-        Route::resource('/employees', '\App\Http\Controllers\Admin\UsersController');
+        Route::resource('/employees', 'UsersController');
     });
 
     // ADMINS LOGIN
@@ -65,5 +67,4 @@ Auth::routes();
 
 
     //  ADMIN OTHER
-    Route::get('/admin/home', 'HomeController@index')->name('admin.home');
-
+  
