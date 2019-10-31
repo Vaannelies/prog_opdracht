@@ -4,6 +4,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use App\User;
 use App\Role;
+use App\Species;
 
 
 class UsersTableSeeder extends Seeder
@@ -20,6 +21,11 @@ class UsersTableSeeder extends Seeder
 
         $adminRole = Role::where('name', 'Admin')->first();
         $employeeRole = Role::where('name', 'Employee')->first();
+
+        DB::table('species_user')->truncate();
+        $gorillaSpecies = Species::where('name', 'Gorilla')->first();
+        $jaguarSpecies  = Species::where('name', 'Jaguar')->first();
+    
 
         $admin = User::create([
             'firstname' => 'poep', 
@@ -46,8 +52,30 @@ class UsersTableSeeder extends Seeder
 
             ]);
 
+        $employeeTwo = User::create([
+            'firstname' => 'Nel', 
+            'lastname'  => 'van Driel',
+            'email' => 'nel@hotmail.com', 
+            'password' => Hash::make('nelnel'),
+            'gender'    => 'Female',
+            'active'    => '0',
+            'date_birth'    => '2001-06-10',
+            'employee_since' => '2022-11-10',
+
+            ]);
+
+
+
         $admin->roles()->attach($adminRole);
-        $employee->roles()->attach($employeeRole);
+        $employee       ->roles()->attach($employeeRole);
+        $employee       ->species()->attach($gorillaSpecies);
+        $employeeTwo    ->roles()->attach($employeeRole);
+        $employeeTwo    ->species()->attach($jaguarSpecies);
+
+
+
+     
+
     
     }
 }

@@ -48,14 +48,15 @@
        @section('content')
     <title>Employee Page</title>
     <div class="title m-b-md">
-                    Employee
+                    {{Auth::user()->firstname}}  {{Auth::user()->lastname}}
     </div>
+ 
 
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
 
-            <p>Hello [[dit werkt nog niet]]!</p>
+          
             
                 <div class="card">
                     <div class="card-header">Select</div>

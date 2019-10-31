@@ -62,6 +62,11 @@ class User extends Authenticatable
         return false;
     }
 
+    public function species()
+    {
+        return $this->belongsToMany('App\Species');
+    }
+
     // public function noNoob($employee_since)
     // {   
     //     if($this->{
