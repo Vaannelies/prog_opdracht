@@ -86,7 +86,7 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{route('admin.home')}}">Home</a>
+                        <a href="{{route('home')}}">Home</a>
             <!-- En er moet dus ook een versie komen
             van als de Route een login van een employee heeft,
             dat de 'Home' knop dan ook verschijnt ipv 'login'

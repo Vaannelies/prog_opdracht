@@ -26,7 +26,7 @@ Auth::routes();
 
 //  FOR BOTH ADMIN AND EMPLOYEES
 
-
+Route::get('/home', '\App\Http\Controllers\HomeController@index')->name('home');
 
 //  EMPLOYEES
 
@@ -49,7 +49,7 @@ Auth::routes();
         //  ADMIN ANIMALS
         Route::resource('/animals', 'AnimalsController');
  
-        Route::get('/home', '\App\Http\Controllers\HomeController@index')->name('home');
+        
 
         Route::post('/animals/update', 'AnimalsController@updateStatus');
         Route::post('/animals/search', 'AnimalsController@getSearch');

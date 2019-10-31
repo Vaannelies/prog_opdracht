@@ -290,7 +290,7 @@
             <div class="links">
             @if (Route::has('login'))
             @auth
-                <a href="{{ route('admin.home') }}">ADMIN PAGE</a>
+                <a href="{{ route('home') }}">ADMIN PAGE</a>
                 <a href="{{route('admin.animals.create')}}">ADD</a>
                 <a href="{{route('admin.animals.index')}}">VIEW</a>
              
