@@ -14,7 +14,7 @@
         <br>
         <br>
 
-            @if(isset($employees))
+            @if(isset($users))
       
                 
                     <table class="table">
@@ -31,34 +31,34 @@
 
                         <tbody>
                     
-                            @foreach($employees as $employee)
+                            @foreach($users as $user)
                                 <tr>
-                                    <td>{{$employee->id}}</td>
+                                    <td>{{$user->id}}</td>
                                    
                                     
-                                        <td><a class="text-button" href="{{action('\App\Http\Controllers\EmployeesController@show', $employee['id'])}}">{{$employee->firstname}}</a></td>
-                                        <td>{{$employee->lastname}}</td>
-                                        <td>{{$employee->updated_at}}</td>
+                                        <td><a class="text-button" href="{{action('\App\Http\Controllers\Admin\UsersController@show', $user['id'])}}">{{$user->firstname}}</a></td>
+                                        <td>{{$user->lastname}}</td>
+                                        <td>{{$user->updated_at}}</td>
 
 
-                                    <td>{{$employee->created_at}}</td>
+                                    <td>{{$user->created_at}}</td>
                                     <td>
-                                            @if($employee->active == 0) <!-- No double brackets needed, since you don't actually SHOW the value of $employee->active. It's not that dangerous. (OWASP) -->
+                                            @if($user->active == 0) <!-- No double brackets needed, since you don't actually SHOW the value of $user->active. It's not that dangerous. (OWASP) -->
                                                 No
                                             @else 
                                                 Yes
                                             @endif
 
                                             <label id="switch" class="switch">
-                                            <input id="check[{{$employee->id}}]" type="checkbox" name="active" class="textbox" value="1"/>
+                                            <input id="check[{{$user->id}}]" type="checkbox" name="active" class="textbox" value="1"/>
                                             <span class="slider"></span>
                                             </label>
                                     </td>
 
-                                    <td><a href="{{action('\App\Http\Controllers\EmployeesController@edit', $employee['id'])}}" class="tbl-button">Edit</a></td>
+                                    <td><a href="{{action('\App\Http\Controllers\Admin\UsersController@edit', $user['id'])}}" class="tbl-button">Edit</a></td>
                                
                                     <td>
-                                        <form method="post" class="delete_form" action="{{action('\App\Http\Controllers\EmployeesController@destroy', $employee['id'])}}">
+                                        <form method="post" class="delete_form" action="{{action('\App\Http\Controllers\Admin\UsersController@destroy', $user['id'])}}">
                                             {{csrf_field()}}
                                             <input type="hidden" name="_method" value="DELETE" />
                                             <button type="submit" class="tbl-button" style="background-color:#DD5555;">Delete</button>
@@ -76,14 +76,14 @@
 </div>
 <script>            //WERKT NIET!
     window.addEventListener("load", function(){
-        for(let i = 0; i < count(<?php echo $employees?>); i++);
-        var employee_status<?php echo $employee['id']?> = <?php echo $employee['active']?>;
-        console.log(employee_status<?php echo $employee['id']?>)
+        for(let i = 0; i < count(<?php echo $users?>); i++);
+        var employee_status<?php echo $user['id']?> = <?php echo $user['active']?>;
+        console.log(employee_status<?php echo $user['id']?>)
         if(employee_status == 0)
         {
-            document.getElementById("check[<?php echo $employee['id']?>]").checked = false;
+            document.getElementById("check[<?php echo $user['id']?>]").checked = false;
         } else { 
-            document.getElementById("check[<?php echo $employee['id']?>]").checked = true;
+            document.getElementById("check[<?php echo $user['id']?>]").checked = true;
         }
     })
 </script>
