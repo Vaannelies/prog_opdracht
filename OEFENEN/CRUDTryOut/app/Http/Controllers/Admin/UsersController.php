@@ -172,4 +172,13 @@ class UsersController extends Controller
         }
 
     }
+
+    public function showMe(Request $request)
+    {
+      
+        $user = auth()->user();
+        return view('employee.personal', compact('user'));
+    
+    }
+
 }
