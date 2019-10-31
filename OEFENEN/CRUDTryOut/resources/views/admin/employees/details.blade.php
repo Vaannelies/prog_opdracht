@@ -49,6 +49,10 @@
                     <td>Active:</td>
                     <td>{{$user->active}}</td>
             </tr>
+            <tr>
+                    <td>Role(s):</td>
+                    <td>{{implode(', ', $user->roles()->get()->pluck('name')->toArray())}}</td>
+            </tr>
         </table>
     </div>
 </div>

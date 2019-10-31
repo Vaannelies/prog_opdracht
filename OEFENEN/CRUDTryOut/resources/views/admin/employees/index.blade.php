@@ -40,7 +40,7 @@
                                         <td><a class="text-button" href="{{action('\App\Http\Controllers\Admin\UsersController@show', $user['id'])}}">{{$user->firstname}}</a></td>
                                         <td>{{$user->lastname}}</td>
 
-                                        <td>{{implode(', ', $user->roles()->get()->pluck('name')->toArray())}}
+                                        <td>{{implode(', ', $user->roles()->get()->pluck('name')->toArray())}}</td>
                                         <td>{{$user->updated_at}}</td>
 
 
