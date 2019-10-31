@@ -44,7 +44,7 @@ Auth::routes();
 //  ADMIN
 
     //  ADMIN NAMESPACE
-    Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
+    Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:manage-users')->group(function(){
 
         //  ADMIN ANIMALS
         Route::resource('/animals', 'AnimalsController');

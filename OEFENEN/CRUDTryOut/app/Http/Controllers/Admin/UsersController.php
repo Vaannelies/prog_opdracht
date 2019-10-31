@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Support\Facades\Hash;
 use App\Role;
 use App\User;
+use Gate;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -82,6 +83,11 @@ class UsersController extends Controller
 
     public function edit($id)
     {
+        if(Gate::denies('edit-users'))
+        {
+            return redirect(route('admin.employees.index'));
+        }
+        else{
         $roles = Role::all();
         $user = User::find($id);
         if($user != "")
@@ -92,6 +98,7 @@ class UsersController extends Controller
         {
             return redirect()->route('admin.employees.index');
         }
+    }
     }
 
     /**
@@ -121,7 +128,7 @@ class UsersController extends Controller
         $user->date_birth       =       $request->get('date_birth');
         $user->gender           =       $request->get('gender');
         $user->employee_since   =       $request->get('employee_since');
-        $user->active           =       ($request->get('active') == null) ? 0 : 1;
+        $user->active           =      ($request->get('active') == null) ? 0 : 1;
         $user->save();
         return redirect()->route('admin.employees.index')->with('success', 'Data Updated');
     }
@@ -135,6 +142,11 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
+        if(Gate::denies('delete-users'))
+        {
+            return redirect(route('admin.employees.index'));
+        }
+
         $user = User::find($id);
         $user->delete();
         return redirect()->route('admin.employees.index')->with('success', 'Data Deleted');
