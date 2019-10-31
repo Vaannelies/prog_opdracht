@@ -23,6 +23,7 @@
                                 <th>ID</th>
                                 <th>First name</th>
                                 <th>Last name</th>
+                                <th>Role</th>
                                 <th>Last updated at</th>
                                 <th>Created at</th>
                                 <th>Is Active</th>
@@ -38,6 +39,8 @@
                                     
                                         <td><a class="text-button" href="{{action('\App\Http\Controllers\Admin\UsersController@show', $user['id'])}}">{{$user->firstname}}</a></td>
                                         <td>{{$user->lastname}}</td>
+
+                                        <td>{{implode(', ', $user->roles()->get()->pluck('name')->toArray())}}
                                         <td>{{$user->updated_at}}</td>
 
 
