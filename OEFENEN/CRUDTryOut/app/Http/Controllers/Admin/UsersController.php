@@ -87,4 +87,25 @@ class UsersController extends Controller
     {
         //
     }
+
+         /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id) //
+    {
+        $user = User::find($id);
+
+        if($user != "")
+        {
+            return view('admin.employees.details', compact('user', 'id'));
+        } 
+        else
+        {
+            return redirect()->route('admin.employees.index');
+        }
+
+    }
 }
