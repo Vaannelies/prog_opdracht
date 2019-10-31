@@ -110,7 +110,8 @@ class UsersController extends Controller
             'email'             =>  'required',
             'date_birth'        =>  'required',
             'gender'            =>  'required',
-            'employee_since'    =>  'required'
+            'employee_since'    =>  'required',
+            'roles'           =>  'required'
         ]);
         $user = User::find($id);
         $user->roles()->sync($request->roles);
