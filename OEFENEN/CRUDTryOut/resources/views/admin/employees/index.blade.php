@@ -89,5 +89,22 @@
             document.getElementById("check[<?php echo $user['id']?>]").checked = true;
         }
     })
+
+
+
+    //Ask if someone really wants to delete something
+    
+$(document).ready(function(){
+    $('.delete_form').on('submit', function(){
+        if(confirm("Are you sure you want to delete it?"))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    });
+});
 </script>
         @endsection

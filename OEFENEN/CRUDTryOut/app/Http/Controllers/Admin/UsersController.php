@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+use Illuminate\Support\Facades\Hash;
 use App\Role;
 use App\User;
 use Illuminate\Http\Request;
@@ -24,6 +25,52 @@ class UsersController extends Controller
         $users = User::all();
         return view('admin.employees.index')->with('users', $users);
     }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('admin.employees.create');
+    }
+
+
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'firstname'         =>  'required',
+            'lastname'          =>  'required',
+            'email'             =>  'required',
+            'password'          =>  'required',
+            'date_birth'        =>  'required',
+            'gender'            =>  'required',
+            'employee_since'    =>  'required'
+        ]);
+        $user = new User([
+            'firstname'         =>  $request->get('firstname'),
+            'lastname'          =>  $request->get('lastname'),
+            'email'             =>  $request->get('email'),
+            'password'          =>  Hash::make($request->get('password')),
+            'date_birth'        =>  $request->get('date_birth'),
+            'gender'            =>  $request->get('gender'),
+            'employee_since'    =>  $request->get('employee_since'),
+            'active'            =>  ($request->get('active') == null) ? 0 : 1
+                    ]);
+
+        
+        $user->save();
+        return redirect()->route('admin.employees.index')->with('success', 'Data Added');
+    }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -83,9 +130,11 @@ class UsersController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+        return redirect()->route('admin.employees.index')->with('success', 'Data Deleted');
     }
 
          /**

@@ -35,9 +35,6 @@
                 <input type="password" name="password" class="textbox"
                 placeholder="Enter password"/>
 
-                <input type="text" name="job_title" class="textbox"
-                placeholder="Enter job title"/>
-
                 <input type="date" name="date_birth" class="textbox"
                 placeholder="Enter date of birth"/>
 
