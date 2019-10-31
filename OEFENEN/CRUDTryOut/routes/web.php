@@ -46,6 +46,9 @@ Route::get('/home', '\App\Http\Controllers\HomeController@index')->name('home');
 
     //  ADMIN NAMESPACE
     Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:manage-users')->group(function(){
+        
+        Route::get('personal', 'UsersController@showMe')->name('personal');
+  
 
         //  ADMIN ANIMALS
         Route::resource('/animals', 'AnimalsController');

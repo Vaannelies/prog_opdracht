@@ -173,11 +173,20 @@ class UsersController extends Controller
 
     }
 
-    public function showMe(Request $request)
+    public function showMe()
     {
-      
+
         $user = auth()->user();
-        return view('employee.personal', compact('user'));
+
+        if(Gate::denies('profile-admins'))
+        {
+            return view('employee.personal', compact('user'));
+           
+        }
+        elseif(Gate::denies('profile-employees'))
+        {        
+            return view('admin.personal', compact('user'));
+        }
     
     }
 

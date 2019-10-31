@@ -1,12 +1,12 @@
-@extends('layouts.employeestyle')
+@extends('layouts.adminstyle')
 
 @section('content')
 
-<title>User: {{$user->name}}</title>
+<title>User: {{$user->firstname}}</title>
 <div class="row">
     <div class="col-md-12">
         <br/>
-        <h3 align="center">About {{$user->name}}</h3>
+        <h3 align="center">About {{$user->firstname}}</h3>
         <br/>
        
         <table>

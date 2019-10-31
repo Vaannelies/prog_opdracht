@@ -170,15 +170,20 @@
                 @if (Route::has('login'))
                     @auth
                         <a href="{{ route('home') }}">Home</a>
+
+                        <a href="
+                        @can('login-admins')    {{ route('admin.personal')    }}   @endcan
+                        @can('login-employees') {{ route('employee.personal') }}   @endcan
+                        ">My profile</a>
                       
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
                           
                     @else
                         <a href="{{ route('login') }}">Login</a>
