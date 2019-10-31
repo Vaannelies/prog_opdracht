@@ -169,16 +169,21 @@
             <div class="links">
                 @if (Route::has('login'))
                     @auth
-                        <a href="{{ route('employee.dashboard') }}">Home</a>
+                        <a href="{{ route('employee.dashboard') }}">HOME</a>
+
+                        <a href="
+                        @can('login-admins'){{ route('admin.personal') }} @endcan
+                        @can('login-employees'){{route('employee.personal')}} @endcan
+                        ">MY PROFILE</a>
                       
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
+                            {{ __('LOGOUT') }}
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
                           
                     @else
                         <a href="{{ route('login') }}">Login</a>

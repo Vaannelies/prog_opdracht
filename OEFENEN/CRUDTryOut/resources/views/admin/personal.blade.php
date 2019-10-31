@@ -19,6 +19,10 @@
                     <td>{{$user->firstname}}</td>
             </tr>
             <tr>
+                    <td>E-mail:</td>
+                    <td>{{$user->email}}</td>
+            </tr>
+            <tr>
                     <td>Date of birth:</td>
                     <td>{{$user->date_birth}}</td>
             </tr>
