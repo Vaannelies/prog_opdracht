@@ -34,9 +34,6 @@
                     <input type="email" name="email" class="textbox"
                     value="{{$user->email}}" placeholder="Enter email"/>
 
-                    <input type="text" name="job_title" class="textbox"
-                    placeholder="Enter job title" value="{{$user->job_title}}"/>
-
                     <input type="date" name="date_birth" class="textbox"
                     placeholder="Enter date of birth" value="{{$user->date_birth}}"/>
 

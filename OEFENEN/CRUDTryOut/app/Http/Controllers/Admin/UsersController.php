@@ -60,15 +60,18 @@ class UsersController extends Controller
             'firstname'         =>  'required',
             'lastname'          =>  'required',
             'email'             =>  'required',
-            'job_title'         =>  'required',
             'date_birth'        =>  'required',
             'gender'            =>  'required',
             'employee_since'    =>  'required'
         ]);
-        $employee = User::find($id);
-       
+        $employee = Employee::find($id);
+        $employee->firstname        =       $request->get('firstname');
+        $employee->lastname         =       $request->get('lastname');      
         $employee->email            =       $request->get('email');
- $employee->active           =       ($request->get('active') == null) ? 0 : 1;
+        $employee->date_birth       =       $request->get('date_birth');
+        $employee->gender           =       $request->get('gender');
+        $employee->employee_since   =       $request->get('employee_since');
+        $employee->active           =       ($request->get('active') == null) ? 0 : 1;
         $employee->save();
         return redirect()->route('admin.employees.index')->with('success', 'Data Updated');
     }
