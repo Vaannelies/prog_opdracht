@@ -70,7 +70,7 @@
                         @endif
 
                             <div class="links">
-                                <a href="{{route('employee.personal')}}"><button class="button">You</button></a>
+                                <a href="{{route('employee.personal')}}"><button class="button">My Profile</button></a>
                                 <a href="{{route('employee.animals.index')}}"><button class="button">Animals</button></a>
                             </div>
                     </div>

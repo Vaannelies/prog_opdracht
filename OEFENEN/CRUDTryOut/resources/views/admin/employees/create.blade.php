@@ -56,6 +56,16 @@
                 <span class="slider"></span>
                 </label>
 
+                <div style="display:flex; justify-content: center;">
+                    <h3>Roles</h3>
+                    <div style="display:flex; flex-direction: column">
+                    @foreach($roles as $role)
+                    <input type="checkbox" name="roles[]" value="{{ $role->id }}"/>
+                        <label>{{$role->name}}</label>
+                    @endforeach
+                    </div>
+                </div>
+
                 <input type="submit" class="button" value="Add"/>
             </div>
         </form>

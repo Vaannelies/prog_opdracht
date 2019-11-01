@@ -34,7 +34,11 @@ class UsersController extends Controller
      */
     public function create()
     {
-        return view('admin.employees.create');
+      
+        $roles = Role::all();
+    
+        return view('admin.employees.create', compact('roles'));
+       
     }
 
 
@@ -54,7 +58,8 @@ class UsersController extends Controller
             'password'          =>  'required',
             'date_birth'        =>  'required',
             'gender'            =>  'required',
-            'employee_since'    =>  'required'
+            'employee_since'    =>  'required',
+            'roles'             =>  'required'
         ]);
         $user = new User([
             'firstname'         =>  $request->get('firstname'),
@@ -69,6 +74,7 @@ class UsersController extends Controller
 
         
         $user->save();
+        $user->roles()->attach($request->get('roles'));
         return redirect()->route('admin.employees.index')->with('success', 'Data Added');
     }
 
@@ -87,18 +93,19 @@ class UsersController extends Controller
         {
             return redirect(route('admin.employees.index'));
         }
-        else{
-        $roles = Role::all();
-        $user = User::find($id);
-        if($user != "")
-        {
-            return view('admin.employees.edit', compact('user', 'roles','id'));
-        }
         else
         {
-            return redirect()->route('admin.employees.index');
+            $roles = Role::all();
+            $user = User::find($id);
+            if($user != "")
+            {
+                return view('admin.employees.edit', compact('user', 'roles','id'));
+            }
+            else
+            {
+                return redirect()->route('admin.employees.index');
+            }
         }
-    }
     }
 
     /**
@@ -118,7 +125,7 @@ class UsersController extends Controller
             'date_birth'        =>  'required',
             'gender'            =>  'required',
             'employee_since'    =>  'required',
-            'roles'           =>  'required'
+            'roles'             =>  'required'
         ]);
         $user = User::find($id);
         $user->roles()->sync($request->roles);
