@@ -53,6 +53,13 @@ class AnimalsTableSeeder extends Seeder
             'food' => 'fruit'
         ]);
 
+        $hiya = Animal::create([
+            'name' => 'June',
+            'date_birth' => '2001-02-16',
+            'gender' => 'Female',
+            'species_id' => $jaguarSpecies['id'],
+            'food' => "McFlurry M&M's"
+        ]);
 
     }
 }

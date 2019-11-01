@@ -78,8 +78,9 @@
                     @foreach($myanimals as $myanimal)
                         <tr>
                             <td>{{$myanimal->id}}</td>
-                            <td><a class="text-button" href="{{action('Admin\AnimalsController@show', $myanimal['id'])}}" >{{$myanimal->name}}</a></td>
+                            <td><a class="text-button" href="{{action('Admin\AnimalsController@detailsEmployee', $myanimal['name'])}}">{{$myanimal->name}}</a></td>
                             <td>{{$myanimal->species->name}}</td>
+
                         </tr>
                     @endforeach
                 </tbody>
@@ -118,18 +119,6 @@
 
 <script>
 
-$(document).ready(function(){
-    $('.delete_form').on('submit', function(){
-        if(confirm("Are you sure you want to delete it?"))
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    });
-});
 
 </script>
 

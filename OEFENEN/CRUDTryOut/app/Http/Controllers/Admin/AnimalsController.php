@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Animal;
 use App\Species;
+use Gate;
 use App\Http\Controllers\Controller;
 
 class AnimalsController extends Controller
@@ -22,6 +23,7 @@ class AnimalsController extends Controller
      */
     public function index()
     {
+        
         $animals = Animal::with('species')->get(); // Eager loading 
         $species = Species::all(); // To show possible filters
         return view('admin.animals.index', compact('animals', 'species'));
@@ -75,15 +77,29 @@ class AnimalsController extends Controller
     {
         $animal = Animal::find($id);
 
-        if($animal != "")
-        {
-            return view('admin.animals.details', compact('animal', 'id'));
-        } 
-        else
-        {
-            return redirect()->route('admin.animals.index');
-        }
+            if($animal != "")
+            {
+                return view('admin.animals.details', compact('animal', 'id'));
+            } 
+            else
+            {
+                return redirect()->route('admin.animals.index');
+            }
+        
+    
+    }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function detailsEmployee($id)
+    {
+        $myanimal = Animal::find($id);
+
+        return view('employee.animals.details', compact('$myanimal'));
     }
 
     /**

@@ -41,7 +41,8 @@ Route::get('/home', '\App\Http\Controllers\HomeController@index')->name('home');
     Route::resource('/employee', 'EmployeesController');
     Route::post('/employee/animals/search', 'Admin\AnimalsController@getSearchEmployee');
     Route::post('/employee/animals/filter', 'Admin\AnimalsController@getFilterEmployee');
-    
+    Route::get('/employee/animals/details', 'Admin\AnimalsController@detailsEmployee');
+    Route::get('/employee/animals/des', 'Admin\AnimalsController@showEmployee');
 
 
 //  ADMIN
@@ -56,7 +57,7 @@ Route::get('/home', '\App\Http\Controllers\HomeController@index')->name('home');
         Route::resource('/animals', 'AnimalsController');
  
         
-
+        
         Route::post('/animals/update', 'AnimalsController@updateStatus');
         Route::post('/animals/search', 'AnimalsController@getSearch');
         Route::post('/animals/filter', 'AnimalsController@getFilter');
