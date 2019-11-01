@@ -6,7 +6,7 @@
 <div class="row">
     <div class="col-md-12">
         <br/>
-        <h3 align="center">About {{$user->name}}</h3>
+        <h3 align="center">About {{$user->firstname}}</h3>
         <br/>
        
         <table>
@@ -16,7 +16,7 @@
             </tr>
             <tr>    
                     <td>Name:</td>
-                    <td>{{$user->firstname}}</td>
+                    <td>{{$user->firstname}} {{$user->lastname}}</td>
             </tr>
             <tr>
                     <td>E-mail:</td>
@@ -31,13 +31,10 @@
                     <td>{{$user->gender}}</td>
             </tr>
             <tr>
-                    <td>Last updated at:</td>
-                    <td>{{$user->updated_at}}</td>
+                    <td>Employee since:</td>
+                    <td>{{$user->employee_since}}</td>
             </tr>
-            <tr>
-                    <td>Created at:</td>
-                    <td>{{$user->created_at}}</td>
-            </tr>
+         
         </table>
     </div>
 </div>

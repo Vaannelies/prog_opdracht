@@ -40,6 +40,7 @@ Route::get('/home', '\App\Http\Controllers\HomeController@index')->name('home');
     Route::get('employee/animals', 'Admin\AnimalsController@myAnimals')->name('employee.animals.index');
     Route::resource('/employee', 'EmployeesController');
     Route::post('/employee/animals/search', 'Admin\AnimalsController@getSearchEmployee');
+    Route::post('/employee/animals/filter', 'Admin\AnimalsController@getFilterEmployee');
     
 
 

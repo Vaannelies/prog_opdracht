@@ -198,7 +198,7 @@ class AnimalsController extends Controller
 
         $species = Species::all();
 
-        $animalSpecies = $request->get('speciesId');
+        $animalSpecies = $request->get('speciesId');            // The selected filters
   
 
         
@@ -256,6 +256,73 @@ class AnimalsController extends Controller
        
 
         return view('admin.animals.index', compact('species', 'animalSpecies', 'specieName'));
+    }
+       
+
+    public function getFilterEmployee(Request $request){
+
+        $user = auth()->user();
+        
+        $myspecies = $user->species()->get();
+
+        $animalSpecies = $request->get('speciesId');        // The selected filters
+  
+
+        
+            if($animalSpecies != "")
+            {
+                $myanimals = Animal::where(function($query) use ($animalSpecies)
+                { 
+                    for($i = 0; $i < count($animalSpecies); $i++)
+                    {
+                        if($i==0)
+                        {
+                            $query->where('species_id', 'LIKE', $animalSpecies[$i]);
+                        } 
+                        else 
+                        {
+                            $query->orWhere('species_id', 'LIKE', $animalSpecies[$i]);
+                        }
+                    }
+                
+                })
+                ->get();
+
+        // The next piece of code makes sure the chosen filter is linked to the species name.
+        // This way, I can show the chosen filters (with the right species names) on the webpage.
+                $specieName = Species::where(function($query) use ($animalSpecies)
+                { 
+                    for($i = 0; $i < count($animalSpecies); $i++)
+                    {
+                        if($i==0)
+                        {
+                            $query->where('id', 'LIKE', $animalSpecies[$i]);
+                        } 
+                        else 
+                        {
+                            $query->orWhere('id', 'LIKE', $animalSpecies[$i]);
+                        }
+                    }
+                
+                })
+                ->get();
+        //      
+
+                
+                if(count($myanimals) > 0)
+                {
+                    return view('employee.animals.index', ['myanimals' => $myanimals], compact('animalSpecies', 'specieName', 'myspecies'));
+                }
+
+            }
+
+            else
+            {
+                return redirect()->route('employee.animals.index');
+            }
+       
+
+        return view('employee.animals.index', compact('myspecies', 'animalSpecies', 'specieName'));
     }
        
 

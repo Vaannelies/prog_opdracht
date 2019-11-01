@@ -122,6 +122,24 @@
         <h1>There are no animals.</h1>
         @endif
     @endif
+
+    <div class="dropdown">
+  <button class="button">Filter</button>
+  <div class="dropdown-content">
+    <!-- <a href="#">Link 1</a>
+    <a href="#">Link 2</a>
+    <a href="#">Link 3</a>
+    <input type="checkbox" name="gorilla"> -->
+        <form method="post" action="{{action('Admin\AnimalsController@getFilterEmployee')}}">
+        {{csrf_field()}}
+            @foreach($myspecies as $specie)
+           <ul> {{$specie->name}} <input type="checkbox" name="speciesId[]" value="{{$specie->id}}"> </ul>
+            @endforeach
+
+            <button type="submit" class="button">Filter</button>
+        </form>
+  </div>
+</div> 
      
 </div>
 
