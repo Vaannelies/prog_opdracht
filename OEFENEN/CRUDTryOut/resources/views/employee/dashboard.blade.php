@@ -23,7 +23,7 @@
 
                         <div class="links">
                             <a href="{{route('employee.personal')}}"><button class="button">You</button></a>
-                            <a href="{{route('employee.dashboard')}}"><button class="button">Animals</button></a>
+                            <a href="{{route('employee.animals')}}"><button class="button">Animals</button></a>
                         </div>
                 </div>
             </div>

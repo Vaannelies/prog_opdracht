@@ -221,7 +221,7 @@ class AnimalsController extends Controller
                 ->get();
         //      
 
-
+                
                 if(count($animals) > 0)
                 {
                     return view('admin.animals.index', ['animals' => $animals], compact('animalSpecies', 'specieName', 'species'));
@@ -252,20 +252,12 @@ class AnimalsController extends Controller
 
     public function myAnimals()
     {
-        //Wat wil ik?
-        //myspecies zijn de species id's van de diersoorten die in de species_user tabel bij jouw user_id staan.
-   
-
+      
+        // Retrieves the animals of a specific user / animal caretaker
         $user = auth()->user();
    
-        $myspecies = $user->species()->get()->pluck('id');
-        print_r($myspecies);
-  
-   
-
-        $myanimals = Animal::where('species_id', 'LIKE', $myspecies)->get();
-
-        print("Lololol".$myanimals);
+        $myspecies = $user->species()->get();
+        $myanimals = Animal::where('species_id', 'LIKE', $myspecies->pluck('id'))->get();
 
 
             return view('employee.animals.index', compact('myspecies', 'myanimals'));
