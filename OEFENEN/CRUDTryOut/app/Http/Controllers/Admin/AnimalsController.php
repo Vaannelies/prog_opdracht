@@ -9,6 +9,12 @@ use App\Http\Controllers\Controller;
 
 class AnimalsController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -252,8 +258,19 @@ class AnimalsController extends Controller
 
         $user = auth()->user();
    
-        $myspecies = $user->Species()->get();
-            return view('employee.animals.index', compact('myspecies'));
+        $myspecies = $user->species()->get()->pluck('id');
+        print_r($myspecies);
+  
+   
+
+        $myanimals = Animal::where('species_id', 'LIKE', $myspecies)->get();
+
+        print("Lololol".$myanimals);
+
+
+            return view('employee.animals.index', compact('myspecies', 'myanimals'));
         
+
+
     }
 }
