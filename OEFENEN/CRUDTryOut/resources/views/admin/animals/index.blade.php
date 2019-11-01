@@ -114,7 +114,9 @@
                         </tr>
                     @endforeach
                 </tbody>
+
             </table>
+         
     @else
         @if(isset($search))
         <h1>There are no results for "{{$search}}"</h1>
@@ -124,24 +126,30 @@
     @endif
      
 </div>
+<div class="container-bottom">
+    <div class="dropdown">
+        <button class="button">Filter</button>
+        <div class="dropdown-content">
+            <!-- <a href="#">Link 1</a>
+            <a href="#">Link 2</a>
+            <a href="#">Link 3</a>
+            <input type="checkbox" name="gorilla"> -->
+                <form method="post" action="{{action('Admin\AnimalsController@getFilter')}}">
+                    {{csrf_field()}}
+                    @foreach($species as $specie)
+                     <ul> {{$specie->name}} <input type="checkbox" name="speciesId[]" value="{{$specie->id}}"> </ul>
+                    @endforeach
 
-<div class="dropdown">
-  <button class="button">Filter</button>
-  <div class="dropdown-content">
-    <!-- <a href="#">Link 1</a>
-    <a href="#">Link 2</a>
-    <a href="#">Link 3</a>
-    <input type="checkbox" name="gorilla"> -->
-        <form method="post" action="{{action('Admin\AnimalsController@getFilter')}}">
-        {{csrf_field()}}
-            @foreach($species as $specie)
-           <ul> {{$specie->name}} <input type="checkbox" name="speciesId[]" value="{{$specie->id}}"> </ul>
-            @endforeach
+                    <button type="submit" class="button">Go</button>
+                </form>
+        </div>
+    </div> 
+    <div class="nav-paginate" style="display:inline; color:red; ">
+       <ul> {{$animals->onEachSide(2)->links()}}</ul>
+    </div>
 
-            <button type="submit" class="button">Filter</button>
-        </form>
-  </div>
-</div> 
+
+</div>
 
 
 

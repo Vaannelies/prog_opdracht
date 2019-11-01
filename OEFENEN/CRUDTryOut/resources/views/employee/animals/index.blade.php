@@ -70,9 +70,6 @@
                         <th>ID</th>
                         <th>Name</th>
                         <th>Species</th>
-                        <th>Last updated at</th>
-                        <th>Created at</th>
-                        <th>Is Active</th>
                     </tr>
                 </thead>
 
@@ -83,34 +80,6 @@
                             <td>{{$myanimal->id}}</td>
                             <td><a class="text-button" href="{{action('Admin\AnimalsController@show', $myanimal['id'])}}" >{{$myanimal->name}}</a></td>
                             <td>{{$myanimal->species->name}}</td>
-                            <td>{{$myanimal->updated_at}}</td>
-                            <td>{{$myanimal->created_at}}</td>
-
-
-
-                            <td>
-                                <form method="post" action="{{action('Admin\AnimalsController@updateStatus')}}">
-                                    {{csrf_field()}}
-                                    <input type="hidden" name="name" value="gert"/>
-                                    <input type="hidden" name="id" value="{{$myanimal->id}}"/>
-                                    <button type="submit" class="tbl-button"> Activate </button>
-                                </form>
-                            </td>
-
-
-
-
-
-                            <td><a href="{{action('Admin\AnimalsController@edit', $myanimal['id'])}}" class="tbl-button">Edit</a></td>
-                            <td>
-                                <form method="post" class="delete_form" action="{{action('Admin\AnimalsController@destroy', $myanimal['id'])}}">
-                                    {{csrf_field()}}
-                                    <input type="hidden" name="_method" value="DELETE" />
-                                    <button type="submit" class="tbl-button" style="background-color:#DD5555;">Delete</button>
-                                </form>
-                                
-                            </td>
-                    
                         </tr>
                     @endforeach
                 </tbody>
@@ -136,7 +105,7 @@
            <ul> {{$specie->name}} <input type="checkbox" name="speciesId[]" value="{{$specie->id}}"> </ul>
             @endforeach
 
-            <button type="submit" class="button">Filter</button>
+            <button type="submit" class="button">Go</button>
         </form>
   </div>
 </div> 

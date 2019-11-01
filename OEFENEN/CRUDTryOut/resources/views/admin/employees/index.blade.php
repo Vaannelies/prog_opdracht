@@ -73,6 +73,8 @@
                             @endforeach
                         </tbody>
                     </table>
+
+                    {{$users->links()}}
                 @endif
        
             

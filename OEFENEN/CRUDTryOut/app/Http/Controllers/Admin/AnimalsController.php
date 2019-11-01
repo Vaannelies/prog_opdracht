@@ -22,7 +22,7 @@ class AnimalsController extends Controller
      */
     public function index()
     {
-        $animals = Animal::with('species')->get(); // Eager loading 
+        $animals = Animal::with('species')->paginate(10); // Eager loading 
         $species = Species::all(); // To show possible filters
         return view('admin.animals.index', compact('animals', 'species'));
     }
