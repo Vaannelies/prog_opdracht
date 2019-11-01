@@ -22,11 +22,6 @@ class UsersTableSeeder extends Seeder
         $adminRole = Role::where('name', 'Admin')->first();
         $employeeRole = Role::where('name', 'Employee')->first();
 
-        DB::table('species_user')->truncate();
-        $gorillaSpecies = Species::where('name', 'Gorilla')->first();
-        $jaguarSpecies  = Species::where('name', 'Jaguar')->first();
-    
-
         $admin = User::create([
             'firstname' => 'poep', 
             'lastname'  => 'van der poep',
@@ -68,14 +63,7 @@ class UsersTableSeeder extends Seeder
 
         $admin->roles()->attach($adminRole);
         $employee       ->roles()->attach($employeeRole);
-        $employee       ->species()->attach($gorillaSpecies);
         $employeeTwo    ->roles()->attach($employeeRole);
-        $employeeTwo    ->species()->attach($jaguarSpecies);
-
-
-
-     
-
     
     }
 }

@@ -74,7 +74,7 @@
                         </tbody>
                     </table>
 
-                    {{$users->links()}}
+              
                 @endif
        
             

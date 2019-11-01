@@ -24,6 +24,25 @@
 
                 <button type="submit" class="button">Sort</button>
             </form>
+
+            <div class="dropdown">
+        <button class="button">Filter</button>
+        <div class="dropdown-content">
+            <!-- <a href="#">Link 1</a>
+            <a href="#">Link 2</a>
+            <a href="#">Link 3</a>
+            <input type="checkbox" name="gorilla"> -->
+                <form method="post" action="{{action('Admin\AnimalsController@getFilter')}}">
+                    {{csrf_field()}}
+                    @foreach($species as $specie)
+                     <ul> {{$specie->name}} <input type="checkbox" name="speciesId[]" value="{{$specie->id}}"> </ul>
+                    @endforeach
+
+                    <button type="submit" class="button">Go</button>
+                </form>
+        </div>
+    </div> 
+    
         @endif
 
         <form style="display:flex; justify-content: flex-end" action="{{action('Admin\AnimalsController@getSearch')}}" method="post">
@@ -127,26 +146,7 @@
      
 </div>
 <div class="container-bottom">
-    <div class="dropdown">
-        <button class="button">Filter</button>
-        <div class="dropdown-content">
-            <!-- <a href="#">Link 1</a>
-            <a href="#">Link 2</a>
-            <a href="#">Link 3</a>
-            <input type="checkbox" name="gorilla"> -->
-                <form method="post" action="{{action('Admin\AnimalsController@getFilter')}}">
-                    {{csrf_field()}}
-                    @foreach($species as $specie)
-                     <ul> {{$specie->name}} <input type="checkbox" name="speciesId[]" value="{{$specie->id}}"> </ul>
-                    @endforeach
 
-                    <button type="submit" class="button">Go</button>
-                </form>
-        </div>
-    </div> 
-    <div class="nav-paginate" style="display:inline; color:red; ">
-       <ul> {{$animals->onEachSide(2)->links()}}</ul>
-    </div>
 
 
 </div>

@@ -15,8 +15,6 @@ class AddColumnsToAnimalsTable extends Migration
     {
         Schema::table('animals', function (Blueprint $table) {
             $table->unsignedBigInteger('species_id');
-            $table  ->foreign('species_id')
-                    ->references('id')->on('species'); 
             $table->string('category');
             $table->string('food');
         });

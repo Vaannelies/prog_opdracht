@@ -14,7 +14,7 @@ class AnimalsTableSeeder extends Seeder
     public function run()
     {
       
-     
+        Animal::truncate();
         
         $chimpanzeeSpecies = Species::where('name', 'Chimpanzee')->first();
         $gorillaSpecies = Species::where('name', 'Gorilla')->first();
