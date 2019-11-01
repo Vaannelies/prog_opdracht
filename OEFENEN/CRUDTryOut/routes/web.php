@@ -27,7 +27,6 @@ Auth::routes();
 //  FOR BOTH ADMIN AND EMPLOYEES
 
 Route::get('/home', '\App\Http\Controllers\HomeController@index')->name('home');
-Route::post('/animals/filter', 'Admin\AnimalsController@getFilter');
 
 //  EMPLOYEES
 
@@ -40,6 +39,7 @@ Route::post('/animals/filter', 'Admin\AnimalsController@getFilter');
     Route::get('employee/personal', 'Admin\UsersController@showMe')->name('employee.personal');
     Route::get('employee/animals', 'Admin\AnimalsController@myAnimals')->name('employee.animals.index');
     Route::resource('/employee', 'EmployeesController');
+    Route::post('/employee/animals/search', 'Admin\AnimalsController@getSearchEmployee');
     
 
 
@@ -58,7 +58,7 @@ Route::post('/animals/filter', 'Admin\AnimalsController@getFilter');
 
         Route::post('/animals/update', 'AnimalsController@updateStatus');
         Route::post('/animals/search', 'AnimalsController@getSearch');
-       
+        Route::post('/animals/filter', 'AnimalsController@getFilter');
 
         //  ADMIN EMPLOYEES
         Route::resource('/employees', 'UsersController');

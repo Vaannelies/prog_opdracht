@@ -168,6 +168,26 @@ class AnimalsController extends Controller
         return view('admin.animals.index', compact('search', 'species'));
     }
 
+    public function getSearchEmployee(Request $request){
+
+        $user = auth()->user();
+        
+        $myspecies = $user->species()->get();
+        $search = $request->get('search');
+        if($search != ""){
+            $myanimals = Animal::where('name', 'LIKE', '%' . $search . '%')->where('species_id', 'LIKE', $myspecies->pluck('id'))
+                                ->orWhere('id', 'LIKE', '%' . $search . '%')->where('species_id', 'LIKE', $myspecies->pluck('id'))->paginate(5);
+       
+            if(count($myanimals) > 0)
+                return view('employee.animals.index', ['myanimals' => $myanimals], compact('search', 'myspecies'));
+        }
+
+        else{
+            return redirect()->route('employee.animals.index');
+        }
+        return view('employee.animals.index', compact('search', 'myspecies'));
+    }
+
 
 
 

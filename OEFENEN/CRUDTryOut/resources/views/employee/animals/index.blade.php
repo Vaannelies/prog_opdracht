@@ -26,7 +26,7 @@
             </form>
         @endif
 
-        <form style="display:flex; justify-content: flex-end" action="{{action('Admin\AnimalsController@getSearch')}}" method="post">
+        <form style="display:flex; justify-content: flex-end" action="{{action('Admin\AnimalsController@getSearchEmployee')}}" method="post">
             {{csrf_field()}}
             
             <input class="textbox" style=height:20px;" type="text" name="search" placeholder="Search">
