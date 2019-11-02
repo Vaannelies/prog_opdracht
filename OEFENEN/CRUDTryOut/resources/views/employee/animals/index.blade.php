@@ -78,7 +78,15 @@
                     @foreach($myanimals as $myanimal)
                         <tr>
                             <td>{{$myanimal->id}}</td>
-                            <td><a class="text-button" href="{{action('Admin\AnimalsController@detailsEmployee', $myanimal['name'])}}">{{$myanimal->name}}</a></td>
+                            <td>
+                                <form action="{{action('Admin\AnimalsController@detailsEmployee')}}" method="get">
+                                {{csrf_field()}}
+                                <input type="hidden" name="id" value="{{$myanimal->id}}">
+                                <input type="submit" value="{{$myanimal->name}}">
+                                
+                                </form>
+                            </td>
+                            <td><a class="text-button" href="{{action('Admin\AnimalsController@detailsEmployee', $myanimal['id'])}}">{{$myanimal->name}}</a></td>
                             <td>{{$myanimal->species->name}}</td>
 
                         </tr>

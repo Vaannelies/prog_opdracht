@@ -95,11 +95,12 @@ class AnimalsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function detailsEmployee($id)
+    public function detailsEmployee(Request $request)
     {
+        $id        = $request->get('id');
         $myanimal = Animal::find($id);
 
-        return view('employee.animals.details', compact('$myanimal'));
+        return view('employee.animals.details', compact('myanimal', 'id'));
     }
 
     /**
