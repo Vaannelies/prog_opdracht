@@ -64,9 +64,7 @@
                     <input type="text" name="food" class="textbox"
                     placeholder="Enter food" value="{{$animal->food}}"/>
                     
-                    <textarea rows="4" cols="50" name="description" form="edit_form" placeholder="Enter description" class="textbox">
-                    {{$animal->description}}
-                    </textarea>
+                    <textarea rows="4" cols="50" name="description" form="edit_form" placeholder="Enter description..." class="textbox">{{$animal->description}}</textarea>
 
                     <input type="submit" class="button" value="Submit"/>
             </div>

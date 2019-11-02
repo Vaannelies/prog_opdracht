@@ -50,9 +50,7 @@
                 placeholder="Enter food"/>
 
 
-                <textarea rows="4" cols="50" name="description" form="create_form" placeholder="Enter description" class="textbox">
-                Enter description...
-                </textarea>
+                <textarea rows="4" cols="50" name="description" form="create_form" placeholder="Enter description..." class="textbox"></textarea>
 
                 <input type="submit" class="button" value="Add"/>
             </div>

@@ -19,10 +19,7 @@
                                 {{csrf_field()}}
                                         <input type="hidden" name="id" value="{{$myanimal->id}}">
                                           
-                                        <textarea rows="4" cols="50" name="description" form="edit_description" placeholder="Enter description" class="textbox"
-                                        style="text-align:left">
-                                        {{$myanimal->description}}
-                                        </textarea>
+                                        <textarea rows="4" cols="50" name="description" form="edit_description" placeholder="Enter description..." class="textbox" style="text-align:left">{{$myanimal->description}}</textarea>
 
                                         <input type="submit" value="Submit">
                                 </form>
