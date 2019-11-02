@@ -54,6 +54,10 @@
                     <td>Area:</td>
                     <td>{{$animal->species->area}}</td>
             </tr>
+            <tr>
+                    <td>Description:</td>
+                    <td>{{$animal->description}}</td>
+            </tr>
         </table>
     </div>
 </div>

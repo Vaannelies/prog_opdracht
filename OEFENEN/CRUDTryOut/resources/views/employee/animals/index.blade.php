@@ -104,9 +104,7 @@
                             </td>
                             <td><a class="text-button" href="{{action('Admin\AnimalsController@detailsEmployee', $myanimal['id'])}}">{{$myanimal->name}}</a></td>
                             <td>{{$myanimal->species->name}}</td>
-                            @can('write-comment')
-                            <td>HOIIIIIII</td>
-                            @endcan
+                          
 
                         </tr>
                     @endforeach

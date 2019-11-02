@@ -54,6 +54,19 @@
                     <td>Area:</td>
                     <td>{{$myanimal->species->area}}</td>
             </tr>
+            <tr>
+                    <td>Description:</td>
+                    <td>{{$myanimal->description}}</td>
+                    @can('write-comment')
+                        <td>
+                                <form action="action('Admin\AnimalsController@editDescription')" method="post">
+                                        <input type="hidden" name="id" value="{{$myanimal->id}}">
+                                        <input type="submit" value="Edit">
+                                </form>
+                        </td>
+                    @endcan
+            </tr>
+     
         </table>
     </div>
 </div>

@@ -63,7 +63,7 @@ class AuthServiceProvider extends ServiceProvider
 
         Gate::define('write-comment', function($user)
         {
-            return $user->isOld(5);
+            return $user->isOld(5); //days
         });
     }
 }

@@ -26,7 +26,8 @@ class AnimalsTableSeeder extends Seeder
             'date_birth' => '2019-02-03',
             'gender' => 'Female',
             'species_id' => $chimpanzeeSpecies['id'],
-            'food' => 'fruit'
+            'food' => 'fruit',
+            'description' => "Doesn't understand basic math."
         ]);
 
         $monini = Animal::create([
@@ -34,7 +35,8 @@ class AnimalsTableSeeder extends Seeder
             'date_birth' => '2019-02-03',
             'gender' => 'Male',
             'species_id' => $gorillaSpecies['id'],
-            'food' => 'fruit'
+            'food' => 'fruit',
+            'description' => "Don't wake him up!"
         ]);
 
         $veno = Animal::create([
@@ -42,7 +44,8 @@ class AnimalsTableSeeder extends Seeder
             'date_birth' => '2019-02-03',
             'gender' => 'Male',
             'species_id' => $jaguarSpecies['id'],
-            'food' => 'fruit'
+            'food' => 'fruit',
+            'description' => "Will only eat his food when no one's around."
         ]);
 
         $kara = Animal::create([
@@ -50,7 +53,8 @@ class AnimalsTableSeeder extends Seeder
             'date_birth' => '2019-02-03',
             'gender' => 'Female',
             'species_id' => $redPandaSpecies['id'],
-            'food' => 'fruit'
+            'food' => 'fruit',
+            'description' => 'Moody.'
         ]);
 
         $hiya = Animal::create([
@@ -58,7 +62,8 @@ class AnimalsTableSeeder extends Seeder
             'date_birth' => '2001-02-16',
             'gender' => 'Female',
             'species_id' => $jaguarSpecies['id'],
-            'food' => "McFlurry M&M's"
+            'food' => "McFlurry M&M's",
+            'description' => "Escaped the zoo TWICE!"
         ]);
 
     }

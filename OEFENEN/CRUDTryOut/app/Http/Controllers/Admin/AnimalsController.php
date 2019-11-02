@@ -53,14 +53,16 @@ class AnimalsController extends Controller
             'date_birth' => 'required',
             'gender' => 'required',
             'species_id' => 'required',
-            'food' => 'required'
+            'food' => 'required',
+            
         ]);
         $animal = new Animal([
             'name'  =>  $request->get('name'),
             'date_birth' => $request->get('date_birth'),
             'gender' => $request->get('gender'),
             'species_id' => $request->get('species_id'),
-            'food' => $request->get('food')
+            'food' => $request->get('food'),
+            'description' => $request->get('description')
 
         ]);
         $animal->save();
@@ -145,6 +147,7 @@ class AnimalsController extends Controller
         $animal->gender         =       $request->get('gender');
         $animal->species_id     =       $request->get('species_id');
         $animal->food           =       $request->get('food');
+        $animal->description    =       $request->get('description');
         $animal->save();
         return redirect()->route('admin.animals.index')->with('success', 'Data Updated');
     }

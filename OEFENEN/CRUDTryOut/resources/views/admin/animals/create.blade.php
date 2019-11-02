@@ -20,7 +20,7 @@
             <p>{{ \Session::get('success') }}</p>
         </div>
         @endif
-        <form method="post" action="{{route('admin.animals.index')}}"> <!-- of animals/create? -->
+        <form id="create_form" method="post" action="{{route('admin.animals.index')}}"> <!-- of animals/create? -->
             {{csrf_field()}}
             <div class="form-group">
                 <input type="text" name="name" class="textbox"
@@ -48,6 +48,11 @@
 
                 <input type="text" name="food" class="textbox"
                 placeholder="Enter food"/>
+
+
+                <textarea rows="4" cols="50" name="description" form="create_form" placeholder="Enter description" class="textbox">
+                Enter description...
+                </textarea>
 
                 <input type="submit" class="button" value="Add"/>
             </div>

@@ -19,7 +19,7 @@
 
         @endif
        
-        <form method="post" action="{{action('Admin\AnimalsController@update', $id)}}">
+        <form id="edit_form" method="post" action="{{action('Admin\AnimalsController@update', $id)}}">
             {{csrf_field()}}
             <div class="form-group">
                 <input type="hidden" name="_method" value="PATCH" />
@@ -63,6 +63,10 @@
 
                     <input type="text" name="food" class="textbox"
                     placeholder="Enter food" value="{{$animal->food}}"/>
+                    
+                    <textarea rows="4" cols="50" name="description" form="edit_form" placeholder="Enter description" class="textbox">
+                    {{$animal->description}}
+                    </textarea>
 
                     <input type="submit" class="button" value="Submit"/>
             </div>
