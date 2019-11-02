@@ -13,13 +13,14 @@
           
             <tr>
                     <td>Description:</td>
-                    <td>{{$myanimal->description}}</td>
                     @can('write-comment')
                         <td>
                                 <form id="edit_description" action="{{action('Admin\AnimalsController@updateDescription')}}" method="post">
+                                {{csrf_field()}}
                                         <input type="hidden" name="id" value="{{$myanimal->id}}">
                                           
-                                        <textarea rows="4" cols="50" name="description" form="edit_description" placeholder="Enter description" class="textbox">
+                                        <textarea rows="4" cols="50" name="description" form="edit_description" placeholder="Enter description" class="textbox"
+                                        style="text-align:left">
                                         {{$myanimal->description}}
                                         </textarea>
 

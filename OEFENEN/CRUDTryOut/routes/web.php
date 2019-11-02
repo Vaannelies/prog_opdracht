@@ -45,7 +45,7 @@ Route::get('/home', '\App\Http\Controllers\HomeController@index')->name('home');
 
     Route::post('/employee/animals/details', 'Admin\AnimalsController@detailsEmployee');
     Route::post('/employee/animals/description', 'Admin\AnimalsController@editDescription');
-    Route::post('/employee/animals/updatedescription', 'Admin\AnimalsController@updateDescription');
+    Route::post('/employee/animals/update_description', 'Admin\AnimalsController@updateDescription');
 
 
 //  ADMIN

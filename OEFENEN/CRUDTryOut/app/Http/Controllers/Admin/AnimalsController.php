@@ -102,7 +102,18 @@ class AnimalsController extends Controller
         $id        = $request->get('id');
         $myanimal = Animal::find($id);
 
-        return view('employee.animals.details', compact('myanimal', 'id'));
+        // $user = auth()->user();
+        // $myspecies = $user->species()->get();
+
+        
+        // if($myanimal = Animal::whereIn('species_id', 'LIKE', $myspecies->pluck('id')))
+        // {
+            return view('employee.animals.details', compact('myanimal', 'id'));
+        // }
+
+        // return view('employee.animals.index');
+
+    
     }
 
     /**
@@ -383,12 +394,21 @@ class AnimalsController extends Controller
 
     public function updateDescription(Request $request)
     {
+        $user = auth()->user();
+        $myspecies = $user->species()->get();
+
         $id = $request->get('id');
         $myanimal = Animal::find($id);
+        // if($myanimal = Animal::where('species_id', 'LIKE', $myspecies->pluck('id')))
+        // {
+      
 
         $myanimal->description    =       $request->get('description');
         $myanimal->save();
 
-        return view('employee.animals.index');
+        $myanimals = Animal::where('species_id', 'LIKE', $myspecies->pluck('id'))->get();
+
+        return view('employee.animals.index', compact('myanimals', 'myspecies'));
+        // }
     }
 }
