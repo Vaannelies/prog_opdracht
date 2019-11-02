@@ -62,6 +62,19 @@ class User extends Authenticatable
         return false;
     }
 
+    public function isOld($days)
+    {
+        $difference = "-" . $days . " days"; // turns days into a string with the right structure
+        $max_date = date('Y-m-d', strtotime($difference));
+        $employee_since = $this->employee_since;
+        if($employee_since <= $max_date)
+        {
+            return true;
+        }
+
+        return false;
+    }
+  
     public function species()
     {
         return $this->belongsToMany('App\Species');

@@ -60,5 +60,10 @@ class AuthServiceProvider extends ServiceProvider
         {
             return $user->hasRole('Admin');
         });
+
+        Gate::define('write-comment', function($user)
+        {
+            return $user->isOld(5);
+        });
     }
 }
