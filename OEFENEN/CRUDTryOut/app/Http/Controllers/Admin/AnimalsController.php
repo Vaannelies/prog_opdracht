@@ -186,7 +186,9 @@ class AnimalsController extends Controller
         $species = Species::all();
         $animalSpecies = $request->get('speciesId'); 
         $search = $request->get('search');
-        if($search != "" && $animalSpecies == ""){
+
+
+        if($search != "" && $animalSpecies == ""){                  // ONLY SEARCH
             $animals = Animal::where('name', 'LIKE', '%' . $search . '%')
                                 ->orWhere('id', 'LIKE', '%' . $search . '%')->get();
        
@@ -194,7 +196,7 @@ class AnimalsController extends Controller
                 return view('admin.animals.index', ['animals' => $animals], compact('search', 'species', 'animalSpecies'));
         }
 
-        elseif($search != "" && $animalSpecies != ""){
+        elseif($search != "" && $animalSpecies != ""){              // SEARCH AND THEN FILTER
             $animals = Animal::where(function($query) use ($animalSpecies, $search)
                     { 
                         for($i = 0; $i < count($animalSpecies); $i++)
@@ -353,17 +355,17 @@ class AnimalsController extends Controller
         
             if($animalSpecies != "")
             {
-                $myanimals = Animal::where(function($query) use ($animalSpecies)
+                $myanimals = Animal::where(function($query) use ($animalSpecies, $myspecies)
                 { 
                     for($i = 0; $i < count($animalSpecies); $i++)
                     {
                         if($i==0)
                         {
-                            $query->where('species_id', 'LIKE', $animalSpecies[$i]);
+                            $query->where('species_id', 'LIKE', $animalSpecies[$i])->where('species_id', 'LIKE', $myspecies->pluck('id')); //If you manipulate the species id, it won't show you any extra animals.
                         } 
                         else 
                         {
-                            $query->orWhere('species_id', 'LIKE', $animalSpecies[$i]);
+                            $query->orWhere('species_id', 'LIKE', $animalSpecies[$i])->where('species_id', 'LIKE', $myspecies->pluck('id'));
                         }
                     }
                 
