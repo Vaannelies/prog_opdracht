@@ -197,4 +197,17 @@ class UsersController extends Controller
     
     }
 
+
+
+    public function updateStatus(Request $request) 
+    { 
+     
+        $user = User::find($request->id);
+        $user->active = $request->active;
+        $user->save();
+        
+        return redirect()->route('admin.employees.index')->with('success', 'Data Updated');
+    }
+
+
 }

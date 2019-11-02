@@ -51,12 +51,27 @@
                                             @else 
                                                 Yes
                                             @endif
-
+                                            <span id="active_text" class="toggle-class">
+                                            
+                                            </span>
+                                        <form method="" action="{{action('\App\Http\Controllers\Admin\UsersController@updateStatus', $user['id'])}}">
+                                            {{csrf_field()}}
                                             <label id="switch" class="switch">
-                                            <input id="check[{{$user->id}}]" type="checkbox" name="active" class="textbox" value="1"/>
+                                            <input type="hidden" name="id" value="{{$user->id}}"/>
+                                            <input data-id="{{$user->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="1" data-off="0" {{ $user->active ? 'checked' : '' }}/>
                                             <span class="slider"></span>
                                             </label>
+                                        </form>
+
+                                     
+
+
+
+
                                     </td>
+
+
+                            
 
                                     <td><a href="{{action('\App\Http\Controllers\Admin\UsersController@edit', $user['id'])}}" class="tbl-button">Edit</a></td>
                                
@@ -80,17 +95,81 @@
             
 </div>
 <script>            //WERKT NIET!
-    window.addEventListener("load", function(){
-        for(let i = 0; i < count(<?php echo $users?>); i++);
-        var employee_status<?php echo $user['id']?> = <?php echo $user['active']?>;
-        console.log(employee_status<?php echo $user['id']?>)
-        if(employee_status == 0)
-        {
-            document.getElementById("check[<?php echo $user['id']?>]").checked = false;
-        } else { 
-            document.getElementById("check[<?php echo $user['id']?>]").checked = true;
+    // window.addEventListener("load", function()
+    //     {
+
+    //         <?php $jsusers = json_encode($users); ?>
+    //         var users = <?=$jsusers?>;
+            
+    //         var people = ['Hoi', 'Doei', 'Grapje x'];
+    //         console.log(users);
+    //         console.log(people);
+    //         users.forEach(function()
+    //         {
+    //             var employee_status<?php echo $user['id']?> = <?php echo $user['active']?>;
+    //             console.log(employee_status<?php echo $user['id']?>);
+    //             console.log("HOI");
+    //             console.log(<?php echo $user['active']?>);
+    //             console.log(<?php echo $user['firstname']?>);
+                
+    //             if(employee_status<?php echo $user['id']?> == 0)
+    //                 {
+    //                     document.getElementById("check<?php echo $user['id']?>").checked = false;
+    //                 } 
+    //             else 
+    //                 { 
+    //                     document.getElementById("check<?php echo $user['id']?>").checked = true;
+    //                 }
+    //         }
+    //                     )
+    //     }
+                        
+    //                        );
+
+
+    $(function() {
+
+$('.toggle-class').change(function() {
+    var text = $(this).getElementById('active_text');
+
+    if($(this).prop('checked') == true) {
+        text.innerHTML = "Yes"
+    }
+    else
+    {
+        text.innerHTML = "No"
+    }
+
+
+    var active = $(this).prop('checked') == true ? 1 : 0; 
+
+    var id = $(this).data('id'); 
+
+     
+
+    $.ajax({
+
+        type: "POST",
+
+        dataType: "json",
+
+        url: 'employees/update',
+
+        data: { '_token' : '{{csrf_token()}}',
+                'active': active, 
+                'id': id
+              },
+
+        success: function(data){
+
+          console.log(data.success)
+
         }
-    })
+    });
+
+})
+
+})
 
 
 

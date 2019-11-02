@@ -67,6 +67,7 @@ Route::get('/home', '\App\Http\Controllers\HomeController@index')->name('home');
 
         //  ADMIN EMPLOYEES
         Route::resource('/employees', 'UsersController');
+        Route::post('/employees/update', 'UsersController@updateStatus');
     });
 
     // ADMINS LOGIN
