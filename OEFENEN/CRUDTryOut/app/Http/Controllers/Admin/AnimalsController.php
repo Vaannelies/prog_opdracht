@@ -186,18 +186,42 @@ class AnimalsController extends Controller
         $species = Species::all();
         $animalSpecies = $request->get('speciesId'); 
         $search = $request->get('search');
-        if($search != ""){
+        if($search != "" && $animalSpecies == ""){
             $animals = Animal::where('name', 'LIKE', '%' . $search . '%')
                                 ->orWhere('id', 'LIKE', '%' . $search . '%')->get();
        
             if(count($animals) > 0)
-                return view('admin.animals.index', ['animals' => $animals], compact('search', 'species'));
+                return view('admin.animals.index', ['animals' => $animals], compact('search', 'species', 'animalSpecies'));
+        }
+
+        elseif($search != "" && $animalSpecies != ""){
+            $animals = Animal::where(function($query) use ($animalSpecies, $search)
+                    { 
+                        for($i = 0; $i < count($animalSpecies); $i++)
+                        {
+                            if($i==0)
+                            {
+                                $query->where('species_id', 'LIKE', $animalSpecies[$i])->where('name', 'LIKE', '%' . $search . '%')
+                                ->orWhere('id', 'LIKE', '%' . $search . '%');
+                            } 
+                            else 
+                            {
+                                $query->orWhere('species_id', 'LIKE', $animalSpecies[$i])->where('name', 'LIKE', '%' . $search . '%')
+                                ->orWhere('id', 'LIKE', '%' . $search . '%');
+                            }
+                        }
+                    
+                    })
+                    ->get();
+
+            if(count($animals) > 0)
+                return view('admin.animals.index', ['animals' => $animals], compact('search', 'species', 'animalSpecies'));
         }
 
         else{
             return redirect()->route('admin.animals.index');
         }
-        return view('admin.animals.index', compact('search', 'species'));
+        return view('admin.animals.index', compact('search', 'species', 'animalSpecies'));
     }
 
     public function getSearchEmployee(Request $request){
@@ -235,7 +259,7 @@ class AnimalsController extends Controller
   
 
         
-            if($animalSpecies != "" && $search == "")
+            if($animalSpecies != "" && $search == "")                   //ONLY FILTER
             {
                 $animals = Animal::where(function($query) use ($animalSpecies)
                 { 
@@ -255,7 +279,7 @@ class AnimalsController extends Controller
                 ->get();
             }
 
-                elseif($animalSpecies != "" && $search != "")
+                elseif($animalSpecies != "" && $search != "")              //FILTER AND THEN SEARCH
                 {
                     $animals = Animal::where(function($query) use ($animalSpecies, $search)
                     { 

@@ -52,6 +52,11 @@
             {{csrf_field()}}
             
             <input class="textbox" style=height:20px;" type="text" name="search" placeholder="Search">
+            @if(isset($animalSpecies))
+                @foreach($animalSpecies as $animalSpecie)
+            <input type="hidden" name="speciesId[]" value="{{$animalSpecie}}">
+                @endforeach
+            @endif
 
             <button style="height:42px; width:50px;" type="submit" class="button">
             <img style="height: 100%" src="https://www.uvm.edu/www/images/map/search-white.png">
