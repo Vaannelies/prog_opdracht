@@ -60,8 +60,6 @@ Route::get('/home', '\App\Http\Controllers\HomeController@index')->name('home');
         Route::resource('/animals', 'AnimalsController');
  
         
-        
-        Route::post('/animals/update', 'AnimalsController@updateStatus');
         Route::post('/animals/search', 'AnimalsController@getSearch');
         Route::post('/animals/filter', 'AnimalsController@getFilter');
 

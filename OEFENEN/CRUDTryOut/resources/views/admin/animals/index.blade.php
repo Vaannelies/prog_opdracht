@@ -91,7 +91,6 @@
                         <th>Species</th>
                         <th>Last updated at</th>
                         <th>Created at</th>
-                        <th>Is Active</th>
                     </tr>
                 </thead>
 
@@ -104,19 +103,6 @@
                             <td>{{$animal->species->name}}</td>
                             <td>{{$animal->updated_at}}</td>
                             <td>{{$animal->created_at}}</td>
-
-
-
-                            <td>
-                                <form method="post" action="{{action('Admin\AnimalsController@updateStatus')}}">
-                                    {{csrf_field()}}
-                                    <input type="hidden" name="name" value="gert"/>
-                                    <input type="hidden" name="id" value="{{$animal->id}}"/>
-                                    <button type="submit" class="tbl-button"> Activate </button>
-                                </form>
-                            </td>
-
-
 
 
 
