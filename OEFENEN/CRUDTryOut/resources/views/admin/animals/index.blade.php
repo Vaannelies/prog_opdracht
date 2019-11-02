@@ -38,6 +38,9 @@
                      <ul> {{$specie->name}} <input type="checkbox" name="speciesId[]" value="{{$specie->id}}"> </ul>
                     @endforeach
 
+                    @if(isset($search))
+                    <input type="hidden" name="search" value="{{$search}}">
+                    @endif
                     <button type="submit" class="button">Go</button>
                 </form>
         </div>

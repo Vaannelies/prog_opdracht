@@ -184,10 +184,11 @@ class AnimalsController extends Controller
     public function getSearch(Request $request){
 
         $species = Species::all();
+        $animalSpecies = $request->get('speciesId'); 
         $search = $request->get('search');
         if($search != ""){
             $animals = Animal::where('name', 'LIKE', '%' . $search . '%')
-                                ->orWhere('id', 'LIKE', '%' . $search . '%')->paginate(5);
+                                ->orWhere('id', 'LIKE', '%' . $search . '%')->get();
        
             if(count($animals) > 0)
                 return view('admin.animals.index', ['animals' => $animals], compact('search', 'species'));
@@ -207,7 +208,7 @@ class AnimalsController extends Controller
         $search = $request->get('search');
         if($search != ""){
             $myanimals = Animal::where('name', 'LIKE', '%' . $search . '%')->where('species_id', 'LIKE', $myspecies->pluck('id'))
-                                ->orWhere('id', 'LIKE', '%' . $search . '%')->where('species_id', 'LIKE', $myspecies->pluck('id'))->paginate(5);
+                                ->orWhere('id', 'LIKE', '%' . $search . '%')->where('species_id', 'LIKE', $myspecies->pluck('id'))->get();
        
             if(count($myanimals) > 0)
                 return view('employee.animals.index', ['myanimals' => $myanimals], compact('search', 'myspecies'));
@@ -230,10 +231,11 @@ class AnimalsController extends Controller
         $species = Species::all();
 
         $animalSpecies = $request->get('speciesId');            // The selected filters
+        $search = $request->get('search');
   
 
         
-            if($animalSpecies != "")
+            if($animalSpecies != "" && $search == "")
             {
                 $animals = Animal::where(function($query) use ($animalSpecies)
                 { 
@@ -251,7 +253,32 @@ class AnimalsController extends Controller
                 
                 })
                 ->get();
+            }
 
+                elseif($animalSpecies != "" && $search != "")
+                {
+                    $animals = Animal::where(function($query) use ($animalSpecies, $search)
+                    { 
+                        for($i = 0; $i < count($animalSpecies); $i++)
+                        {
+                            if($i==0)
+                            {
+                                $query->where('species_id', 'LIKE', $animalSpecies[$i])->where('name', 'LIKE', '%' . $search . '%')
+                                ->orWhere('id', 'LIKE', '%' . $search . '%');
+                            } 
+                            else 
+                            {
+                                $query->orWhere('species_id', 'LIKE', $animalSpecies[$i])->where('name', 'LIKE', '%' . $search . '%')
+                                ->orWhere('id', 'LIKE', '%' . $search . '%');
+                            }
+                        }
+                    
+                    })
+                    ->get();
+                }
+
+                if($animalSpecies != "")
+                {
         // The next piece of code makes sure the chosen filter is linked to the species name.
         // This way, I can show the chosen filters (with the right species names) on the webpage.
                 $specieName = Species::where(function($query) use ($animalSpecies)
@@ -275,18 +302,18 @@ class AnimalsController extends Controller
                 
                 if(count($animals) > 0)
                 {
-                    return view('admin.animals.index', ['animals' => $animals], compact('animalSpecies', 'specieName', 'species'));
+                    return view('admin.animals.index', ['animals' => $animals], compact('animalSpecies', 'specieName', 'species', 'search'));
                 }
 
             }
 
             else
             {
-                return redirect()->route('admin.animals.index');
+                return redirect()->route('admin.animals.index', 'search');
             }
        
 
-        return view('admin.animals.index', compact('species', 'animalSpecies', 'specieName'));
+        return view('admin.animals.index', compact('species', 'animalSpecies', 'specieName', 'search'));
     }
        
 
