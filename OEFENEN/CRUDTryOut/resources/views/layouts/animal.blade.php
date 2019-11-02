@@ -390,8 +390,13 @@
             @if (Route::has('login'))
             @auth
                 <a href="{{ route('home') }}">HOME</a>
+                @can('login-admins')
                 <a href="{{route('admin.animals.create')}}">ADD</a>
                 <a href="{{route('admin.animals.index')}}">VIEW</a>
+                @endcan
+                @can('login-employees')
+                <a href="{{route('employee.animals.index')}}">VIEW</a>
+                @endcan
              
                 <a class="dropdown-item" href="{{ route('logout') }}"
                     onclick="event.preventDefault();
