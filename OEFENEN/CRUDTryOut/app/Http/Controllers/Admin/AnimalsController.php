@@ -372,4 +372,23 @@ class AnimalsController extends Controller
 
 
     }
+
+    public function editDescription(Request $request)
+    {
+        $id = $request->get('id');
+        $myanimal = Animal::find($id);
+
+        return view('employee.animals.description', compact('myanimal'));
+    }
+
+    public function updateDescription(Request $request)
+    {
+        $id = $request->get('id');
+        $myanimal = Animal::find($id);
+
+        $myanimal->description    =       $request->get('description');
+        $myanimal->save();
+
+        return view('employee.animals.index');
+    }
 }

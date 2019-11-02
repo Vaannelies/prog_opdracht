@@ -96,7 +96,7 @@
                         <tr>
                             <td>{{$myanimal->id}}</td>
                             <td>
-                                <form action="{{action('Admin\AnimalsController@detailsEmployee')}}" method="get">
+                                <form action="{{action('Admin\AnimalsController@detailsEmployee')}}" method="post">
                                 {{csrf_field()}}
                                 <input type="hidden" name="id" value="{{$myanimal->id}}">
                                 <input type="submit" value="{{$myanimal->name}}">

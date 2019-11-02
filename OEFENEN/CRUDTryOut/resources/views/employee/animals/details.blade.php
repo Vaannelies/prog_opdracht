@@ -59,7 +59,8 @@
                     <td>{{$myanimal->description}}</td>
                     @can('write-comment')
                         <td>
-                                <form action="action('Admin\AnimalsController@editDescription')" method="post">
+                                <form action="{{action('Admin\AnimalsController@editDescription')}}" method="post">
+                                {{csrf_field()}}
                                         <input type="hidden" name="id" value="{{$myanimal->id}}">
                                         <input type="submit" value="Edit">
                                 </form>
