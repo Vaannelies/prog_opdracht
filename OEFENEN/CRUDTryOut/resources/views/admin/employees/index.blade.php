@@ -46,14 +46,7 @@
 
                                     <td>{{$user->created_at}}</td>
                                     <td>
-                                            @if($user->active == 0) <!-- No double brackets needed, since you don't actually SHOW the value of $user->active. It's not that dangerous. (OWASP) -->
-                                                No
-                                            @else 
-                                                Yes
-                                            @endif
-                                            <span id="active_text" class="toggle-class">
-                                            
-                                            </span>
+                                           
                                         <form method="" action="{{action('\App\Http\Controllers\Admin\UsersController@updateStatus', $user['id'])}}">
                                             {{csrf_field()}}
                                             <label id="switch" class="switch">
@@ -63,11 +56,7 @@
                                             </label>
                                         </form>
 
-                                     
-
-
-
-
+                            
                                     </td>
 
 
@@ -130,15 +119,7 @@
     $(function() {
 
 $('.toggle-class').change(function() {
-    var text = $(this).getElementById('active_text');
-
-    if($(this).prop('checked') == true) {
-        text.innerHTML = "Yes"
-    }
-    else
-    {
-        text.innerHTML = "No"
-    }
+    
 
 
     var active = $(this).prop('checked') == true ? 1 : 0; 
