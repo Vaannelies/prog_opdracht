@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Support\Facades\Hash;
 use App\Role;
 use App\User;
+use App\Species;
 use Gate;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -36,8 +37,9 @@ class UsersController extends Controller
     {
       
         $roles = Role::all();
+        $species = Species::all();
     
-        return view('admin.employees.create', compact('roles'));
+        return view('admin.employees.create', compact('roles', 'species'));
        
     }
 
@@ -59,7 +61,8 @@ class UsersController extends Controller
             'date_birth'        =>  'required',
             'gender'            =>  'required',
             'employee_since'    =>  'required',
-            'roles'             =>  'required'
+            'roles'             =>  'required',
+            'species_id'        =>  'required'
         ]);
         $user = new User([
             'firstname'         =>  $request->get('firstname'),
@@ -75,6 +78,7 @@ class UsersController extends Controller
         
         $user->save();
         $user->roles()->attach($request->get('roles'));
+        $user->species()->attach($request->get('species_id'));
         return redirect()->route('admin.employees.index')->with('success', 'Data Added');
     }
 

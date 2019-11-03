@@ -66,6 +66,17 @@
                     </div>
                 </div>
 
+                <div style="display:flex; justify-content: center;">
+                    <h3>Roles</h3>
+                    <div style="display:flex; flex-direction: column">
+                        <select name="species_id">
+                        @foreach($species as $specie)
+                            <option value="{{$specie->id}}">{{$specie->name}}</option>
+                        @endforeach
+                        </select>
+                    </div>
+                </div>
+
                 <input type="submit" class="button" value="Add"/>
             </div>
         </form>
