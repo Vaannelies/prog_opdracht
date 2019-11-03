@@ -5,7 +5,7 @@
 
 <h1>Your animal species: {{$myspecies[0]->name}}</h1>
 <div class="container">
-    <div class="container-head">
+    <div class="container-head" style="display:flex; justify-content:flex-end;">
         @if(!isset($myanimals))
             <a href="{{route('employee.dashboard')}}" class="button">
                 Back
@@ -13,20 +13,7 @@
         @endif
 
         @if(isset($myanimals))
-            <form style="display:flex; justify-content: flex-end" action="" method="">
-                {{csrf_field()}}
-
-                <select name="sort" class="textbox">
-
-                    <option value="" disabled selected>Select sorting method</option>
-                    <option value="Female">Youngest to oldest</option>
-                    <option value="Male" selected>Oldest to youngest</option>
-          
-                </select> 
-
-                <button type="submit" class="button">Sort</button>
-            </form>
-            
+           
         @endif
 
         <form style="display:flex; justify-content: flex-end" action="{{action('Admin\AnimalsController@getSearchEmployee')}}" method="post">

@@ -24,14 +24,16 @@
             <div class="form-group">
                 <input type="hidden" name="_method" value="PATCH" />
 
-                
+                    <label>Name</label>
                     <input type="text" name="name" class="textbox"
                     value="{{$animal->name}}" placeholder="Enter name"/>
 
 
-
+                    <label>Date of birth</label>
                     <input type="date" name="date_birth" class="textbox"
                     value="{{$animal->date_birth}}" placeholder="Enter date of birth"/>
+
+                    <label>Gender</label>
                     <select name="gender" class="textbox">
 
                         @if($animal['gender']=='Female') <!--selected value says female-->
@@ -47,6 +49,8 @@
                         @endif
                     </select> 
 
+
+                    <label>Species</label>
                     <select name="species_id" class="textbox">
                         <option value="" disabled selected>Select species</option>
 
@@ -61,9 +65,11 @@
                         @endforeach
                     </select> 
 
+                    <label>Food</label>
                     <input type="text" name="food" class="textbox"
                     placeholder="Enter food" value="{{$animal->food}}"/>
                     
+                    <label>Description</label>
                     <textarea rows="4" cols="50" name="description" form="edit_form" placeholder="Enter description..." class="textbox">{{$animal->description}}</textarea>
 
                     <input type="submit" class="button" value="Submit"/>
