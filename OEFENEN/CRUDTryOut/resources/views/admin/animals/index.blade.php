@@ -70,12 +70,14 @@
 
     <!-- Show selected filters -->
     @if(isset($specieName))
-            @foreach($specieName as $specieNameItem)
+           
                 <div class="filter">
-                    {{$specieNameItem->name}} 
+                @foreach($specieName as $specieNameItem)
+                   |  {{$specieNameItem->name}}  |
+                @endforeach
                     <a href="" style="padding-left:10px; padding-right:0px;">X</a>
                 </div>
-            @endforeach
+          
     @endif
 
     <!--            -->
