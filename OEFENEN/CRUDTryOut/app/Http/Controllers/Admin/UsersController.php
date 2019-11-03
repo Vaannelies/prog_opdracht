@@ -99,11 +99,12 @@ class UsersController extends Controller
         }
         else
         {
+            $species = Species::all();
             $roles = Role::all();
             $user = User::find($id);
             if($user != "")
             {
-                return view('admin.employees.edit', compact('user', 'roles','id'));
+                return view('admin.employees.edit', compact('user', 'roles','id', 'species'));
             }
             else
             {
@@ -129,10 +130,12 @@ class UsersController extends Controller
             'date_birth'        =>  'required',
             'gender'            =>  'required',
             'employee_since'    =>  'required',
-            'roles'             =>  'required'
+            'roles'             =>  'required',
+            'species'           =>  'required'
         ]);
         $user = User::find($id);
         $user->roles()->sync($request->roles);
+        $user->species()->sync($request->species);
         $user->firstname        =       $request->get('firstname');
         $user->lastname         =       $request->get('lastname');      
         $user->email            =       $request->get('email');

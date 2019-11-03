@@ -48,27 +48,37 @@
                 <input type="date" name="employee_since" class="textbox"
                 placeholder="Employee since..."/>
 
-
-                <h3>Active?</h3>
-                <label id="switch" class="switch">
-                <input id="check" type="checkbox" name="active" class="textbox" value="1"
-                placeholder="Active?"/>
-                <span class="slider"></span>
-                </label>
-
                 <div style="display:flex; justify-content: center;">
-                    <h3>Roles</h3>
-                    <div style="display:flex; flex-direction: column">
-                    @foreach($roles as $role)
-                    <input type="checkbox" name="roles[]" value="{{ $role->id }}"/>
-                        <label>{{$role->name}}</label>
-                    @endforeach
+                    <div style="display:flex; flex-direction: row; align-items:center">
+                        <h3>Active?</h3>
+                        <label id="switch" class="switch">
+
+                        <input id="check" type="checkbox" name="active" class="textbox" value="1"
+                        placeholder="Active?"/>
+                        <span class="slider"></span>
+
+                        </label>
                     </div>
                 </div>
 
                 <div style="display:flex; justify-content: center;">
-                    <h3>Roles</h3>
-                    <div style="display:flex; flex-direction: column">
+                    
+                    <div style="display:flex; flex-direction: row; align-items:center;">
+                        <h3>Roles:</h3>
+                        @foreach($roles as $role)
+                            <div>
+                                <label>{{$role->name}}</label>
+                                <input type="checkbox" name="roles[]" value="{{ $role->id }}"/>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+
+                <div style="display:flex; justify-content: center;">
+                    
+                    <div style="display:flex; flex-direction: row; align-items:center;">
+                        <h3>Species</h3>
+                        
                         <select name="species_id">
                         @foreach($species as $specie)
                             <option value="{{$specie->id}}">{{$specie->name}}</option>

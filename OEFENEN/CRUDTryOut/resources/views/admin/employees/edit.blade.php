@@ -70,13 +70,33 @@
                   
 
                     <div style="display:flex; justify-content: center;">
-                    <h3>Roles</h3>
-                    <div style="display:flex; flex-direction: column">
-                    @foreach($roles as $role)
-                    <input type="checkbox" name="roles[]" value="{{ $role->id }}" @if($user->roles->contains($role->id)) checked=checked @endif/>
-                        <label>{{$role->name}}</label>
-                    @endforeach
+                        <h3>Roles</h3>
+                        <div style="display:flex; flex-direction: column">
+                            @foreach($roles as $role)
+                            <input type="checkbox" name="roles[]" value="{{ $role->id }}" @if($user->roles->contains($role->id)) checked=checked @endif/>
+                                <label>{{$role->name}}</label>
+                            @endforeach
+                        </div>
                     </div>
+
+                    <div style="display:flex; justify-content: center;">
+                    
+                        <div style="display:flex; flex-direction: row; align-items:center;">
+                            <h3>Species</h3>
+                            
+                            <select name="species">
+                            @foreach($species as $specie)
+                              
+                                <option value="{{$specie->id}}"   
+                                @if($user->species->contains($specie->id)) 
+                                selected 
+                                @endif
+                                >
+                                {{$specie->name}}</option>
+                              
+                            @endforeach
+                            </select>
+                        </div>
                     </div>
                     <input type="submit" class="button" value="Submit"/>
             </div>
