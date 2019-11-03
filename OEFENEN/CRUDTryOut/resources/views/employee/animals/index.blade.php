@@ -2,6 +2,8 @@
 
 @section('content')
 <title>View</title>
+
+<h1>Your animal species: {{$myspecies[0]->name}}</h1>
 <div class="container">
     <div class="container-head">
         @if(!isset($myanimals))
@@ -25,22 +27,6 @@
                 <button type="submit" class="button">Sort</button>
             </form>
             
-            <div class="dropdown">
-                <button class="button">Filter</button>
-                <div class="dropdown-content">
-                        <!-- <a href="#">Link 1</a>
-                        <a href="#">Link 2</a>
-                        <a href="#">Link 3</a>
-                        <input type="checkbox" name="gorilla"> -->
-                    <form method="post" action="{{action('Admin\AnimalsController@getFilterEmployee')}}">
-                        {{csrf_field()}}
-                        @foreach($myspecies as $specie)
-                            <ul> {{$specie->name}} <input type="checkbox" name="speciesId[]" value="{{$specie->id}}"> </ul>
-                        @endforeach
-                        <button type="submit" class="button">Go</button>
-                    </form>
-                </div>
-            </div> 
         @endif
 
         <form style="display:flex; justify-content: flex-end" action="{{action('Admin\AnimalsController@getSearchEmployee')}}" method="post">
@@ -99,10 +85,10 @@
                                 <form action="{{action('Admin\AnimalsController@detailsEmployee')}}" method="post">
                                 {{csrf_field()}}
                                 <input type="hidden" name="id" value="{{$myanimal->id}}">
-                                <input type="submit" value="{{$myanimal->name}}">
+                                <input type="submit" value="{{$myanimal->name}}" class="tbl-button">
                                 </form>
                             </td>
-                            <td><a class="text-button" href="{{action('Admin\AnimalsController@detailsEmployee', $myanimal['id'])}}">{{$myanimal->name}}</a></td>
+                        
                             <td>{{$myanimal->species->name}}</td>
                           
 

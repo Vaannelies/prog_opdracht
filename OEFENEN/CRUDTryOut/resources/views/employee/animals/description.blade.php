@@ -21,7 +21,7 @@
                                           
                                         <textarea rows="4" cols="50" name="description" form="edit_description" placeholder="Enter description..." class="textbox" style="text-align:left">{{$myanimal->description}}</textarea>
 
-                                        <input type="submit" value="Submit">
+                                        <input type="submit" value="Submit" class="button">
                                 </form>
                         </td>
                     @endcan

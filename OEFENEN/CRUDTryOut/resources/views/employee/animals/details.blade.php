@@ -56,16 +56,17 @@
             </tr>
             <tr>
                     <td>Description:</td>
-                    <td>{{$myanimal->description}}</td>
+                    <td style="display:flex; justify-content:center;">{{$myanimal->description}}
                     @can('write-comment')
-                        <td>
-                                <form action="{{action('Admin\AnimalsController@editDescription')}}" method="post">
+                        
+                                <form style="margin-left: 30px" action="{{action('Admin\AnimalsController@editDescription')}}" method="post">
                                 {{csrf_field()}}
                                         <input type="hidden" name="id" value="{{$myanimal->id}}">
-                                        <input type="submit" value="Edit">
+                                        <input type="submit" value="Edit" class="tbl-button">
                                 </form>
-                        </td>
+                       
                     @endcan
+                    </td>
             </tr>
      
         </table>
