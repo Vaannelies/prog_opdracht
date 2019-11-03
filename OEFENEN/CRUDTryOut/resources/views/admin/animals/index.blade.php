@@ -11,19 +11,7 @@
         @endif
 
         @if(isset($animals))
-            <form style="display:flex; justify-content: flex-end" action="" method="">
-                {{csrf_field()}}
-
-                <select name="sort" class="textbox">
-
-                    <option value="" disabled selected>Select sorting method</option>
-                    <option value="Female">Youngest to oldest</option>
-                    <option value="Male" selected>Oldest to youngest</option>
-          
-                </select> 
-
-                <button type="submit" class="button">Sort</button>
-            </form>
+           
 
             <div class="dropdown">
         <button class="button">Filter</button>
