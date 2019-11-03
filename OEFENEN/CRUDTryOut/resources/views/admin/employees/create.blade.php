@@ -61,18 +61,22 @@
                     </div>
                 </div>
 
+              
+
                 <div style="display:flex; justify-content: center;">
                     
                     <div style="display:flex; flex-direction: row; align-items:center;">
-                        <h3>Roles:</h3>
+                        <h3>Role:</h3>
+                        <select name="roles">
                         @foreach($roles as $role)
                             <div>
-                                <label>{{$role->name}}</label>
-                                <input type="checkbox" name="roles[]" value="{{ $role->id }}"/>
+                                <option value="{{$role->id}}">{{$role->name}}</option>
                             </div>
                         @endforeach
+                        <select>
                     </div>
                 </div>
+
 
                 <div style="display:flex; justify-content: center;">
                     

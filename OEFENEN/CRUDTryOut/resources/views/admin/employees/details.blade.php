@@ -47,10 +47,16 @@
             </tr>
             <tr>
                     <td>Active:</td>
-                    <td>{{$user->active}}</td>
+                    <td>
+                    @if($user->active == 0) 
+                          No
+                    @else
+                          Yes
+                    @endif
+                    </td>  
             </tr>
             <tr>
-                    <td>Role(s):</td>
+                    <td>Role:</td>
                     <td>{{implode(', ', $user->roles()->get()->pluck('name')->toArray())}}</td>
             </tr>
         </table>

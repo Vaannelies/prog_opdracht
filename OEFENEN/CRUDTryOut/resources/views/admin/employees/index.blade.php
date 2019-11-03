@@ -83,7 +83,7 @@
        
             
 </div>
-<script>            //WERKT NIET!
+<script>            //DOESNT WORK
     // window.addEventListener("load", function()
     //     {
 

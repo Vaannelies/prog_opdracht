@@ -60,24 +60,37 @@
                     <input type="date" name="employee_since" class="textbox" 
                     value="{{$user->employee_since}}" placeholder="Employee since..."/>
 
-                    <div>
-                    <h3>Active?</h3>
-                    <label id="switch" class="switch">
-                    <input id="check" type="checkbox" name="active" class="textbox" value="1"/>
-                    <span class="slider"></span>
-                    </label>
+                    <div style="display:flex; justify-content: center;">
+                        <div style="display:flex; flex-direction: row; align-items:center">
+                            <h3>Active?</h3>
+                            <label id="switch" class="switch">
+                            <input id="check" type="checkbox" name="active" class="textbox" value="1"/>
+                            <span class="slider"></span>
+                            </label>
+                        </div>
                     </div>
                   
 
                     <div style="display:flex; justify-content: center;">
-                        <h3>Roles</h3>
-                        <div style="display:flex; flex-direction: column">
-                            @foreach($roles as $role)
-                            <input type="checkbox" name="roles[]" value="{{ $role->id }}" @if($user->roles->contains($role->id)) checked=checked @endif/>
-                                <label>{{$role->name}}</label>
-                            @endforeach
+                       
+                        <div style="display:flex; flex-direction: row; align-items:center;">
+                            <h3>Role</h3>
+                            <select name="roles">
+                                @foreach($roles as $role)
+                                    <div>
+                                        <option value="{{$role->id}}"
+                                        @if($user->roles->contains($role->id)) 
+                                        selected 
+                                        @endif
+                                        >{{$role->name}}</option>
+                                    </div>
+                                @endforeach
+                            <select>
+              
                         </div>
                     </div>
+
+                
 
                     <div style="display:flex; justify-content: center;">
                     
