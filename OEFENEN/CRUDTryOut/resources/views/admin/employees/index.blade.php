@@ -83,38 +83,7 @@
        
             
 </div>
-<script>            //DOESNT WORK
-    // window.addEventListener("load", function()
-    //     {
-
-    //         <?php $jsusers = json_encode($users); ?>
-    //         var users = <?=$jsusers?>;
-            
-    //         var people = ['Hoi', 'Doei', 'Grapje x'];
-    //         console.log(users);
-    //         console.log(people);
-    //         users.forEach(function()
-    //         {
-    //             var employee_status<?php echo $user['id']?> = <?php echo $user['active']?>;
-    //             console.log(employee_status<?php echo $user['id']?>);
-    //             console.log("HOI");
-    //             console.log(<?php echo $user['active']?>);
-    //             console.log(<?php echo $user['firstname']?>);
-                
-    //             if(employee_status<?php echo $user['id']?> == 0)
-    //                 {
-    //                     document.getElementById("check<?php echo $user['id']?>").checked = false;
-    //                 } 
-    //             else 
-    //                 { 
-    //                     document.getElementById("check<?php echo $user['id']?>").checked = true;
-    //                 }
-    //         }
-    //                     )
-    //     }
-                        
-    //                        );
-
+<script>  
 
     $(function() {
 
