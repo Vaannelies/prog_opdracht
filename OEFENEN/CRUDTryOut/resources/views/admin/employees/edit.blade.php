@@ -24,19 +24,24 @@
             <div class="form-group">
                 <input type="hidden" name="_method" value="PATCH" />
 
-                
+                    <label>First name</label>
                     <input type="text" name="firstname" class="textbox"
                     value="{{$user->firstname}}" placeholder="Enter first name"/>
                     
+                    <label>Last name</label>
                     <input type="text" name="lastname" class="textbox"
                     value="{{$user->lastname}}" placeholder="Enter last name"/>
 
+                    <label>E-mail</label>
                     <input type="email" name="email" class="textbox"
                     value="{{$user->email}}" placeholder="Enter email"/>
 
-                    <input type="date" name="date_birth" class="textbox"
+                    <label>Date of birth</label>
+                       <input type="date" name="date_birth" class="textbox"
                     placeholder="Enter date of birth" value="{{$user->date_birth}}"/>
 
+
+                    <label>Gender</label>
                     <select name="gender" class="textbox">
 
                     @if($user['gender']=='Female') <!--selected value says female-->
@@ -55,61 +60,70 @@
                         <option value="Male">Male</option>
                         <option value="Other" selected>Other</option>
                     @endif
+                    </select>
                     
-
+                    <label>Employee since</label>
                     <input type="date" name="employee_since" class="textbox" 
                     value="{{$user->employee_since}}" placeholder="Employee since..."/>
+                   
 
-                    <div style="display:flex; justify-content: center;">
-                        <div style="display:flex; flex-direction: row; align-items:center">
-                            <h3>Active?</h3>
-                            <label id="switch" class="switch">
-                            <input id="check" type="checkbox" name="active" class="textbox" value="1"/>
-                            <span class="slider"></span>
-                            </label>
-                        </div>
-                    </div>
-                  
 
-                    <div style="display:flex; justify-content: center;">
-                       
-                        <div style="display:flex; flex-direction: row; align-items:center;">
-                            <h3>Role</h3>
-                            <select name="roles">
-                                @foreach($roles as $role)
-                                    <div>
-                                        <option value="{{$role->id}}"
-                                        @if($user->roles->contains($role->id)) 
-                                        selected 
-                                        @endif
-                                        >{{$role->name}}</option>
+
+                    <div style="display:flex; justify-content:center;">
+                            <div style="display:flex; flex-direction: column; width:100%">   
+                                    <div style="">
+                                    <div style="display:flex; flex-direction: row; align-items:center; justify-content:space-between">
+                                            <label>Active?</label>
+                                            <label id="switch" class="switch">
+                                            <input id="check" type="checkbox" name="active" class="textbox" value="1"/>
+                                            <span class="slider"></span>
+                                            </label>
+                                        </div>
                                     </div>
-                                @endforeach
-                            <select>
-              
-                        </div>
-                    </div>
+                                
 
-                
-
-                    <div style="display:flex; justify-content: center;">
-                    
-                        <div style="display:flex; flex-direction: row; align-items:center;">
-                            <h3>Species</h3>
+                                    <div style="">
+                                    
+                                    <div style="display:flex; flex-direction: row; align-items:center; justify-content:space-between">
+                                            <label>Role</label>
+                                            <select name="roles" class="textbox" style="width: 50%;">
+                                                @foreach($roles as $role)
+                                                    <div>
+                                                        <option value="{{$role->id}}"
+                                                        @if($user->roles->contains($role->id)) 
+                                                        selected 
+                                                        @endif
+                                                        >{{$role->name}}</option>
+                                                    </div>
+                                                @endforeach
+                                            <select>
                             
-                            <select name="species">
-                            @foreach($species as $specie)
-                              
-                                <option value="{{$specie->id}}"   
-                                @if($user->species->contains($specie->id)) 
-                                selected 
-                                @endif
-                                >
-                                {{$specie->name}}</option>
-                              
-                            @endforeach
-                            </select>
-                        </div>
+                                        </div>
+                                    </div>
+
+                                
+
+                                    <div style="">
+                                    
+                                    <div style="display:flex; flex-direction: row; align-items:center; justify-content:space-between">
+                                        <label>Species</label>
+                                            
+                                        <select name="species" class="textbox" style="width: 50%;">
+                                            @foreach($species as $specie)
+                                            
+                                                <option value="{{$specie->id}}"   
+                                                @if($user->species->contains($specie->id)) 
+                                                selected 
+                                                @endif
+                                                >
+                                                {{$specie->name}}</option>
+                                            
+                                            @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                            </div>
+
                     </div>
                     <input type="submit" class="button" value="Submit"/>
             </div>
