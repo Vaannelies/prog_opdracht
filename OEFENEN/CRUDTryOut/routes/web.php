@@ -21,7 +21,7 @@ Route::get('/', function () {
 
 // Route::resource('animals', 'AnimalsController');
 
-Auth::routes();
+Auth::routes(['register' => false]);
 
 
 //  FOR BOTH ADMIN AND EMPLOYEES
