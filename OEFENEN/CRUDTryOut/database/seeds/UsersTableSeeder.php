@@ -23,10 +23,10 @@ class UsersTableSeeder extends Seeder
         $employeeRole = Role::where('name', 'Employee')->first();
 
         $admin = User::create([
-            'firstname' => 'poep', 
-            'lastname'  => 'van der poep',
-            'email' => 'poep@hotmail.com', 
-            'password' => Hash::make('poeppoep'),
+            'firstname' => 'paap', 
+            'lastname'  => 'van der paap',
+            'email' => 'paap@hotmail.com', 
+            'password' => Hash::make('paappaap'),
             'gender'    => 'Other',
             'active'    => '1',
             'date_birth'    => '2010-10-10',
