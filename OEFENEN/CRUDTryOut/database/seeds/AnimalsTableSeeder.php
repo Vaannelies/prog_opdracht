@@ -57,7 +57,7 @@ class AnimalsTableSeeder extends Seeder
             'description' => 'Moody.'
         ]);
 
-        $hiya = Animal::create([
+        $june = Animal::create([
             'name' => 'June',
             'date_birth' => '2001-02-16',
             'gender' => 'Female',

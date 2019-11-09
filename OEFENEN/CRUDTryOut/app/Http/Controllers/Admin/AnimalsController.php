@@ -393,15 +393,24 @@ class AnimalsController extends Controller
         // print_r(validate($id, $myspecies));
         // if(validate($id, $myspecies) != false)
         // {
-            $myanimal = Animal::find($id);
-        
 
-            $myanimal->description    =       $request->get('description');
-            $myanimal->save();
-        // }
-        $myanimals = Animal::where('species_id', 'LIKE', $myspecies->pluck('id'))->get();
+            if(Gate::denies('write-comment'))
+            {
+                $myanimals = Animal::where('species_id', 'LIKE', $myspecies->pluck('id'))->get();
+                return view('employee.animals.index', compact('myanimals', 'myspecies'));
+            }
+            else {
+          
+                $myanimal = Animal::find($id);
 
-        return view('employee.animals.index', compact('myanimals', 'myspecies'));
+                $myanimal->description    =       $request->get('description');
+                $myanimal->save();
+                $myanimals = Animal::where('species_id', 'LIKE', $myspecies->pluck('id'))->get();
+
+                return view('employee.animals.index', compact('myanimals', 'myspecies'));
         // }
+       
+        // }
+            }
     }
 }
